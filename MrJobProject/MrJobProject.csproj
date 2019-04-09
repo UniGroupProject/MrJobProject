@@ -80,6 +80,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Data\Holiday.cs" />
+    <Compile Include="Data\Schedule.cs" />
+    <Compile Include="Data\Shift.cs" />
+    <Compile Include="Data\Worker.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
