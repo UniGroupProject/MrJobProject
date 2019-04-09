@@ -68,10 +68,10 @@ namespace MrJobProject.UserControllers
         private void DatacontextItem_Delete(object sender, RoutedEventArgs e) //right click
         {
             Worker worker = WorkersList.SelectedItem as Worker;
-            string question = "Are you sure you want to delete " + worker.Name; //language item
-            MessageBoxResult Result = System.Windows.MessageBox.Show(question, "", System.Windows.MessageBoxButton.OKCancel);
+            string question = "Are you sure you want to delete " + worker.Name + "?"; //language item
+            YesNo Result = new YesNo(question);
 
-            if (Result == MessageBoxResult.OK)
+            if (Result.ShowDialog() == true)
             {
                 if (WorkersList.SelectedItem != null)
                 {

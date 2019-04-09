@@ -75,6 +75,9 @@
     <Compile Include="Dialogs\EditWorker.xaml.cs">
       <DependentUpon>EditWorker.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\YesNo.xaml.cs">
+      <DependentUpon>YesNo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControllers\HolidayUC.xaml.cs">
       <DependentUpon>HolidayUC.xaml</DependentUpon>
     </Compile>
@@ -88,6 +91,10 @@
       <DependentUpon>WorkersUC.xaml</DependentUpon>
     </Compile>
     <Page Include="Dialogs\EditWorker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\YesNo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

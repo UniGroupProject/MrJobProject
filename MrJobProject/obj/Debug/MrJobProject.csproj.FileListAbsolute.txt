@@ -34,3 +34,5 @@ C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControlle
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControllers\WorkersUC.baml
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\EditWorker.g.cs
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\EditWorker.baml
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\YesNo.g.cs
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\YesNo.baml
