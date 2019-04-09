@@ -23,3 +23,12 @@ C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\bin\Debug\SQLitePCLRaw.
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\bin\Debug\SQLite-net.xml
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\MrJobProject_Content.g.cs
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\MrJobProject.csproj.CopyComplete
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControllers\HolidayUC.g.cs
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControllers\ListsUC.g.cs
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControllers\ScheduleUC.g.cs
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControllers\WorkersUC.g.cs
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControllers\HolidayUC.baml
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControllers\ListsUC.baml
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControllers\ScheduleUC.baml
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControllers\WorkersUC.baml

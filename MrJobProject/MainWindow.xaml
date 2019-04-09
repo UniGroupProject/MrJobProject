@@ -5,8 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MrJobProject"
         mc:Ignorable="d"
+        xmlns:userControllers="clr-namespace:MrJobProject.UserControllers"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <TabControl IsSynchronizedWithCurrentItem="True">
+            <TabItem Header="Schedule">
+                <userControllers:ScheduleUC></userControllers:ScheduleUC>
+            </TabItem>
+            <TabItem Header="Workers">
+                <userControllers:WorkersUC></userControllers:WorkersUC>
+            </TabItem>
+            <TabItem Header="Holidays">
+                <userControllers:HolidayUC></userControllers:HolidayUC>
+            </TabItem>
+            <TabItem Header="Lists">
+                <userControllers:ListsUC></userControllers:ListsUC>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

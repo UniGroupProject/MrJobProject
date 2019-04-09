@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\App.xaml
-11151548125
+5-1077308947
 2683952917
-9997385901
+13844657811
 71158225351
-MainWindow.xaml;
+MainWindow.xaml;UserControllers\HolidayUC.xaml;UserControllers\ListsUC.xaml;UserControllers\ScheduleUC.xaml;UserControllers\WorkersUC.xaml;
 
 False
 
