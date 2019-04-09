@@ -41,7 +41,7 @@ namespace MrJobProject.UserControllers
             using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
             {
                 connection.CreateTable<Worker>();
-                workers = new ObservableCollection<Worker>(connection.Table<Worker>().ToList().OrderByDescending(c => c.Id).ToList());
+                workers = new ObservableCollection<Worker>(connection.Table<Worker>().ToList().OrderBy(c => c.Name).ToList().OrderByDescending(c => c.Status));
             }
         }
 
@@ -98,6 +98,24 @@ namespace MrJobProject.UserControllers
         private void EditWorker(object sender, MouseButtonEventArgs e) //double click
         {
 
+        }
+    }
+
+    public class BoolToActiveConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            if(value is bool)
+            {
+                if ((bool)value == true) return "Active"; //language item
+
+            }
+            return "";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return false;
         }
     }
 }
