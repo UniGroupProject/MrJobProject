@@ -1,0 +1,15 @@
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\bin\Debug\MrJobProject.exe.config
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\bin\Debug\MrJobProject.exe
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\bin\Debug\MrJobProject.pdb
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\MrJobProject.csprojAssemblyReference.cache
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\MainWindow.g.cs
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\App.g.cs
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\MrJobProject_MarkupCompile.cache
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\MrJobProject_MarkupCompile.lref
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\MainWindow.baml
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\MrJobProject.g.resources
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\MrJobProject.Properties.Resources.resources
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\MrJobProject.csproj.GenerateResource.cache
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\MrJobProject.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\MrJobProject.exe
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\MrJobProject.pdb
