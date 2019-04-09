@@ -32,3 +32,5 @@ C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControlle
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControllers\ListsUC.baml
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControllers\ScheduleUC.baml
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControllers\WorkersUC.baml
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\EditWorker.g.cs
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\EditWorker.baml

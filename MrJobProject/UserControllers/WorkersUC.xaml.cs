@@ -1,4 +1,5 @@
 ﻿using MrJobProject.Data;
+using MrJobProject.Dialogs;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -31,9 +32,7 @@ namespace MrJobProject.UserControllers
 
             workers = new ObservableCollection<Worker>();
 
-            ReadDatabase();
-
-            WorkersList.ItemsSource = workers;
+            UpdateList();
         }
 
         private void ReadDatabase()
@@ -41,7 +40,8 @@ namespace MrJobProject.UserControllers
             using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
             {
                 connection.CreateTable<Worker>();
-                workers = new ObservableCollection<Worker>(connection.Table<Worker>().ToList().OrderBy(c => c.Name).ToList().OrderByDescending(c => c.Status));
+                workers = new ObservableCollection<Worker>
+                    (connection.Table<Worker>().ToList().OrderBy(c => c.Name).ToList().OrderByDescending(c => c.Status));
             }
         }
 
@@ -59,8 +59,7 @@ namespace MrJobProject.UserControllers
                     connection.CreateTable<Worker>();
                     connection.Insert(worker);
                 }
-                ReadDatabase();
-                WorkersList.ItemsSource = workers;
+                UpdateList();
                 nameValue.Text = "";
                 statusValue.IsChecked = true;
             }
@@ -81,10 +80,15 @@ namespace MrJobProject.UserControllers
                         connection.CreateTable<Worker>();
                         connection.Delete(WorkersList.SelectedItem);
                     }
-                    ReadDatabase();
-                    WorkersList.ItemsSource = workers;
+                    UpdateList();
                 }
             }
+        }
+
+        private void UpdateList()
+        {
+            ReadDatabase();
+            WorkersList.ItemsSource = workers;
         }
 
         private void TextBox_KeyDown(object sender, KeyEventArgs e) //enter
@@ -97,7 +101,17 @@ namespace MrJobProject.UserControllers
 
         private void EditWorker(object sender, MouseButtonEventArgs e) //double click
         {
-
+            Worker selectedWorker = WorkersList.SelectedItem as Worker;
+            EditWorker editWorker = new EditWorker(selectedWorker);
+            if(editWorker.ShowDialog() == true)
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
+                {
+                    connection.CreateTable<Worker>();
+                    connection.InsertOrReplace(editWorker.newWorker);
+                }
+                UpdateList();
+            }
         }
     }
 
