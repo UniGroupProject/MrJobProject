@@ -36,3 +36,7 @@ C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\EditW
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\EditWorker.baml
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\YesNo.g.cs
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\YesNo.baml
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControllers\HolidayDateUC.g.cs
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControllers\HolidayDateUC.baml
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\InfoOK.g.cs
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\InfoOK.baml

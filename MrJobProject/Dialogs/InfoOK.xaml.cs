@@ -15,18 +15,19 @@ using System.Windows.Shapes;
 namespace MrJobProject.Dialogs
 {
     /// <summary>
-    /// Interaction logic for YesNo.xaml
+    /// Interaction logic for InfoOK.xaml
     /// </summary>
-    public partial class YesNo : Window
+    public partial class InfoOK : Window
     {
-        public YesNo(string text)
+        public InfoOK(string text)
         {
             InitializeComponent();
             question.Text = text;
         }
 
-        private void YesBtn_Click(object sender, RoutedEventArgs e)
+        private void OKBtn_Click(object sender, RoutedEventArgs e)
         {
+
             this.DialogResult = true;
         }
     }

@@ -72,11 +72,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\BoolToActiveConverter.cs" />
     <Compile Include="Dialogs\EditWorker.xaml.cs">
       <DependentUpon>EditWorker.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\InfoOK.xaml.cs">
+      <DependentUpon>InfoOK.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\YesNo.xaml.cs">
       <DependentUpon>YesNo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControllers\HolidayDateUC.xaml.cs">
+      <DependentUpon>HolidayDateUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControllers\HolidayUC.xaml.cs">
       <DependentUpon>HolidayUC.xaml</DependentUpon>
@@ -91,6 +98,10 @@
       <DependentUpon>WorkersUC.xaml</DependentUpon>
     </Compile>
     <Page Include="Dialogs\EditWorker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\InfoOK.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -114,6 +125,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControllers\HolidayDateUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControllers\HolidayUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -16,7 +16,9 @@
                 <userControllers:WorkersUC></userControllers:WorkersUC>
             </TabItem>
             <TabItem Header="Holidays">
-                <userControllers:HolidayUC></userControllers:HolidayUC>
+                <Grid Name="Holiday">
+                
+                </Grid>
             </TabItem>
             <TabItem Header="Lists">
                 <userControllers:ListsUC></userControllers:ListsUC>

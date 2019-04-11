@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MrJobProject.Data;
+using MrJobProject.UserControllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,19 @@ namespace MrJobProject
         public MainWindow()
         {
             InitializeComponent();
+            Holiday.Children.Add(new HolidayUC());            
+        }
+
+        public void ChangeToHolidayDateUC(Worker worker)
+        {
+            Holiday.Children.Clear();
+            Holiday.Children.Add(new HolidayDateUC(worker));
+        }
+
+        public void BackToHolidayUC(Worker worker)
+        {
+            Holiday.Children.Clear();
+            Holiday.Children.Add(new HolidayUC());
         }
     }
 }

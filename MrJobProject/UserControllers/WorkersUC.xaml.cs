@@ -65,7 +65,7 @@ namespace MrJobProject.UserControllers
             }
         }
 
-        private void DatacontextItem_Delete(object sender, RoutedEventArgs e) //right click
+        private void DatacontextItem_Delete(object sender, RoutedEventArgs e) //right click -> delete
         {
             Worker worker = WorkersList.SelectedItem as Worker;
             string question = "Are you sure you want to delete " + worker.Name + "?"; //language item
@@ -83,7 +83,7 @@ namespace MrJobProject.UserControllers
                     UpdateList();
                 }
             }
-        }
+        } 
 
         private void UpdateList()
         {
@@ -91,7 +91,7 @@ namespace MrJobProject.UserControllers
             WorkersList.ItemsSource = workers;
         }
 
-        private void TextBox_KeyDown(object sender, KeyEventArgs e) //enter
+        private void TextBox_KeyDown(object sender, KeyEventArgs e) //enter -> add new worker
         {
             if (e.Key == Key.Return)
             {
@@ -99,7 +99,7 @@ namespace MrJobProject.UserControllers
             }
         }
 
-        private void EditWorker(object sender, MouseButtonEventArgs e) //double click
+        private void EditWorker(object sender, MouseButtonEventArgs e) //double click -> edit worker
         {
             Worker selectedWorker = WorkersList.SelectedItem as Worker;
             EditWorker editWorker = new EditWorker(selectedWorker);
@@ -112,24 +112,6 @@ namespace MrJobProject.UserControllers
                 }
                 UpdateList();
             }
-        }
-    }
-
-    public class BoolToActiveConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            if(value is bool)
-            {
-                if ((bool)value == true) return "Active"; //language item
-
-            }
-            return "";
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            return false;
         }
     }
 }
