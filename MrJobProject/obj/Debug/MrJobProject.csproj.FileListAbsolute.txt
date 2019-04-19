@@ -40,3 +40,5 @@ C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControlle
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControllers\HolidayDateUC.baml
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\InfoOK.g.cs
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\InfoOK.baml
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\EditAddShift.g.cs
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\EditAddShift.baml

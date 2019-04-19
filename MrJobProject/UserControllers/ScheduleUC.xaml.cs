@@ -1,5 +1,9 @@
-﻿using System;
+﻿using MrJobProject.Data;
+using MrJobProject.Dialogs;
+using SQLite;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +24,56 @@ namespace MrJobProject.UserControllers
     /// </summary>
     public partial class ScheduleUC : UserControl
     {
+        ObservableCollection<Shift> shifts;
+
         public ScheduleUC()
         {
             InitializeComponent();
+
+
+            shifts = new ObservableCollection<Shift>();
+
+            UpdateList();
+        }
+
+        private void ReadDatabase()
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
+            {
+                connection.CreateTable<Shift>();
+                shifts = new ObservableCollection<Shift>
+                    (connection.Table<Shift>().ToList().OrderBy(c => c.Id).ToList());
+            }
+        }
+
+        private void UpdateList()
+        {
+            ReadDatabase();
+            ShiftList.ItemsSource = shifts;
+        }
+
+        private void DeleteShift(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddShiftDialog(object sender, RoutedEventArgs e)
+        {
+            EditAddShift addShift = new EditAddShift();
+            if (addShift.ShowDialog() == true)
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
+                {
+                    connection.CreateTable<Shift>();
+                    connection.InsertOrReplace(addShift.newShift);
+                }
+                UpdateList();
+            }
+        }
+
+        private void EditShift(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

@@ -13,7 +13,7 @@ namespace MrJobProject.Data
         private int id;
         private DateTime date;
         private int workerId;
-        private int shiftId;
+        private string shiftName;
 
         [PrimaryKey, AutoIncrement]
         public int Id
@@ -48,15 +48,15 @@ namespace MrJobProject.Data
             }
         }
 
-        public int ShiftId
+        public string ShiftName
         {
-            get { return shiftId; }
+            get { return shiftName; }
             set
             {
-                if (this.shiftId != value)
+                if (this.shiftName != value)
                 {
-                    this.shiftId = value;
-                    this.NotifyPropertyChanged("ShiftId");
+                    this.shiftName = value;
+                    this.NotifyPropertyChanged("ShiftName");
                 }
             }
         }

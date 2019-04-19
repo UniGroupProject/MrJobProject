@@ -22,7 +22,7 @@ namespace MrJobProject.Data
             get { return id; }
             set { id = value; }
         }
-        [PrimaryKey]
+
         public string ShiftName
         {
             get { return shiftName; }
