@@ -73,6 +73,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\BoolToActiveConverter.cs" />
+    <Compile Include="Dialogs\EditAddShift.xaml.cs">
+      <DependentUpon>EditAddShift.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\EditWorker.xaml.cs">
       <DependentUpon>EditWorker.xaml</DependentUpon>
     </Compile>
@@ -97,6 +100,10 @@
     <Compile Include="UserControllers\WorkersUC.xaml.cs">
       <DependentUpon>WorkersUC.xaml</DependentUpon>
     </Compile>
+    <Page Include="Dialogs\EditAddShift.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dialogs\EditWorker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

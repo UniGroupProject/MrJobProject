@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MrJobProject.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,29 +11,31 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MrJobProject.UserControllers
+namespace MrJobProject.Dialogs
 {
     /// <summary>
-    /// Interaction logic for ListsUC.xaml
+    /// Interaction logic for EditAddShift.xaml
     /// </summary>
-    public partial class ListsUC : UserControl
+    public partial class EditAddShift : Window
     {
-        public ListsUC()
+        public Shift newShift;
+
+        public EditAddShift()
         {
             InitializeComponent();
         }
-
-        private void DeleteShift(object sender, RoutedEventArgs e)
+        public EditAddShift(Shift shift)
         {
+            InitializeComponent();
 
+            newShift = shift;
         }
 
-        private void AddShiftDialog(object sender, RoutedEventArgs e)
+        private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            this.DialogResult = true;
         }
     }
 }
