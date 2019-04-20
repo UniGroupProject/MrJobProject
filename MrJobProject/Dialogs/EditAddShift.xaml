@@ -28,7 +28,7 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <TextBox Name="timeFrom" MaxLines="1" Grid.Column="0" MinWidth="20"></TextBox>
-            <TextBlock Grid.Column="1">:</TextBlock>
+            <TextBlock Grid.Column="1">-</TextBlock>
             <TextBox Name="timeTo" MaxLines="1" Grid.Column="2" MinWidth="20"></TextBox>
         </Grid>
         <WrapPanel Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,15,0,0">

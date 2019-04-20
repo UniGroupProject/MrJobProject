@@ -54,7 +54,22 @@ namespace MrJobProject.UserControllers
 
         private void DeleteShift(object sender, RoutedEventArgs e)
         {
+            Shift shift = ShiftList.SelectedItem as Shift;
+            string question = "Are you sure you want to delete " + shift.ShiftName + "?"; //language item
+            YesNo Result = new YesNo(question);
 
+            if (Result.ShowDialog() == true)
+            {
+                if (ShiftList.SelectedItem != null)
+                {
+                    using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
+                    {
+                        connection.CreateTable<Shift>();
+                        connection.Delete(ShiftList.SelectedItem);
+                    }
+                    UpdateList();
+                }
+            }
         }
 
         private void AddShiftDialog(object sender, RoutedEventArgs e)
@@ -71,9 +86,22 @@ namespace MrJobProject.UserControllers
             }
         }
 
-        private void EditShift(object sender, MouseButtonEventArgs e)
+        private void EditShiftDialog(object sender, RoutedEventArgs e)
         {
-
+            Shift shift = ShiftList.SelectedItem as Shift;
+            if (shift != null)
+            {
+                EditAddShift editShift = new EditAddShift(shift);
+                if (editShift.ShowDialog() == true)
+                {
+                    using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
+                    {
+                        connection.CreateTable<Shift>();
+                        connection.InsertOrReplace(editShift.newShift);
+                    }
+                    UpdateList();
+                }
+            }
         }
     }
 }

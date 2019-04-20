@@ -8,11 +8,12 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid Grid.Row="1">
-            <ListBox x:Name="ShiftList" HorizontalAlignment="Stretch"  Width="230" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" VerticalAlignment="Top" MouseDoubleClick="EditShift" >
+            <ListBox x:Name="ShiftList" HorizontalAlignment="Stretch"  Width="230" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" VerticalAlignment="Top" MinHeight="30" Margin="508,106,62,0" >
                 <ListBox.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Delete" Click="DeleteShift"/>
                         <MenuItem Header="Add shift" Click="AddShiftDialog"/>
+                        <MenuItem Header="Edit shift" Click="EditShiftDialog"/>
                     </ContextMenu>
                 </ListBox.ContextMenu>
                 <ListBox.ItemTemplate>
