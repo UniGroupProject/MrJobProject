@@ -55,19 +55,22 @@ namespace MrJobProject.UserControllers
         private void DeleteShift(object sender, RoutedEventArgs e)
         {
             Shift shift = ShiftList.SelectedItem as Shift;
-            string question = "Are you sure you want to delete " + shift.ShiftName + "?"; //language item
-            YesNo Result = new YesNo(question);
-
-            if (Result.ShowDialog() == true)
+            if (shift != null)
             {
-                if (ShiftList.SelectedItem != null)
+                string question = "Are you sure you want to delete " + shift.ShiftName + "?"; //language item
+                YesNo Result = new YesNo(question);
+
+                if (Result.ShowDialog() == true)
                 {
-                    using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
+                    if (ShiftList.SelectedItem != null)
                     {
-                        connection.CreateTable<Shift>();
-                        connection.Delete(ShiftList.SelectedItem);
+                        using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
+                        {
+                            connection.CreateTable<Shift>();
+                            connection.Delete(ShiftList.SelectedItem);
+                        }
+                        UpdateList();
                     }
-                    UpdateList();
                 }
             }
         }
@@ -80,7 +83,7 @@ namespace MrJobProject.UserControllers
                 using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
                 {
                     connection.CreateTable<Shift>();
-                    connection.InsertOrReplace(addShift.newShift);
+                    connection.Insert(addShift.newShift);
                 }
                 UpdateList();
             }

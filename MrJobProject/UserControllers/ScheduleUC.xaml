@@ -4,11 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MrJobProject.UserControllers"
+             xmlns:converters="clr-namespace:MrJobProject.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid Grid.Row="1">
-            <ListBox x:Name="ShiftList" HorizontalAlignment="Stretch"  Width="230" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" VerticalAlignment="Top" MinHeight="30" Margin="508,106,62,0" >
+            <Grid.Resources>
+                <converters:TimeToStringConverter x:Key="TimeToStringConverter"/>
+            </Grid.Resources>
+            <ListBox x:Name="ShiftList"  HorizontalAlignment="Stretch"  ScrollViewer.CanContentScroll="False" VerticalAlignment="Top" MinHeight="30" Margin="508,106,62,0" Width="100" >
                 <ListBox.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Delete" Click="DeleteShift"/>
@@ -20,13 +24,15 @@
                     <DataTemplate>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2*" />
-                                <ColumnDefinition Width="4*" />
-                                <ColumnDefinition Width="4*" />
+                                <ColumnDefinition Width="23"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="{Binding ShiftName}" />
-                            <TextBlock  Grid.Column="1" Text="{Binding TimeFrom}" Margin="2,0" ></TextBlock>
-                            <TextBlock  Grid.Column="1" Text="{Binding TimeTo}" Margin="2,0" ></TextBlock>
+                            <TextBlock Grid.Column="0" Text="{Binding ShiftName}" HorizontalAlignment="Center" />
+                            <TextBlock Grid.Column="1" Text="{Binding TimeFrom, Converter={StaticResource TimeToStringConverter}}" HorizontalAlignment="Left"></TextBlock>
+                            <TextBlock Grid.Column="2">-</TextBlock>
+                            <TextBlock Grid.Column="3" Text="{Binding TimeTo, Converter={StaticResource TimeToStringConverter}}" HorizontalAlignment="Left"></TextBlock>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

@@ -73,6 +73,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\BoolToActiveConverter.cs" />
+    <Compile Include="Converters\TimeToStringConverter.cs" />
     <Compile Include="Dialogs\EditAddShift.xaml.cs">
       <DependentUpon>EditAddShift.xaml</DependentUpon>
     </Compile>

@@ -26,10 +26,18 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <TextBox Name="timeFrom" MaxLines="1" Grid.Column="0" MinWidth="20"></TextBox>
-            <TextBlock Grid.Column="1">-</TextBlock>
-            <TextBox Name="timeTo" MaxLines="1" Grid.Column="2" MinWidth="20"></TextBox>
+            <TextBox Name="timeFromHour" MaxLines="1" Grid.Column="0" MinWidth="20"></TextBox>
+            <TextBlock Grid.Column="1">:</TextBlock>
+            <TextBox Name="timeFromMin" MaxLines="1" Grid.Column="2" MinWidth="20"></TextBox>
+            <TextBlock Grid.Column="3">-</TextBlock>
+            <TextBox Name="timeToHour" MaxLines="1" Grid.Column="4" MinWidth="20"></TextBox>
+            <TextBlock Grid.Column="5">:</TextBlock>
+            <TextBox Name="timeToMin" MaxLines="1" Grid.Column="6" MinWidth="20"></TextBox>
         </Grid>
         <WrapPanel Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,15,0,0">
             <Button IsDefault="True" Name="SaveBtn" MinWidth="60" Margin="0,0,10,0" Content="Save" Click="SaveBtn_Click"></Button>
