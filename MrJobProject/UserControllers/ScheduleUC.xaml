@@ -4,9 +4,77 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MrJobProject.UserControllers"
+             xmlns:converters="clr-namespace:MrJobProject.Converters"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
     <Grid>
-            
+        <Grid Grid.Row="1">
+
+            <ListBox x:Name="WorkersList"   ScrollViewer.CanContentScroll="False" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,40,0,0" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding Name}" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+        <Grid>
+            <Grid.Resources>
+                <converters:NumberToMonthConverter x:Key="NumberToMonthConverter"/>
+            </Grid.Resources>
+            <ComboBox Name="ListOfYears" HorizontalAlignment="Left" Margin="401,32,0,0" VerticalAlignment="Top" >
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <TextBlock Text="{Binding}"></TextBlock>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ComboBox Name="ListOfMonths" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="287,32,0,0" >
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <TextBlock Text="{Binding Converter={StaticResource NumberToMonthConverter}}"></TextBlock>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.Resources>
+                <converters:TimeToStringConverter x:Key="TimeToStringConverter"/>
+            </Grid.Resources>
+            <ListBox x:Name="ShiftList"  HorizontalAlignment="Stretch"  ScrollViewer.CanContentScroll="False" VerticalAlignment="Top" MinHeight="30" Margin="508,106,62,0" Width="100" >
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Delete" Click="DeleteShift"/>
+                        <MenuItem Header="Add shift" Click="AddShiftDialog"/>
+                        <MenuItem Header="Edit shift" Click="EditShiftDialog"/>
+                    </ContextMenu>
+                </ListBox.ContextMenu>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="23"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding ShiftName}" HorizontalAlignment="Center" />
+                            <TextBlock Grid.Column="1" Text="{Binding TimeFrom, Converter={StaticResource TimeToStringConverter}}" HorizontalAlignment="Left"></TextBlock>
+                            <TextBlock Grid.Column="2">-</TextBlock>
+                            <TextBlock Grid.Column="3" Text="{Binding TimeTo, Converter={StaticResource TimeToStringConverter}}" HorizontalAlignment="Left"></TextBlock>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
     </Grid>
 </UserControl>

@@ -32,3 +32,13 @@ C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControlle
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControllers\ListsUC.baml
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControllers\ScheduleUC.baml
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControllers\WorkersUC.baml
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\EditWorker.g.cs
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\EditWorker.baml
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\YesNo.g.cs
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\YesNo.baml
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControllers\HolidayDateUC.g.cs
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControllers\HolidayDateUC.baml
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\InfoOK.g.cs
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\InfoOK.baml
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\EditAddShift.g.cs
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\EditAddShift.baml

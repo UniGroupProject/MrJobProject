@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MrJobProject.Data
 {
-    class Shift : INotifyPropertyChanged
+    public class Shift : INotifyPropertyChanged
     {
         private int id;
         private string shiftName;
