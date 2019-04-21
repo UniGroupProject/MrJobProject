@@ -125,5 +125,39 @@ namespace MrJobProject.UserControllers
         {
             UpdateList();
         }
+
+        private void BackDateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            int selectedYear = (int)ListOfYears.SelectedValue;
+            int selectedMonth = (int)ListOfMonths.SelectedValue;
+            if (selectedMonth == 1)
+            {
+                int size = ListOfYears.Items.Count;
+                if (selectedYear == (int)ListOfYears.Items.GetItemAt(size-1)) return;
+
+                ListOfMonths.SelectedValue = 12;
+                ListOfYears.SelectedValue = selectedYear - 1;
+            }
+            else
+            {
+                ListOfMonths.SelectedValue = selectedMonth - 1;
+            }
+        }
+
+        private void ForwardDateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            int selectedYear = (int)ListOfYears.SelectedValue;
+            int selectedMonth = (int)ListOfMonths.SelectedValue;
+            if (selectedMonth == 12)
+            {
+                if (selectedYear == (int)ListOfYears.Items.GetItemAt(0)) return;
+                ListOfMonths.SelectedValue = 1;
+                ListOfYears.SelectedValue = selectedYear + 1;
+            }
+            else
+            {
+                ListOfMonths.SelectedValue = selectedMonth + 1;
+            }
+        }
     }
 }
