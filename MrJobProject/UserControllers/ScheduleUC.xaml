@@ -6,8 +6,23 @@
              xmlns:local="clr-namespace:MrJobProject.UserControllers"
              xmlns:converters="clr-namespace:MrJobProject.Converters"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
     <Grid>
+        <Grid Grid.Row="1">
+
+            <ListBox x:Name="WorkersList"   ScrollViewer.CanContentScroll="False" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,40,0,0" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding Name}" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
         <Grid Grid.Row="1">
             <Grid.Resources>
                 <converters:TimeToStringConverter x:Key="TimeToStringConverter"/>

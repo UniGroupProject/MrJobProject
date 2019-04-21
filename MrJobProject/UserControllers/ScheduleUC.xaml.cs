@@ -25,6 +25,8 @@ namespace MrJobProject.UserControllers
     public partial class ScheduleUC : UserControl
     {
         ObservableCollection<Shift> shifts;
+        ObservableCollection<Worker> workers;
+
 
         public ScheduleUC()
         {
@@ -32,6 +34,8 @@ namespace MrJobProject.UserControllers
 
 
             shifts = new ObservableCollection<Shift>();
+            workers = new ObservableCollection<Worker>();
+
 
             UpdateList();
         }
@@ -40,8 +44,12 @@ namespace MrJobProject.UserControllers
         {
             using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
             {
+                connection.CreateTable<Worker>(); //workers list
+                workers = new ObservableCollection<Worker>
+                    (connection.Table<Worker>().Where(c => c.Status == true).ToList().OrderBy(c => c.Name).ToList().OrderByDescending(c => c.Status));
+
                 connection.CreateTable<Shift>();
-                shifts = new ObservableCollection<Shift>
+                shifts = new ObservableCollection<Shift> //shifts list
                     (connection.Table<Shift>().ToList().OrderBy(c => c.Id).ToList());
             }
         }
@@ -50,6 +58,8 @@ namespace MrJobProject.UserControllers
         {
             ReadDatabase();
             ShiftList.ItemsSource = shifts;
+            WorkersList.ItemsSource = workers;
+
         }
 
         private void DeleteShift(object sender, RoutedEventArgs e)
@@ -105,6 +115,11 @@ namespace MrJobProject.UserControllers
                     UpdateList();
                 }
             }
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateList();
         }
     }
 }
