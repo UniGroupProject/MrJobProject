@@ -82,7 +82,7 @@ namespace MrJobProject.UserControllers {
         #line hidden
         
         
-        #line 56 "..\..\..\UserControllers\ScheduleUC.xaml"
+        #line 59 "..\..\..\UserControllers\ScheduleUC.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.ListBox ShiftList;
         
@@ -159,7 +159,7 @@ namespace MrJobProject.UserControllers {
             return;
             case 8:
             
-            #line 59 "..\..\..\UserControllers\ScheduleUC.xaml"
+            #line 62 "..\..\..\UserControllers\ScheduleUC.xaml"
             ((System.Windows.Controls.MenuItem)(target)).Click += new System.Windows.RoutedEventHandler(this.DeleteShift);
             
             #line default
@@ -167,7 +167,7 @@ namespace MrJobProject.UserControllers {
             return;
             case 9:
             
-            #line 60 "..\..\..\UserControllers\ScheduleUC.xaml"
+            #line 63 "..\..\..\UserControllers\ScheduleUC.xaml"
             ((System.Windows.Controls.MenuItem)(target)).Click += new System.Windows.RoutedEventHandler(this.AddShiftDialog);
             
             #line default
@@ -175,7 +175,7 @@ namespace MrJobProject.UserControllers {
             return;
             case 10:
             
-            #line 61 "..\..\..\UserControllers\ScheduleUC.xaml"
+            #line 64 "..\..\..\UserControllers\ScheduleUC.xaml"
             ((System.Windows.Controls.MenuItem)(target)).Click += new System.Windows.RoutedEventHandler(this.EditShiftDialog);
             
             #line default
