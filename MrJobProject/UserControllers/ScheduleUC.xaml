@@ -23,6 +23,29 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </Grid>
+        <Grid>
+            <Grid.Resources>
+                <converters:NumberToMonthConverter x:Key="NumberToMonthConverter"/>
+            </Grid.Resources>
+            <ComboBox Name="ListOfYears" HorizontalAlignment="Left" Margin="401,32,0,0" VerticalAlignment="Top" >
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <TextBlock Text="{Binding}"></TextBlock>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ComboBox Name="ListOfMonths" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="287,32,0,0" >
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <TextBlock Text="{Binding Converter={StaticResource NumberToMonthConverter}}"></TextBlock>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
         <Grid Grid.Row="1">
             <Grid.Resources>
                 <converters:TimeToStringConverter x:Key="TimeToStringConverter"/>

@@ -35,6 +35,10 @@ namespace MrJobProject.UserControllers
 
             shifts = new ObservableCollection<Shift>();
             workers = new ObservableCollection<Worker>();
+            ListOfYears.ItemsSource = Enumerable.Range(2000, DateTime.Today.Year + 3 - 2000).ToList().Reverse<int>();
+            ListOfMonths.ItemsSource = Enumerable.Range(1, 12).ToList();
+            ListOfYears.SelectedValue = DateTime.Today.Year;
+            ListOfMonths.SelectedValue = DateTime.Today.Month;
 
 
             UpdateList();
