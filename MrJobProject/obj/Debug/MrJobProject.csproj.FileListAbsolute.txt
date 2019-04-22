@@ -42,3 +42,5 @@ C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\InfoO
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\InfoOK.baml
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\EditAddShift.g.cs
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\EditAddShift.baml
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\bin\Debug\Gu.Wpf.DataGrid2D.dll
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\bin\Debug\Gu.Wpf.DataGrid2D.xml

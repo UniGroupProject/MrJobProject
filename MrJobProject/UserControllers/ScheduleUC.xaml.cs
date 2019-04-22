@@ -1,6 +1,7 @@
 ﻿using MrJobProject.Data;
 using MrJobProject.Dialogs;
 using SQLite;
+using Gu.Wpf.DataGrid2D;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,6 +17,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace MrJobProject.UserControllers
 {
@@ -27,9 +30,13 @@ namespace MrJobProject.UserControllers
         ObservableCollection<Shift> shifts;
         ObservableCollection<Worker> workers;
 
+        public Schedule[,] data2d;
+        public Schedule[,] Data2D { get; set; }
+        public int[] ColumnHeaders { get; set; }
 
         public ScheduleUC()
         {
+            DataContext = this;
             InitializeComponent();
 
 
@@ -39,7 +46,6 @@ namespace MrJobProject.UserControllers
             ListOfMonths.ItemsSource = Enumerable.Range(1, 12).ToList();
             ListOfYears.SelectedValue = DateTime.Today.Year;
             ListOfMonths.SelectedValue = DateTime.Today.Month;
-
 
             UpdateList();
         }
@@ -56,6 +62,22 @@ namespace MrJobProject.UserControllers
                 shifts = new ObservableCollection<Shift> //shifts list
                     (connection.Table<Shift>().ToList().OrderBy(c => c.Id).ToList());
             }
+
+
+            int daysOfMonth = DateTime.DaysInMonth((int)ListOfYears.SelectedValue, (int)ListOfMonths.SelectedValue); //put to uptadelist
+            data2d = new Schedule[workers.Count, daysOfMonth];
+            for (int i = 0; i < workers.Count; i++)
+            {
+                for (int j = 0; j < daysOfMonth; j++)
+                {
+                    data2d[i, j] = new Schedule();
+                    data2d[i, j].ShiftName = "a";
+                }
+            }
+            Data2D = data2d;
+            ColumnHeaders = Enumerable.Range(1, daysOfMonth).ToArray<int>();
+            BindingOperations.GetBindingExpression(ScheduleList, ItemsSource.Array2DProperty).UpdateTarget();
+            BindingOperations.GetBindingExpression(ScheduleList, ItemsSource.ColumnHeadersSourceProperty).UpdateTarget();
         }
 
         private void UpdateList()
@@ -63,10 +85,9 @@ namespace MrJobProject.UserControllers
             ReadDatabase();
             ShiftList.ItemsSource = shifts;
             WorkersList.ItemsSource = workers;
-
         }
 
-        private void DeleteShift(object sender, RoutedEventArgs e)
+        private void DeleteShift(object sender, RoutedEventArgs e) // right click - delete shift
         {
             Shift shift = ShiftList.SelectedItem as Shift;
             if (shift != null)
@@ -89,7 +110,7 @@ namespace MrJobProject.UserControllers
             }
         }
 
-        private void AddShiftDialog(object sender, RoutedEventArgs e)
+        private void AddShiftDialog(object sender, RoutedEventArgs e) // right click - add new shift
         {
             EditAddShift addShift = new EditAddShift();
             if (addShift.ShowDialog() == true)
@@ -103,7 +124,7 @@ namespace MrJobProject.UserControllers
             }
         }
 
-        private void EditShiftDialog(object sender, RoutedEventArgs e)
+        private void EditShiftDialog(object sender, RoutedEventArgs e) // right click - edit selected shift
         {
             Shift shift = ShiftList.SelectedItem as Shift;
             if (shift != null)
@@ -121,19 +142,19 @@ namespace MrJobProject.UserControllers
             }
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        private void UserControl_Loaded(object sender, RoutedEventArgs e) // when UC loaded - updates data
         {
             UpdateList();
         }
 
-        private void BackDateBtn_Click(object sender, RoutedEventArgs e)
+        private void BackDateBtn_Click(object sender, RoutedEventArgs e) // button to select earlier month
         {
             int selectedYear = (int)ListOfYears.SelectedValue;
             int selectedMonth = (int)ListOfMonths.SelectedValue;
             if (selectedMonth == 1)
             {
                 int size = ListOfYears.Items.Count;
-                if (selectedYear == (int)ListOfYears.Items.GetItemAt(size-1)) return;
+                if (selectedYear == (int)ListOfYears.Items.GetItemAt(size - 1)) return;
 
                 ListOfMonths.SelectedValue = 12;
                 ListOfYears.SelectedValue = selectedYear - 1;
@@ -142,9 +163,10 @@ namespace MrJobProject.UserControllers
             {
                 ListOfMonths.SelectedValue = selectedMonth - 1;
             }
+            UpdateList();
         }
 
-        private void ForwardDateBtn_Click(object sender, RoutedEventArgs e)
+        private void ForwardDateBtn_Click(object sender, RoutedEventArgs e) // button to select forward month
         {
             int selectedYear = (int)ListOfYears.SelectedValue;
             int selectedMonth = (int)ListOfMonths.SelectedValue;
@@ -158,6 +180,7 @@ namespace MrJobProject.UserControllers
             {
                 ListOfMonths.SelectedValue = selectedMonth + 1;
             }
+            ReadDatabase();
         }
     }
 }
