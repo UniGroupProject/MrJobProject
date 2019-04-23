@@ -30,8 +30,8 @@ namespace MrJobProject.UserControllers
         ObservableCollection<Shift> shifts;
         ObservableCollection<Worker> workers;
 
-        public Schedule[,] data2d;
-        public Schedule[,] Data2D { get; set; }
+        public string[,] data2d;
+        public string[,] Data2D { get; set; }
         public int[] ColumnHeaders { get; set; }
 
         public ScheduleUC()
@@ -63,18 +63,18 @@ namespace MrJobProject.UserControllers
                     (connection.Table<Shift>().ToList().OrderBy(c => c.Id).ToList());
             }
 
-
             int daysOfMonth = DateTime.DaysInMonth((int)ListOfYears.SelectedValue, (int)ListOfMonths.SelectedValue); //put to uptadelist
-            data2d = new Schedule[workers.Count, daysOfMonth];
+            Data2D = new string[workers.Count, daysOfMonth];
+            data2d = new string[workers.Count, daysOfMonth];
             for (int i = 0; i < workers.Count; i++)
             {
                 for (int j = 0; j < daysOfMonth; j++)
                 {
-                    data2d[i, j] = new Schedule();
-                    data2d[i, j].ShiftName = "a";
+                    data2d[i, j] = "";
                 }
             }
-            Data2D = data2d;
+            Data2D = (string[,])data2d.Clone();
+
             ColumnHeaders = Enumerable.Range(1, daysOfMonth).ToArray<int>();
             BindingOperations.GetBindingExpression(ScheduleList, ItemsSource.Array2DProperty).UpdateTarget();
             BindingOperations.GetBindingExpression(ScheduleList, ItemsSource.ColumnHeadersSourceProperty).UpdateTarget();
@@ -181,6 +181,20 @@ namespace MrJobProject.UserControllers
                 ListOfMonths.SelectedValue = selectedMonth + 1;
             }
             ReadDatabase();
+        }
+
+        private void ShiftList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            var cells = ScheduleList.SelectedCells.ToList();
+            var shift = (Shift)ShiftList.SelectedItem;
+            foreach (DataGridCellInfo item in cells)
+            {
+                int col = item.Column.DisplayIndex;
+                var row = ScheduleList.Items.IndexOf(item.Item); // Gogus uratowal kod
+                data2d[row, col] = shift.ShiftName;
+            }
+            Data2D = (string[,])data2d.Clone();
+            BindingOperations.GetBindingExpression(ScheduleList, ItemsSource.Array2DProperty).UpdateTarget();
         }
     }
 }
