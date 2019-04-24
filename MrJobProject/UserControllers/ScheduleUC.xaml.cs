@@ -78,7 +78,8 @@ namespace MrJobProject.UserControllers
             ListOfYears.SelectedValue = DateTime.Today.Year;
             ListOfMonths.SelectedValue = DateTime.Today.Month;
 
-            UpdateList();
+            UpdateLists();
+            ReadScheduleList();
         }
 
         private void ReadDatabase()
@@ -94,25 +95,33 @@ namespace MrJobProject.UserControllers
                     (connection.Table<Shift>().ToList().OrderBy(c => c.Id).ToList());
             }
 
-            int daysOfMonth = DateTime.DaysInMonth((int)ListOfYears.SelectedValue, (int)ListOfMonths.SelectedValue); //put to uptadelist
- 
-            string[,] data = new string[workers.Count, daysOfMonth];
-            for (int i = 0; i < workers.Count; i++)
-            {
-                for (int j = 0; j < daysOfMonth; j++)
-                {
-                    data[i, j] = "";
-                }
-            }
-            Data2D = data;
-            ColumnHeaders = Enumerable.Range(1, daysOfMonth).ToArray<int>();
         }
 
-        private void UpdateList()
+        private void ReadScheduleList()
+        {
+            if (ListOfYears.SelectedValue != null && ListOfMonths.SelectedValue != null)
+            {
+                int daysOfMonth = DateTime.DaysInMonth((int)ListOfYears.SelectedValue, (int)ListOfMonths.SelectedValue); //to do: connect with database
+
+                string[,] data = new string[workers.Count, daysOfMonth];
+                for (int i = 0; i < workers.Count; i++)
+                {
+                    for (int j = 0; j < daysOfMonth; j++)
+                    {
+                        data[i, j] = "";
+                    }
+                }
+                Data2D = data;
+                ColumnHeaders = Enumerable.Range(1, daysOfMonth).ToArray<int>();
+            }
+        }
+
+        private void UpdateLists()
         {
             ReadDatabase();
             ShiftList.ItemsSource = shifts;
             WorkersList.ItemsSource = workers;
+            ReadScheduleList();
         }
 
         private void DeleteShift(object sender, RoutedEventArgs e) // right click - delete shift
@@ -132,7 +141,7 @@ namespace MrJobProject.UserControllers
                             connection.CreateTable<Shift>();
                             connection.Delete(ShiftList.SelectedItem);
                         }
-                        UpdateList();
+                        UpdateLists();
                     }
                 }
             }
@@ -148,7 +157,7 @@ namespace MrJobProject.UserControllers
                     connection.CreateTable<Shift>();
                     connection.Insert(addShift.newShift);
                 }
-                UpdateList();
+                UpdateLists();
             }
         }
 
@@ -165,14 +174,15 @@ namespace MrJobProject.UserControllers
                         connection.CreateTable<Shift>();
                         connection.InsertOrReplace(editShift.newShift);
                     }
-                    UpdateList();
+                    UpdateLists();
                 }
             }
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e) // when UC loaded - updates data
         {
-            UpdateList();
+            UpdateLists();
+            ReadScheduleList();
         }
 
         private void BackDateBtn_Click(object sender, RoutedEventArgs e) // button to select earlier month
@@ -191,7 +201,7 @@ namespace MrJobProject.UserControllers
             {
                 ListOfMonths.SelectedValue = selectedMonth - 1;
             }
-            UpdateList();
+            ReadScheduleList();
         }
 
         private void ForwardDateBtn_Click(object sender, RoutedEventArgs e) // button to select forward month
@@ -208,7 +218,7 @@ namespace MrJobProject.UserControllers
             {
                 ListOfMonths.SelectedValue = selectedMonth + 1;
             }
-            ReadDatabase();
+            ReadScheduleList();
         }
 
         private void ShiftList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -224,9 +234,20 @@ namespace MrJobProject.UserControllers
             Data2D = (string[,])data2d.Clone();
         }
 
+
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void ListOfYears_SelectionChanged(object sender, SelectionChangedEventArgs e) // when year changed
+        {
+            ReadScheduleList();
+        }
+
+        private void ListOfMonths_SelectionChanged(object sender, SelectionChangedEventArgs e) // when month changed
+        {
+            ReadScheduleList();
         }
     }
 }
