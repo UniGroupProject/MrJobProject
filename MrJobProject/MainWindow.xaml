@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         xmlns:userControllers="clr-namespace:MrJobProject.UserControllers"
         Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <userControllers:ScheduleUC />
+    </Window.DataContext>
     <Grid>
         <TabControl IsSynchronizedWithCurrentItem="True">
             <TabItem Header="Schedule">

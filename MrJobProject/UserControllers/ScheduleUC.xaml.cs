@@ -1,6 +1,7 @@
 ﻿using MrJobProject.Data;
 using MrJobProject.Dialogs;
 using SQLite;
+using Gu.Wpf.DataGrid2D;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,20 +17,57 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace MrJobProject.UserControllers
 {
     /// <summary>
     /// Interaction logic for ScheduleUC.xaml
     /// </summary>
-    public partial class ScheduleUC : UserControl
+    public partial class ScheduleUC : UserControl, INotifyPropertyChanged
     {
         ObservableCollection<Shift> shifts;
         ObservableCollection<Worker> workers;
 
+        public string[,] data2d;
+        public int[] columnHeaders;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public string[,] Data2D
+        {
+            get => this.data2d;
+            private set
+            {
+                if (ReferenceEquals(value, this.data2d))
+                {
+                    return;
+                }
+
+                this.data2d = value;
+                this.OnPropertyChanged();
+            }
+
+        }
+        public int[] ColumnHeaders
+        {
+            get => this.columnHeaders;
+            private set
+            {
+                if (ReferenceEquals(value, this.columnHeaders))
+                {
+                    return;
+                }
+
+                this.columnHeaders = value;
+                this.OnPropertyChanged();
+            }
+        }
 
         public ScheduleUC()
         {
+            DataContext = this;
             InitializeComponent();
 
 
@@ -40,8 +78,8 @@ namespace MrJobProject.UserControllers
             ListOfYears.SelectedValue = DateTime.Today.Year;
             ListOfMonths.SelectedValue = DateTime.Today.Month;
 
-
-            UpdateList();
+            UpdateLists();
+            ReadScheduleList();
         }
 
         private void ReadDatabase()
@@ -56,17 +94,37 @@ namespace MrJobProject.UserControllers
                 shifts = new ObservableCollection<Shift> //shifts list
                     (connection.Table<Shift>().ToList().OrderBy(c => c.Id).ToList());
             }
+
         }
 
-        private void UpdateList()
+        private void ReadScheduleList()
+        {
+            if (ListOfYears.SelectedValue != null && ListOfMonths.SelectedValue != null)
+            {
+                int daysOfMonth = DateTime.DaysInMonth((int)ListOfYears.SelectedValue, (int)ListOfMonths.SelectedValue); //to do: connect with database
+
+                string[,] data = new string[workers.Count, daysOfMonth];
+                for (int i = 0; i < workers.Count; i++)
+                {
+                    for (int j = 0; j < daysOfMonth; j++)
+                    {
+                        data[i, j] = "";
+                    }
+                }
+                Data2D = data;
+                ColumnHeaders = Enumerable.Range(1, daysOfMonth).ToArray<int>();
+            }
+        }
+
+        private void UpdateLists()
         {
             ReadDatabase();
             ShiftList.ItemsSource = shifts;
             WorkersList.ItemsSource = workers;
-
+            ReadScheduleList();
         }
 
-        private void DeleteShift(object sender, RoutedEventArgs e)
+        private void DeleteShift(object sender, RoutedEventArgs e) // right click - delete shift
         {
             Shift shift = ShiftList.SelectedItem as Shift;
             if (shift != null)
@@ -83,13 +141,13 @@ namespace MrJobProject.UserControllers
                             connection.CreateTable<Shift>();
                             connection.Delete(ShiftList.SelectedItem);
                         }
-                        UpdateList();
+                        UpdateLists();
                     }
                 }
             }
         }
 
-        private void AddShiftDialog(object sender, RoutedEventArgs e)
+        private void AddShiftDialog(object sender, RoutedEventArgs e) // right click - add new shift
         {
             EditAddShift addShift = new EditAddShift();
             if (addShift.ShowDialog() == true)
@@ -99,11 +157,11 @@ namespace MrJobProject.UserControllers
                     connection.CreateTable<Shift>();
                     connection.Insert(addShift.newShift);
                 }
-                UpdateList();
+                UpdateLists();
             }
         }
 
-        private void EditShiftDialog(object sender, RoutedEventArgs e)
+        private void EditShiftDialog(object sender, RoutedEventArgs e) // right click - edit selected shift
         {
             Shift shift = ShiftList.SelectedItem as Shift;
             if (shift != null)
@@ -116,14 +174,80 @@ namespace MrJobProject.UserControllers
                         connection.CreateTable<Shift>();
                         connection.InsertOrReplace(editShift.newShift);
                     }
-                    UpdateList();
+                    UpdateLists();
                 }
             }
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        private void UserControl_Loaded(object sender, RoutedEventArgs e) // when UC loaded - updates data
         {
-            UpdateList();
+            UpdateLists();
+            ReadScheduleList();
+        }
+
+        private void BackDateBtn_Click(object sender, RoutedEventArgs e) // button to select earlier month
+        {
+            int selectedYear = (int)ListOfYears.SelectedValue;
+            int selectedMonth = (int)ListOfMonths.SelectedValue;
+            if (selectedMonth == 1)
+            {
+                int size = ListOfYears.Items.Count;
+                if (selectedYear == (int)ListOfYears.Items.GetItemAt(size - 1)) return;
+
+                ListOfMonths.SelectedValue = 12;
+                ListOfYears.SelectedValue = selectedYear - 1;
+            }
+            else
+            {
+                ListOfMonths.SelectedValue = selectedMonth - 1;
+            }
+            ReadScheduleList();
+        }
+
+        private void ForwardDateBtn_Click(object sender, RoutedEventArgs e) // button to select forward month
+        {
+            int selectedYear = (int)ListOfYears.SelectedValue;
+            int selectedMonth = (int)ListOfMonths.SelectedValue;
+            if (selectedMonth == 12)
+            {
+                if (selectedYear == (int)ListOfYears.Items.GetItemAt(0)) return;
+                ListOfMonths.SelectedValue = 1;
+                ListOfYears.SelectedValue = selectedYear + 1;
+            }
+            else
+            {
+                ListOfMonths.SelectedValue = selectedMonth + 1;
+            }
+            ReadScheduleList();
+        }
+
+        private void ShiftList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            var cells = ScheduleList.SelectedCells.ToList();
+            var shift = (Shift)ShiftList.SelectedItem; // selected shift from list
+            foreach (DataGridCellInfo item in cells)
+            {
+                int col = item.Column.DisplayIndex;
+                var row = ScheduleList.Items.IndexOf(item.Item); // Gogus uratowal kod
+                Data2D[row, col] = shift.ShiftName;
+            }
+            Data2D = (string[,])data2d.Clone();
+        }
+
+
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void ListOfYears_SelectionChanged(object sender, SelectionChangedEventArgs e) // when year changed
+        {
+            ReadScheduleList();
+        }
+
+        private void ListOfMonths_SelectionChanged(object sender, SelectionChangedEventArgs e) // when month changed
+        {
+            ReadScheduleList();
         }
     }
 }

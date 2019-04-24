@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MrJobProject.Data
 {
-    class Schedule : INotifyPropertyChanged
+    public class Schedule : INotifyPropertyChanged
     {
         private int id;
         private DateTime date;
