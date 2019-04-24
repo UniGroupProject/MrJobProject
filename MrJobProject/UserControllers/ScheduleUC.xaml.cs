@@ -25,14 +25,45 @@ namespace MrJobProject.UserControllers
     /// <summary>
     /// Interaction logic for ScheduleUC.xaml
     /// </summary>
-    public partial class ScheduleUC : UserControl
+    public partial class ScheduleUC : UserControl, INotifyPropertyChanged
     {
         ObservableCollection<Shift> shifts;
         ObservableCollection<Worker> workers;
 
         public string[,] data2d;
-        public string[,] Data2D { get; set; }
-        public int[] ColumnHeaders { get; set; }
+        public int[] columnHeaders;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public string[,] Data2D
+        {
+            get => this.data2d;
+            private set
+            {
+                if (ReferenceEquals(value, this.data2d))
+                {
+                    return;
+                }
+
+                this.data2d = value;
+                this.OnPropertyChanged();
+            }
+
+        }
+        public int[] ColumnHeaders
+        {
+            get => this.columnHeaders;
+            private set
+            {
+                if (ReferenceEquals(value, this.columnHeaders))
+                {
+                    return;
+                }
+
+                this.columnHeaders = value;
+                this.OnPropertyChanged();
+            }
+        }
 
         public ScheduleUC()
         {
@@ -64,20 +95,17 @@ namespace MrJobProject.UserControllers
             }
 
             int daysOfMonth = DateTime.DaysInMonth((int)ListOfYears.SelectedValue, (int)ListOfMonths.SelectedValue); //put to uptadelist
-            Data2D = new string[workers.Count, daysOfMonth];
-            data2d = new string[workers.Count, daysOfMonth];
+ 
+            string[,] data = new string[workers.Count, daysOfMonth];
             for (int i = 0; i < workers.Count; i++)
             {
                 for (int j = 0; j < daysOfMonth; j++)
                 {
-                    data2d[i, j] = "";
+                    data[i, j] = "";
                 }
             }
-            Data2D = (string[,])data2d.Clone();
-
+            Data2D = data;
             ColumnHeaders = Enumerable.Range(1, daysOfMonth).ToArray<int>();
-            BindingOperations.GetBindingExpression(ScheduleList, ItemsSource.Array2DProperty).UpdateTarget();
-            BindingOperations.GetBindingExpression(ScheduleList, ItemsSource.ColumnHeadersSourceProperty).UpdateTarget();
         }
 
         private void UpdateList()
@@ -186,15 +214,19 @@ namespace MrJobProject.UserControllers
         private void ShiftList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             var cells = ScheduleList.SelectedCells.ToList();
-            var shift = (Shift)ShiftList.SelectedItem;
+            var shift = (Shift)ShiftList.SelectedItem; // selected shift from list
             foreach (DataGridCellInfo item in cells)
             {
                 int col = item.Column.DisplayIndex;
                 var row = ScheduleList.Items.IndexOf(item.Item); // Gogus uratowal kod
-                data2d[row, col] = shift.ShiftName;
+                Data2D[row, col] = shift.ShiftName;
             }
             Data2D = (string[,])data2d.Clone();
-            BindingOperations.GetBindingExpression(ScheduleList, ItemsSource.Array2DProperty).UpdateTarget();
+        }
+
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
