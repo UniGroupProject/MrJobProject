@@ -54,6 +54,7 @@
             <DataGrid Name="ScheduleList"  HeadersVisibility="Column"
                       dataGrid2D:ItemsSource.Array2D="{Binding Data2D}" 
                       dataGrid2D:ItemsSource.ColumnHeadersSource="{Binding ColumnHeaders}"
+                      dataGrid2D:Selected.Index="{Binding Index}"
                       SelectionUnit="Cell" IsReadOnly="True" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="90,50,0,0" />
         </Grid>
         <Grid Grid.Row="1">

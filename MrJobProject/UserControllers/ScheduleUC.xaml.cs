@@ -223,15 +223,21 @@ namespace MrJobProject.UserControllers
 
         private void ShiftList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            var firstCellIndexes = ScheduleList.GetIndex();
             var cells = ScheduleList.SelectedCells.ToList();
             var shift = (Shift)ShiftList.SelectedItem; // selected shift from list
             foreach (DataGridCellInfo item in cells)
             {
                 int col = item.Column.DisplayIndex;
                 var row = ScheduleList.Items.IndexOf(item.Item); // Gogus uratowal kod
-                Data2D[row, col] = shift.ShiftName;
+                data2d[row, col] = shift.ShiftName;
             }
+
             Data2D = (string[,])data2d.Clone();
+
+            Keyboard.Focus(ScheduleList);
+            if(firstCellIndexes != null)
+            ScheduleList.CurrentCell = new DataGridCellInfo(ScheduleList.Items[firstCellIndexes.Value.Row], ScheduleList.Columns[firstCellIndexes.Value.Column]);
         }
 
 
