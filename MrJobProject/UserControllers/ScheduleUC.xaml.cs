@@ -231,8 +231,8 @@ namespace MrJobProject.UserControllers
                 var row = ScheduleList.Items.IndexOf(item.Item); // Gogus uratowal kod
                 data2d[row, col] = shift.ShiftName;
             }
-            var firstCellCol = cells.First().Column.DisplayIndex;
-            var firstCellRow = ScheduleList.Items.IndexOf(cells.First().Item);
+            var firstCellCol = cells.Last().Column.DisplayIndex;
+            var firstCellRow = ScheduleList.Items.IndexOf(cells.Last().Item);
 
             Data2D = (string[,])data2d.Clone();
 
