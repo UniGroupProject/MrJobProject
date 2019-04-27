@@ -223,7 +223,6 @@ namespace MrJobProject.UserControllers
 
         private void ShiftList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            var firstCellIndexes = ScheduleList.GetIndex();
             var cells = ScheduleList.SelectedCells.ToList();
             var shift = (Shift)ShiftList.SelectedItem; // selected shift from list
             foreach (DataGridCellInfo item in cells)
@@ -232,12 +231,13 @@ namespace MrJobProject.UserControllers
                 var row = ScheduleList.Items.IndexOf(item.Item); // Gogus uratowal kod
                 data2d[row, col] = shift.ShiftName;
             }
+            var firstCellCol = cells.First().Column.DisplayIndex;
+            var firstCellRow = ScheduleList.Items.IndexOf(cells.First().Item);
 
             Data2D = (string[,])data2d.Clone();
 
             Keyboard.Focus(ScheduleList);
-            if(firstCellIndexes != null)
-            ScheduleList.CurrentCell = new DataGridCellInfo(ScheduleList.Items[firstCellIndexes.Value.Row], ScheduleList.Columns[firstCellIndexes.Value.Column]);
+            ScheduleList.CurrentCell = new DataGridCellInfo(ScheduleList.Items[firstCellRow], ScheduleList.Columns[firstCellCol]);
         }
 
 
