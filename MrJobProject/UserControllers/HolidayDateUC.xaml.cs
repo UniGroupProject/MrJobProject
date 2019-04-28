@@ -81,7 +81,7 @@ namespace MrJobProject.UserControllers
                 {
                     connection.CreateTable<Holiday>();
 
-                    var day = connection.Table<Holiday>().Where(c => c.Date == item).ToList(); //check if there is any item saved in this date
+                    List<Holiday> day = connection.Table<Holiday>().ToList().Where(c => (c.Date.Date == item) && (c.WorkerId == worker.Id)).ToList(); //check if there is any item saved in this date
                     if (day.Count > 1) // if there is more item with one date, error
                     {
                         MessageBox.Show("Problem z baza, wiecej niz 1 urlop w 1 dzien");

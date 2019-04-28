@@ -29,6 +29,7 @@ namespace MrJobProject.UserControllers
     {
         ObservableCollection<Shift> shifts;
         ObservableCollection<Worker> workers;
+        List<Holiday> holidays;
 
         public string[,] data2d;
         public int[] columnHeaders;
@@ -93,6 +94,12 @@ namespace MrJobProject.UserControllers
                 connection.CreateTable<Shift>();
                 shifts = new ObservableCollection<Shift> //shifts list
                     (connection.Table<Shift>().ToList().OrderBy(c => c.Id).ToList());
+
+                int selectedYear = (int)ListOfYears.SelectedValue;
+                int selectedMonth = (int)ListOfMonths.SelectedValue;
+                connection.CreateTable<Holiday>(); //read all holidays in selected month/year
+                holidays = new List<Holiday>
+                    (connection.Table<Holiday>().ToList().Where(c => (c.Date.Month == selectedMonth) && (c.Date.Year == selectedYear)));
             }
 
         }
@@ -108,7 +115,10 @@ namespace MrJobProject.UserControllers
                 {
                     for (int j = 0; j < daysOfMonth; j++)
                     {
-                        data[i, j] = "";
+                        if(holidays.Where(c => (c.WorkerId == workers.ElementAt(i).Id) && (c.Date.Day == j + 1)).Count() > 0)
+                            data[i, j] = "U"; // remember to do: if holiday and added shift in the same day, remove shift
+                        else
+                            data[i, j] = "";
                     }
                 }
                 Data2D = data;
@@ -229,7 +239,8 @@ namespace MrJobProject.UserControllers
             {
                 int col = item.Column.DisplayIndex;
                 var row = ScheduleList.Items.IndexOf(item.Item); // Gogus uratowal kod
-                data2d[row, col] = shift.ShiftName;
+                if(data2d[row, col] != "U") // if there is no holiday in this day
+                    data2d[row, col] = shift.ShiftName;
             }
             var firstCellCol = cells.Last().Column.DisplayIndex;
             var firstCellRow = ScheduleList.Items.IndexOf(cells.Last().Item);
@@ -239,7 +250,6 @@ namespace MrJobProject.UserControllers
             Keyboard.Focus(ScheduleList);
             ScheduleList.CurrentCell = new DataGridCellInfo(ScheduleList.Items[firstCellRow], ScheduleList.Columns[firstCellCol]);
         }
-
 
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
