@@ -30,6 +30,7 @@ namespace MrJobProject.UserControllers
         ObservableCollection<Shift> shifts;
         ObservableCollection<Worker> workers;
         List<Holiday> holidays;
+        List<Schedule> schedules;
 
         public string[,] data2d;
         public int[] columnHeaders;
@@ -108,16 +109,27 @@ namespace MrJobProject.UserControllers
         {
             if (ListOfYears.SelectedValue != null && ListOfMonths.SelectedValue != null)
             {
-                int daysOfMonth = DateTime.DaysInMonth((int)ListOfYears.SelectedValue, (int)ListOfMonths.SelectedValue); //to do: connect with database
+                int daysOfMonth = DateTime.DaysInMonth((int)ListOfYears.SelectedValue, (int)ListOfMonths.SelectedValue); //
+
+                using (SQLiteConnection connection = new SQLiteConnection(App.databasePath)) // connect with database 
+                {
+                    int selectedYear = (int)ListOfYears.SelectedValue;
+                    int selectedMonth = (int)ListOfMonths.SelectedValue;
+                    connection.CreateTable<Schedule>(); //read all schedules in selected month/year
+                    schedules = new List<Schedule>
+                        (connection.Table<Schedule>().ToList().Where(c => (c.Date.Month == selectedMonth) && (c.Date.Year == selectedYear)));
+                }
 
                 string[,] data = new string[workers.Count, daysOfMonth];
                 for (int i = 0; i < workers.Count; i++)
                 {
                     for (int j = 0; j < daysOfMonth; j++)
                     {
-                        if(holidays.Where(c => (c.WorkerId == workers.ElementAt(i).Id) && (c.Date.Day == j + 1)).Count() > 0)
+                        if (holidays.Where(c => (c.WorkerId == workers.ElementAt(i).Id) && (c.Date.Day == j + 1)).Count() > 0) // if any holiday then
                             data[i, j] = "U"; // remember to do: if holiday and added shift in the same day, remove shift
-                        else
+                        else if (schedules.Where(c => (c.WorkerId == workers.ElementAt(i).Id) && (c.Date.Day == j + 1)).Count() > 0) // if schedule then
+                            data[i, j] = schedules.Where(c => (c.WorkerId == workers.ElementAt(i).Id) && (c.Date.Day == j + 1)).First().ShiftName;
+                        else // if nothing added
                             data[i, j] = "";
                     }
                 }
