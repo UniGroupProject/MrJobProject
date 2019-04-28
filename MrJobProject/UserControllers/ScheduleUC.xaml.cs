@@ -29,6 +29,8 @@ namespace MrJobProject.UserControllers
     {
         ObservableCollection<Shift> shifts;
         ObservableCollection<Worker> workers;
+        List<Holiday> holidays;
+        List<Schedule> schedules;
 
         public string[,] data2d;
         public int[] columnHeaders;
@@ -93,6 +95,12 @@ namespace MrJobProject.UserControllers
                 connection.CreateTable<Shift>();
                 shifts = new ObservableCollection<Shift> //shifts list
                     (connection.Table<Shift>().ToList().OrderBy(c => c.Id).ToList());
+
+                int selectedYear = (int)ListOfYears.SelectedValue;
+                int selectedMonth = (int)ListOfMonths.SelectedValue;
+                connection.CreateTable<Holiday>(); //read all holidays in selected month/year
+                holidays = new List<Holiday>
+                    (connection.Table<Holiday>().ToList().Where(c => (c.Date.Month == selectedMonth) && (c.Date.Year == selectedYear)));
             }
 
         }
@@ -101,14 +109,33 @@ namespace MrJobProject.UserControllers
         {
             if (ListOfYears.SelectedValue != null && ListOfMonths.SelectedValue != null)
             {
-                int daysOfMonth = DateTime.DaysInMonth((int)ListOfYears.SelectedValue, (int)ListOfMonths.SelectedValue); //to do: connect with database
+                int daysOfMonth = DateTime.DaysInMonth((int)ListOfYears.SelectedValue, (int)ListOfMonths.SelectedValue); //
+
+                using (SQLiteConnection connection = new SQLiteConnection(App.databasePath)) // connect with database 
+                {
+                    int selectedYear = (int)ListOfYears.SelectedValue;
+                    int selectedMonth = (int)ListOfMonths.SelectedValue;
+
+                    connection.CreateTable<Holiday>(); //read all holidays in selected month/year
+                    holidays = new List<Holiday>
+                        (connection.Table<Holiday>().ToList().Where(c => (c.Date.Month == selectedMonth) && (c.Date.Year == selectedYear)));
+
+                    connection.CreateTable<Schedule>(); //read all schedules in selected month/year
+                    schedules = new List<Schedule>
+                        (connection.Table<Schedule>().ToList().Where(c => (c.Date.Month == selectedMonth) && (c.Date.Year == selectedYear)));
+                }
 
                 string[,] data = new string[workers.Count, daysOfMonth];
                 for (int i = 0; i < workers.Count; i++)
                 {
                     for (int j = 0; j < daysOfMonth; j++)
                     {
-                        data[i, j] = "";
+                        if (holidays.Where(c => (c.WorkerId == workers.ElementAt(i).Id) && (c.Date.Day == j + 1)).Count() > 0) // if any holiday then
+                            data[i, j] = "U"; // remember to do: if holiday and added shift in the same day, remove shift
+                        else if (schedules.Where(c => (c.WorkerId == workers.ElementAt(i).Id) && (c.Date.Day == j + 1)).Count() > 0) // if schedule then
+                            data[i, j] = schedules.Where(c => (c.WorkerId == workers.ElementAt(i).Id) && (c.Date.Day == j + 1)).First().ShiftName;
+                        else // if nothing added
+                            data[i, j] = "";
                     }
                 }
                 Data2D = data;
@@ -224,16 +251,25 @@ namespace MrJobProject.UserControllers
         private void ShiftList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             var cells = ScheduleList.SelectedCells.ToList();
-            var shift = (Shift)ShiftList.SelectedItem; // selected shift from list
-            foreach (DataGridCellInfo item in cells)
+            if(cells.Count() != 0)
             {
-                int col = item.Column.DisplayIndex;
-                var row = ScheduleList.Items.IndexOf(item.Item); // Gogus uratowal kod
-                Data2D[row, col] = shift.ShiftName;
-            }
-            Data2D = (string[,])data2d.Clone();
-        }
+                var shift = (Shift)ShiftList.SelectedItem; // selected shift from list
+                foreach (DataGridCellInfo item in cells)
+                {
+                    int col = item.Column.DisplayIndex;
+                    var row = ScheduleList.Items.IndexOf(item.Item); // Gogus uratowal kod
+                    if (data2d[row, col] != "U") // if there is no holiday in this day
+                        data2d[row, col] = shift.ShiftName;
+                }
+                var firstCellCol = cells.Last().Column.DisplayIndex;
+                var firstCellRow = ScheduleList.Items.IndexOf(cells.Last().Item);
 
+                Data2D = (string[,])data2d.Clone();
+
+                Keyboard.Focus(ScheduleList);
+                ScheduleList.CurrentCell = new DataGridCellInfo(ScheduleList.Items[firstCellRow], ScheduleList.Columns[firstCellCol]);
+            }
+        }
 
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
@@ -248,6 +284,62 @@ namespace MrJobProject.UserControllers
         private void ListOfMonths_SelectionChanged(object sender, SelectionChangedEventArgs e) // when month changed
         {
             ReadScheduleList();
+        }
+
+        private void SaveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
+            {
+                int daysOfMonth = DateTime.DaysInMonth((int)ListOfYears.SelectedValue, (int)ListOfMonths.SelectedValue); //
+
+                connection.CreateTable<Schedule>();
+
+                for (int i = 0; i < workers.Count; i++)
+                {
+                    for (int j = 0; j < daysOfMonth; j++)
+                    {
+                        var savedSchedule = schedules.Where(c => (c.WorkerId == workers.ElementAt(i).Id) && (c.Date.Day == j + 1));
+
+                        if (data2d[i, j] == "")
+                        {
+                            if (savedSchedule.Count() > 0)
+                                connection.Delete(savedSchedule.First());
+                        }
+                        else if (data2d[i, j] == "U")
+                        {
+                            if (savedSchedule.Count() > 0)
+                                connection.Delete(savedSchedule.First());
+                        }
+                        else
+                        {
+                            if (savedSchedule.Count() > 0)
+                            {
+                                savedSchedule.First().ShiftName = data2d[i, j];
+                                connection.InsertOrReplace(savedSchedule.First());
+                            }
+                            else
+                            {
+                                Schedule schedule = new Schedule()
+                                {
+                                    WorkerId = workers.ElementAt(i).Id,
+                                    Date = new DateTime((int)ListOfYears.SelectedValue, (int)ListOfMonths.SelectedValue, j+1),
+                                    ShiftName = data2d[i,j]
+                                };
+
+                                connection.Insert(schedule);
+                            }
+                        }
+
+                        //if (holidays.Where(c => (c.WorkerId == workers.ElementAt(i).Id) && (c.Date.Day == j + 1)).Count() > 0) // if any holiday then
+                        //    data[i, j] = "U"; // remember to do: if holiday and added shift in the same day, remove shift
+                        //else if (schedules.Where(c => (c.WorkerId == workers.ElementAt(i).Id) && (c.Date.Day == j + 1)).Count() > 0) // if schedule then
+                        //    data[i, j] = schedules.Where(c => (c.WorkerId == workers.ElementAt(i).Id) && (c.Date.Day == j + 1)).First().ShiftName;
+                        //else // if nothing added
+                        //    data[i, j] = "";
+                    }
+                }
+            }
+            UpdateLists();
         }
     }
 }
