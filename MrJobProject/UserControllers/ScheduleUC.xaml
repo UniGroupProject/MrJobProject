@@ -48,7 +48,7 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
             <Button Name="ForwardDateBtn" Content="&gt;" HorizontalAlignment="Left" VerticalAlignment="Top" Click="ForwardDateBtn_Click" Margin="530,10,0,0" ></Button>
-
+            <Button Name="SaveBtn" Content="Save" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="700,10,0,0" Click="SaveBtn_Click"/>
         </Grid>
         <Grid>
             <DataGrid Name="ScheduleList"  HeadersVisibility="Column"
