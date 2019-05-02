@@ -105,6 +105,9 @@
     <Compile Include="UserControllers\WorkersUC.xaml.cs">
       <DependentUpon>WorkersUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControllers\workerUC.xaml.cs">
+      <DependentUpon>workerUC.xaml</DependentUpon>
+    </Compile>
     <Page Include="Dialogs\EditAddShift.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -154,6 +157,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControllers\WorkersUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControllers\workerUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -4,10 +4,59 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MrJobProject.UserControllers"
+             xmlns:converters="clr-namespace:MrJobProject.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <converters:NumberToMonthConverter x:Key="NumberToMonthConverter"/>
+        </Grid.Resources>
+         <ComboBox Name="ListOfMonths" Grid.Column="0" SelectionChanged="ListOfMonths_SelectionChanged" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="{Binding Converter={StaticResource NumberToMonthConverter}}"></TextBlock>
+                    </WrapPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+         
+        <ComboBox Name="ListOfYears" Grid.Column="1" SelectionChanged="ListOfYears_SelectionChanged" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="{Binding}"></TextBlock>
+                    </WrapPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBox x:Name="searchTextBox" Grid.Row="1" Grid.ColumnSpan="2" Background="Beige">
+
+        </TextBox>
+        <ListView x:Name="workersListView" Background="LightGray" Grid.Row="2" Grid.RowSpan="5" Grid.ColumnSpan="2" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <local:workerUC Worker="{Binding}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+        <Button Content="Drukuj PDF" FontSize="20" FontWeight="Bold" Grid.Row="7" x:Name="pdfButton" Grid.RowSpan="1" Grid.ColumnSpan="2" Background="LightBlue" />
 
     </Grid>
 </UserControl>

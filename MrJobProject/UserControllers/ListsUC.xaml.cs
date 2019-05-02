@@ -24,11 +24,42 @@ namespace MrJobProject.UserControllers
     /// </summary>
     public partial class ListsUC : UserControl
     {
+
+        ObservableCollection<Worker> workers;
         public ListsUC()
         {
             InitializeComponent();
+            ListOfYears.ItemsSource = Enumerable.Range(2000, DateTime.Today.Year + 3 - 2000).ToList().Reverse<int>();
+            ListOfMonths.ItemsSource = Enumerable.Range(1, 12).ToList();
+            ListOfYears.SelectedValue = DateTime.Today.Year;
+            ListOfMonths.SelectedValue = DateTime.Today.Month;
+
+            workers = new ObservableCollection<Worker>();
+            ReadDatabase();
+        }
+        private void ReadDatabase()
+        {
+            //TODO:
+            using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
+            {
+                connection.CreateTable<Worker>(); //workers list
+                workers = new ObservableCollection<Worker>
+                    (connection.Table<Worker>().Where(c => c.Status == true).ToList().OrderBy(c => c.Name).ToList().OrderByDescending(c => c.Status));
+                if (workers != null)
+                {
+                    workersListView.ItemsSource = workers;
+                }
+            }
+
+        }
+        private void ListOfYears_SelectionChanged(object sender, SelectionChangedEventArgs e) // when year changed
+        {
+            //TODO:
         }
 
-        
+        private void ListOfMonths_SelectionChanged(object sender, SelectionChangedEventArgs e) // when month changed
+        {
+            //TODO:
+        }
     }
 }
