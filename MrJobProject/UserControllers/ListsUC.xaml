@@ -21,11 +21,17 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.Resources>
             <converters:NumberToMonthConverter x:Key="NumberToMonthConverter"/>
         </Grid.Resources>
-         <ComboBox Name="ListOfMonths" Grid.Column="0" SelectionChanged="ListOfMonths_SelectionChanged" >
+         <ComboBox Name="ListOfMonths"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   SelectionChanged="ListOfMonths_SelectionChanged" >
+             
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
@@ -33,9 +39,12 @@
                     </WrapPanel>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
+             
         </ComboBox>
          
-        <ComboBox Name="ListOfYears" Grid.Column="1" SelectionChanged="ListOfYears_SelectionChanged" >
+        <ComboBox Name="ListOfYears" Grid.Column="2"
+                  Grid.ColumnSpan="2"
+                  SelectionChanged="ListOfYears_SelectionChanged" >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
@@ -44,10 +53,20 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <TextBox x:Name="searchTextBox" Grid.Row="1" Grid.ColumnSpan="2" Background="Beige">
+        <TextBox x:Name="searchTextBox"
+                 Grid.Row="1" Grid.ColumnSpan="2"
+                 Background="Beige"
+                 TextChanged=
+                 "SearchTextBox_TextChanged">
 
         </TextBox>
-        <ListView x:Name="workersListView" Background="LightGray" Grid.Row="2" Grid.RowSpan="5" Grid.ColumnSpan="2" >
+        <ListView x:Name="workersListView"
+                  Background="LightGray" 
+                  Grid.Row="2" 
+                  Grid.RowSpan="5" 
+                  Grid.ColumnSpan="4"
+                  SelectionChanged="WorkersListView_SelectionChanged"
+                  SelectionMode="Multiple">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <local:workerUC Worker="{Binding}"/>
@@ -55,8 +74,36 @@
             </ListView.ItemTemplate>
         </ListView>
 
-
-        <Button Content="Drukuj PDF" FontSize="20" FontWeight="Bold" Grid.Row="7" x:Name="pdfButton" Grid.RowSpan="1" Grid.ColumnSpan="2" Background="LightBlue" />
+        <Button Content="ALL"
+                FontSize="20"
+                FontWeight="Bold"
+                Grid.Row="1"
+                Grid.Column="2"
+                x:Name="allButton"
+                Grid.RowSpan="1"
+                Grid.ColumnSpan="1"
+                Background="LightBlue"
+                Click="AllButton_Click"/>
+        
+        <Button Content="None"
+                FontSize="20"
+                FontWeight="Bold"
+                Grid.Row="1"
+                Grid.Column="3"
+                x:Name="noneButton"
+                Grid.RowSpan="1"
+                Grid.ColumnSpan="1"
+                Background="LightBlue"
+                Click="NoneButton_Click"/>
+        
+        <Button Content="Drukuj PDF"
+                FontSize="20"
+                FontWeight="Bold"
+                Grid.Row="7"
+                x:Name="pdfButton"
+                Grid.RowSpan="1"
+                Grid.ColumnSpan="4"
+                Background="LightBlue" />
 
     </Grid>
 </UserControl>

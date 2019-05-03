@@ -26,6 +26,7 @@ namespace MrJobProject.UserControllers
     {
 
         ObservableCollection<Worker> workers;
+        List<Worker> selectedWorkers;
         public ListsUC()
         {
             InitializeComponent();
@@ -60,6 +61,40 @@ namespace MrJobProject.UserControllers
         private void ListOfMonths_SelectionChanged(object sender, SelectionChangedEventArgs e) // when month changed
         {
             //TODO:
+        }
+
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox searchTextBox = sender as TextBox;
+            var filteredList = workers.Where(c => c.Name.ToLower().Contains(searchTextBox.Text)).ToList();
+
+            workersListView.ItemsSource = filteredList;
+            
+        }
+
+        private void WorkersListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           // var sselectWorkers = workersListView.SelectedItems;
+
+        }
+
+        private void NoneButton_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (var item in workers)
+            {
+                workersListView.SelectedItems.Clear();
+            }
+            Keyboard.Focus(workersListView);
+        }
+
+        private void AllButton_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (var item in workers)
+            {
+                workersListView.SelectedItems.Add(item);
+            }
+            Keyboard.Focus(workersListView);
+            
         }
     }
 }
