@@ -14,7 +14,9 @@
                 </ContextMenu>
             </Calendar.ContextMenu>
         </Calendar>
-        <Button Content="Back" HorizontalAlignment="Left" Margin="109,100,0,0" VerticalAlignment="Top" Width="75" Click="Back"/>
+
+        <Button Content="Back" HorizontalAlignment="Left" Margin="311,268,0,0" VerticalAlignment="Top" Width="75" Click="Back"/>
+
         <ComboBox Name="ListOfHolidayTypes" HorizontalAlignment="Left" Margin="311,68,0,0" VerticalAlignment="Top" Width="178">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
@@ -24,7 +26,11 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
+
         <TextBlock HorizontalAlignment="Left" Margin="311,23,0,0" TextWrapping="Wrap" Text="{Binding}" Name="WorkerName" VerticalAlignment="Top" Width="178" Height="36" TextAlignment="Center" LineHeight="22"/>
-        <Button Content="Save" HorizontalAlignment="Left" Margin="618,59,0,0" VerticalAlignment="Top" Width="75" Click="SaveChangesBtn"/>
+
+        <Button Content="Save" HorizontalAlignment="Left" Margin="414,268,0,0" VerticalAlignment="Top" Width="75" Click="SaveChangesBtn"/>
+       
+
     </Grid>
 </UserControl>
