@@ -16,21 +16,51 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace MrJobProject.UserControllers
 {
     /// <summary>
     /// Interaction logic for HolidayDateUC.xaml
     /// </summary>
+    /// 
+
+    // LINK DO DOCSOW https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.calendar.blackoutdates?view=netframework-4.8
     public partial class HolidayDateUC : UserControl
     {
         Worker worker;
+        
+
         public HolidayDateUC(Worker worker)
         {
             this.worker = worker;
 
             InitializeComponent();
+            MessageBox.Show($"KONSTRUKTOR DZIALA");
             WorkerName.Text = worker.Name;
             ListOfHolidayTypes.ItemsSource = GetListOfHolidayTypes(); // to do: maybe insert to database
+            //background = new CalenderBackground(TheCalendar);
+            LoadHolidays();
+            //TheCalendar.BlackoutDates.Add(new CalendarDateRange(new DateTime(2019, 5, 1), new DateTime(2019, 5, 1)));
+
+
+        }
+
+        private void LoadHolidays()
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
+            {
+                connection.CreateTable<Holiday>();
+                var holidays = connection.Table<Holiday>().ToList().Where(c => (c.WorkerId == this.worker.Id)).ToList();
+               
+                foreach (var worker_holiday in holidays)
+                {
+                    
+                    TheCalendar.BlackoutDates.Add(
+                         new CalendarDateRange(worker_holiday.Date, worker_holiday.Date)); //locks all the holiday days
+
+                }
+                //holidayCalendar.Background = background.GetBackground();
+            }
 
         }
 
@@ -132,5 +162,7 @@ namespace MrJobProject.UserControllers
                 TheCalendar.SelectedDates.Clear();
             }
         }
+
+       
     }
 }
