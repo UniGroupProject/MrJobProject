@@ -35,12 +35,12 @@ namespace MrJobProject.UserControllers
             this.worker = worker;
 
             InitializeComponent();
-            MessageBox.Show($"KONSTRUKTOR DZIALA");
+            
             WorkerName.Text = worker.Name;
             ListOfHolidayTypes.ItemsSource = GetListOfHolidayTypes(); // to do: maybe insert to database
-            //background = new CalenderBackground(TheCalendar);
+            
             LoadHolidays();
-            //TheCalendar.BlackoutDates.Add(new CalendarDateRange(new DateTime(2019, 5, 1), new DateTime(2019, 5, 1)));
+            
 
 
         }
