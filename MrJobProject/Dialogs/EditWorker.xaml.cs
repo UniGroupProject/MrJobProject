@@ -1,17 +1,5 @@
 ﻿using MrJobProject.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace MrJobProject.Dialogs
 {
@@ -21,6 +9,7 @@ namespace MrJobProject.Dialogs
     public partial class EditWorker : Window
     {
         public Worker newWorker;
+
         public EditWorker(Worker worker)
         {
             InitializeComponent();
@@ -36,6 +25,5 @@ namespace MrJobProject.Dialogs
             newWorker.Status = (bool)statusValue.IsChecked;
             this.DialogResult = true;
         }
-
     }
 }

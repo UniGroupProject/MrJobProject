@@ -1,21 +1,12 @@
 ﻿using MrJobProject.Data;
-using MrJobProject.Dialogs;
 using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MrJobProject.UserControllers
 {
@@ -24,9 +15,9 @@ namespace MrJobProject.UserControllers
     /// </summary>
     public partial class ListsUC : UserControl
     {
+        private ObservableCollection<Worker> workers;
+        private List<Worker> selectedWorkers;
 
-        ObservableCollection<Worker> workers;
-        List<Worker> selectedWorkers;
         public ListsUC()
         {
             InitializeComponent();
@@ -38,6 +29,7 @@ namespace MrJobProject.UserControllers
             workers = new ObservableCollection<Worker>();
             ReadDatabase();
         }
+
         private void ReadDatabase()
         {
             //TODO:
@@ -51,8 +43,8 @@ namespace MrJobProject.UserControllers
                     workersListView.ItemsSource = workers;
                 }
             }
-
         }
+
         private void ListOfYears_SelectionChanged(object sender, SelectionChangedEventArgs e) // when year changed
         {
             //TODO:
@@ -69,13 +61,11 @@ namespace MrJobProject.UserControllers
             var filteredList = workers.Where(c => c.Name.ToLower().Contains(searchTextBox.Text)).ToList();
 
             workersListView.ItemsSource = filteredList;
-            
         }
 
         private void WorkersListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           // var sselectWorkers = workersListView.SelectedItems;
-
+            // var sselectWorkers = workersListView.SelectedItems;
         }
 
         private void NoneButton_Click(object sender, RoutedEventArgs e)
@@ -94,7 +84,6 @@ namespace MrJobProject.UserControllers
                 workersListView.SelectedItems.Add(item);
             }
             Keyboard.Focus(workersListView);
-            
         }
     }
 }

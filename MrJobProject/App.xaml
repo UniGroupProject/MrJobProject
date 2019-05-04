@@ -16,11 +16,11 @@
                             </Grid.RowDefinitions>
 
                             <Border>
-                                <UniformGrid x:Name="HeaderPanel" IsItemsHost="True" 
+                                <UniformGrid x:Name="HeaderPanel" IsItemsHost="True"
                                      Rows="1" />
                             </Border>
 
-                            <Border x:Name="Border" Grid.Row="1" 
+                            <Border x:Name="Border" Grid.Row="1"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}">
@@ -31,7 +31,5 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
     </Application.Resources>
-    
 </Application>

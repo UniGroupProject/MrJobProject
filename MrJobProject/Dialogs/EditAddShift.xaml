@@ -17,7 +17,6 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-
         <Label Grid.Column="0">Name:</Label>
         <Label Grid.Column="1">Time:</Label>
         <TextBox Name="nameValue" MaxLines="1" Grid.Column="0" Grid.Row="1" ></TextBox>
@@ -43,6 +42,5 @@
             <Button IsDefault="True" Name="SaveBtn" MinWidth="60" Margin="0,0,10,0" Content="Save" Click="SaveBtn_Click"></Button>
             <Button IsCancel="True" MinWidth="60" Content="Cancel"></Button>
         </WrapPanel>
-
     </Grid>
 </Window>

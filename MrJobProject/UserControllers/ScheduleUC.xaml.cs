@@ -1,24 +1,15 @@
 ﻿using MrJobProject.Data;
 using MrJobProject.Dialogs;
 using SQLite;
-using Gu.Wpf.DataGrid2D;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace MrJobProject.UserControllers
 {
@@ -27,10 +18,10 @@ namespace MrJobProject.UserControllers
     /// </summary>
     public partial class ScheduleUC : UserControl, INotifyPropertyChanged
     {
-        ObservableCollection<Shift> shifts;
-        ObservableCollection<Worker> workers;
-        List<Holiday> holidays;
-        List<Schedule> schedules;
+        private ObservableCollection<Shift> shifts;
+        private ObservableCollection<Worker> workers;
+        private List<Holiday> holidays;
+        private List<Schedule> schedules;
 
         public string[,] data2d;
         public int[] columnHeaders;
@@ -50,8 +41,8 @@ namespace MrJobProject.UserControllers
                 this.data2d = value;
                 this.OnPropertyChanged();
             }
-
         }
+
         public int[] ColumnHeaders
         {
             get => this.columnHeaders;
@@ -71,7 +62,6 @@ namespace MrJobProject.UserControllers
         {
             DataContext = this;
             InitializeComponent();
-
 
             shifts = new ObservableCollection<Shift>();
             workers = new ObservableCollection<Worker>();
@@ -102,7 +92,6 @@ namespace MrJobProject.UserControllers
                 holidays = new List<Holiday>
                     (connection.Table<Holiday>().ToList().Where(c => (c.Date.Month == selectedMonth) && (c.Date.Year == selectedYear)));
             }
-
         }
 
         private void ReadScheduleList()
@@ -111,7 +100,7 @@ namespace MrJobProject.UserControllers
             {
                 int daysOfMonth = DateTime.DaysInMonth((int)ListOfYears.SelectedValue, (int)ListOfMonths.SelectedValue); //
 
-                using (SQLiteConnection connection = new SQLiteConnection(App.databasePath)) // connect with database 
+                using (SQLiteConnection connection = new SQLiteConnection(App.databasePath)) // connect with database
                 {
                     int selectedYear = (int)ListOfYears.SelectedValue;
                     int selectedMonth = (int)ListOfMonths.SelectedValue;
@@ -251,7 +240,7 @@ namespace MrJobProject.UserControllers
         private void ShiftList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             var cells = ScheduleList.SelectedCells.ToList();
-            if(cells.Count() != 0)
+            if (cells.Count() != 0)
             {
                 var shift = (Shift)ShiftList.SelectedItem; // selected shift from list
                 foreach (DataGridCellInfo item in cells)
@@ -322,8 +311,8 @@ namespace MrJobProject.UserControllers
                                 Schedule schedule = new Schedule()
                                 {
                                     WorkerId = workers.ElementAt(i).Id,
-                                    Date = new DateTime((int)ListOfYears.SelectedValue, (int)ListOfMonths.SelectedValue, j+1),
-                                    ShiftName = data2d[i,j]
+                                    Date = new DateTime((int)ListOfYears.SelectedValue, (int)ListOfMonths.SelectedValue, j + 1),
+                                    ShiftName = data2d[i, j]
                                 };
 
                                 connection.Insert(schedule);

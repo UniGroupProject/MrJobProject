@@ -17,12 +17,11 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-
         <Label Grid.Column="0">Name:</Label>
         <Label Grid.Column="1">Active:</Label>
         <TextBox Name="nameValue" MaxLines="1" Grid.Column="0" Grid.Row="1" MinWidth="250"></TextBox>
         <CheckBox Name="statusValue" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
-        
+
         <WrapPanel Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,15,0,0">
             <Button IsDefault="True" Name="SaveBtn" MinWidth="60" Margin="0,0,10,0" Content="Save" Click="SaveBtn_Click"></Button>
             <Button IsCancel="True" MinWidth="60" Content="Cancel"></Button>
