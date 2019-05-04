@@ -1,21 +1,10 @@
 ﻿using MrJobProject.Data;
 using SQLite;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using MrJobProject;
 
 namespace MrJobProject.UserControllers
 {
@@ -24,7 +13,7 @@ namespace MrJobProject.UserControllers
     /// </summary>
     public partial class HolidayUC : UserControl
     {
-        ObservableCollection<Worker> workers;
+        private ObservableCollection<Worker> workers;
 
         public HolidayUC()
         {
@@ -34,6 +23,7 @@ namespace MrJobProject.UserControllers
 
             UpdateList();
         }
+
         private void LoadBlackoutHolidays(Worker worker)
         {
             using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
@@ -43,14 +33,10 @@ namespace MrJobProject.UserControllers
                 highlightCalendar.BlackoutDates.Clear();
                 foreach (var worker_holiday in holidays)
                 {
-                    
                     highlightCalendar.BlackoutDates.Add(
                          new CalendarDateRange(worker_holiday.Date, worker_holiday.Date)); //locks all the holiday days
-                    //TheCalendar.SelectedDates.AddRange(worker_holiday.Date, worker_holiday.Date);
                 }
-
             }
-
         }
 
         private void UpdateList()
@@ -87,9 +73,6 @@ namespace MrJobProject.UserControllers
             {
                 LoadBlackoutHolidays(selectedWorker);
             }
-
         }
     }
-
-    
 }

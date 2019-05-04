@@ -1,17 +1,6 @@
 ﻿using MrJobProject.Data;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace MrJobProject.Dialogs
 {
@@ -31,8 +20,8 @@ namespace MrJobProject.Dialogs
             timeFromMin.Text = "00";
             timeToHour.Text = "00";
             timeToMin.Text = "00";
-
         }
+
         public EditAddShift(Shift shift)
         {
             InitializeComponent();
@@ -47,11 +36,11 @@ namespace MrJobProject.Dialogs
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            int fromH = Int32.Parse(timeFromHour.Text); 
-            int fromM = Int32.Parse(timeFromMin.Text); 
-            int toH = Int32.Parse(timeToHour.Text); 
-            int toM = Int32.Parse(timeToMin.Text); 
-            
+            int fromH = Int32.Parse(timeFromHour.Text);
+            int fromM = Int32.Parse(timeFromMin.Text);
+            int toH = Int32.Parse(timeToHour.Text);
+            int toM = Int32.Parse(timeToMin.Text);
+
             newShift.ShiftName = nameValue.Text;
             newShift.TimeFrom = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, fromH, fromM, 0);
             newShift.TimeTo = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, toH, toM, 0);

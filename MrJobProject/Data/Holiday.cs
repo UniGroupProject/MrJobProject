@@ -1,14 +1,10 @@
 ﻿using SQLite;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MrJobProject.Data
 {
-    class Holiday : INotifyPropertyChanged
+    internal class Holiday : INotifyPropertyChanged
     {
         private int id;
         private int workerId;

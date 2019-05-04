@@ -1,48 +1,33 @@
 ﻿using MrJobProject.Data;
 using MrJobProject.Dialogs;
 using SQLite;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
 
 namespace MrJobProject.UserControllers
 {
     /// <summary>
     /// Interaction logic for HolidayDateUC.xaml
     /// </summary>
-    /// 
+    ///
 
     // LINK DO DOCSOW https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.calendar.blackoutdates?view=netframework-4.8
     public partial class HolidayDateUC : UserControl
     {
-        Worker worker;
-        
+        private Worker worker;
 
         public HolidayDateUC(Worker worker)
         {
             this.worker = worker;
 
             InitializeComponent();
-            
+
             WorkerName.Text = worker.Name;
             ListOfHolidayTypes.ItemsSource = GetListOfHolidayTypes(); // to do: maybe insert to database
-            
+
             LoadHolidays();
-            
-
-
         }
 
         private void LoadHolidays()
@@ -51,17 +36,14 @@ namespace MrJobProject.UserControllers
             {
                 connection.CreateTable<Holiday>();
                 var holidays = connection.Table<Holiday>().ToList().Where(c => (c.WorkerId == this.worker.Id)).ToList();
-               
+
                 foreach (var worker_holiday in holidays)
                 {
-
                     //TheCalendar.BlackoutDates.Add(
                     //     new CalendarDateRange(worker_holiday.Date, worker_holiday.Date)); //locks all the holiday days
                     TheCalendar.SelectedDates.AddRange(worker_holiday.Date, worker_holiday.Date);
                 }
-                
             }
-
         }
 
         private List<string> GetListOfHolidayTypes()
@@ -162,7 +144,5 @@ namespace MrJobProject.UserControllers
                 TheCalendar.SelectedDates.Clear();
             }
         }
-
-       
     }
 }
