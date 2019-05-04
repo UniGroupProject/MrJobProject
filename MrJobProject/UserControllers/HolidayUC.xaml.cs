@@ -34,6 +34,24 @@ namespace MrJobProject.UserControllers
 
             UpdateList();
         }
+        private void LoadBlackoutHolidays(Worker worker)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
+            {
+                connection.CreateTable<Holiday>();
+                var holidays = connection.Table<Holiday>().ToList().Where(c => (c.WorkerId == worker.Id)).ToList();
+                highlightCalendar.BlackoutDates.Clear();
+                foreach (var worker_holiday in holidays)
+                {
+                    
+                    highlightCalendar.BlackoutDates.Add(
+                         new CalendarDateRange(worker_holiday.Date, worker_holiday.Date)); //locks all the holiday days
+                    //TheCalendar.SelectedDates.AddRange(worker_holiday.Date, worker_holiday.Date);
+                }
+
+            }
+
+        }
 
         private void UpdateList()
         {
@@ -60,6 +78,16 @@ namespace MrJobProject.UserControllers
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateList();
+        }
+
+        private void WorkersList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Worker selectedWorker = (Worker)WorkersList.SelectedItem;
+            if (selectedWorker != null)
+            {
+                LoadBlackoutHolidays(selectedWorker);
+            }
+
         }
     }
 

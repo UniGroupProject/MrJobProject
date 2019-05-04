@@ -7,19 +7,23 @@
              mc:Ignorable="d" 
              xmlns:converters="clr-namespace:MrJobProject.Converters"
              d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
-    <Grid Background="Gray">
+    <Grid Background="White">
         <Grid.Resources>
             <converters:BoolToActiveConverter x:Key="ActiveConverter"/>
         </Grid.Resources>
-        <Grid Grid.Row="1">
-            
+        
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
             <ListBox x:Name="WorkersList"
                      HorizontalAlignment="Stretch"
-                     Width="230" HorizontalContentAlignment="Stretch"
+                     HorizontalContentAlignment="Stretch"
                      ScrollViewer.CanContentScroll="False"
-                     VerticalAlignment="Center"
-                     MouseDoubleClick="DateMode">
-                
+                     MouseDoubleClick="DateMode"
+                     SelectionChanged="WorkersList_SelectionChanged">
+          
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid >
@@ -39,6 +43,16 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+            <Viewbox Grid.Column="2" VerticalAlignment="Stretch">
+                <Calendar Name="highlightCalendar"
+                           
+                          SelectionMode="MultipleRange"
+                          IsTodayHighlighted="False"
+                          VerticalAlignment="Stretch">
+                    
+                </Calendar>
+            </Viewbox>
+            
         </Grid>
     </Grid>
 </UserControl>

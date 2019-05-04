@@ -54,12 +54,12 @@ namespace MrJobProject.UserControllers
                
                 foreach (var worker_holiday in holidays)
                 {
-                    
-                    TheCalendar.BlackoutDates.Add(
-                         new CalendarDateRange(worker_holiday.Date, worker_holiday.Date)); //locks all the holiday days
 
+                    //TheCalendar.BlackoutDates.Add(
+                    //     new CalendarDateRange(worker_holiday.Date, worker_holiday.Date)); //locks all the holiday days
+                    TheCalendar.SelectedDates.AddRange(worker_holiday.Date, worker_holiday.Date);
                 }
-                //holidayCalendar.Background = background.GetBackground();
+                
             }
 
         }
