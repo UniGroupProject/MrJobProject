@@ -26,6 +26,7 @@ namespace MrJobProject
         public MainWindow()
         {
             InitializeComponent();
+           // GridCursor.Width = (Application.Current.MainWindow.Width - 20) / 4; // <------------------- width of thickness
         }
 
         public void ChangeToHolidayDateUC(Worker worker)
@@ -47,7 +48,8 @@ namespace MrJobProject
         private void MenuClick(object sender, RoutedEventArgs e)
         {
             int index = int.Parse(((Button)e.Source).Uid);
-            GridCursor.Margin = new Thickness(10 + (150 * index), 0, 0, 0);
+            GridCursor.SetValue(Grid.ColumnProperty, index);
+            //GridCursor.Margin = new Thickness(10+ ((Application.Current.MainWindow.Width - 40)/4 * index), 0, 0, 0); // <------ align of thickness
             ScheduleGrid.Visibility = Visibility.Hidden;
             WorkersGrid.Visibility = Visibility.Hidden;
             HolidayGrid.Visibility = Visibility.Hidden;
