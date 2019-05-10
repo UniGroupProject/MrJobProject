@@ -1,13 +1,107 @@
 ﻿<UserControl x:Class="MrJobProject.UserControllers.ListsUC"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:MrJobProject.UserControllers"
-             mc:Ignorable="d" 
+             xmlns:converters="clr-namespace:MrJobProject.Converters"
+             mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <converters:NumberToMonthConverter x:Key="NumberToMonthConverter" />
+        </Grid.Resources>
+        <ComboBox Name="ListOfMonths"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   SelectionChanged="ListOfMonths_SelectionChanged">
 
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="{Binding Converter={StaticResource NumberToMonthConverter}}"></TextBlock>
+                    </WrapPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <ComboBox Name="ListOfYears"
+                  Grid.Column="2"
+                  Grid.ColumnSpan="2"
+                  SelectionChanged="ListOfYears_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="{Binding}"></TextBlock>
+                    </WrapPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBox x:Name="searchTextBox"
+                 Grid.Row="1" Grid.ColumnSpan="2"
+                 Background="Beige"
+                 TextChanged=
+                 "SearchTextBox_TextChanged">
+        </TextBox>
+        <ListView x:Name="workersListView"
+                  Background="LightGray"
+                  Grid.Row="2"
+                  Grid.RowSpan="5"
+                  Grid.ColumnSpan="4"
+                  SelectionChanged="WorkersListView_SelectionChanged"
+                  SelectionMode="Multiple">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <local:workerUC Worker="{Binding}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Content="ALL"
+                FontSize="20"
+                FontWeight="Bold"
+                Grid.Row="1"
+                Grid.Column="2"
+                x:Name="allButton"
+                Grid.RowSpan="1"
+                Grid.ColumnSpan="1"
+                Background="LightBlue"
+                Click="AllButton_Click" />
+
+        <Button Content="None"
+                FontSize="20"
+                FontWeight="Bold"
+                Grid.Row="1"
+                Grid.Column="3"
+                x:Name="noneButton"
+                Grid.RowSpan="1"
+                Grid.ColumnSpan="1"
+                Background="LightBlue"
+                Click="NoneButton_Click" />
+
+        <Button Content="Drukuj PDF"
+                FontSize="20"
+                FontWeight="Bold"
+                Grid.Row="7"
+                x:Name="pdfButton"
+                Grid.RowSpan="1"
+                Grid.ColumnSpan="4"
+                Background="LightBlue" />
     </Grid>
 </UserControl>

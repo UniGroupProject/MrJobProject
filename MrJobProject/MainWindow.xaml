@@ -11,18 +11,23 @@
         <userControllers:ScheduleUC />
     </Window.DataContext>
     <Grid>
+
         <TabControl IsSynchronizedWithCurrentItem="True">
+
             <TabItem Header="Schedule">
+
                 <userControllers:ScheduleUC></userControllers:ScheduleUC>
             </TabItem>
+
             <TabItem Header="Workers">
                 <userControllers:WorkersUC></userControllers:WorkersUC>
             </TabItem>
+
             <TabItem Header="Holidays">
                 <Grid Name="Holiday">
-                
                 </Grid>
             </TabItem>
+
             <TabItem Header="Lists">
                 <userControllers:ListsUC></userControllers:ListsUC>
             </TabItem>
