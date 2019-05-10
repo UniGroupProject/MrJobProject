@@ -18,27 +18,27 @@
     <Window.DataContext>
         <userControllers:ScheduleUC />
     </Window.DataContext>
-    <Grid>
-
-        <TabControl IsSynchronizedWithCurrentItem="True">
-
-            <TabItem Header="Schedule">
-
-                <userControllers:ScheduleUC></userControllers:ScheduleUC>
-            </TabItem>
-
-            <TabItem Header="Workers">
-                <userControllers:WorkersUC></userControllers:WorkersUC>
-            </TabItem>
-
-            <TabItem Header="Holidays">
-                <Grid Name="Holiday">
-                </Grid>
-            </TabItem>
-
-            <TabItem Header="Lists">
-                <userControllers:ListsUC></userControllers:ListsUC>
-            </TabItem>
-        </TabControl>
-    </Grid>
+    <StackPanel>
+        <Grid Height="100">
+            <Grid  VerticalAlignment="Top" Margin="10 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Uid ="0" Content="SCHEDULE" Width="150" Height="50" Grid.Column="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="MenuClick"/>
+                <Button Uid ="1" Content="WORKERS" Width="150" Height="50"  Grid.Column="1"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="MenuClick"></Button>
+                <Button Uid ="2" Content="HOLIDAYS" Width="150" Height="50"  Grid.Column="2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="MenuClick"></Button>
+                <Button Uid ="3" Content="LISTS" Width="150" Height="50"  Grid.Column="3" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="MenuClick"></Button>
+                <Grid x:Name="GridCursor" Grid.Column="0" Height="5"  Background="#FF2196F3" VerticalAlignment="Bottom" />
+            </Grid>
+        </Grid>
+        <Grid Name="MainView">
+            <userControllers:ScheduleUC x:Name="ScheduleGrid"></userControllers:ScheduleUC>
+            <userControllers:WorkersUC x:Name="WorkersGrid" Visibility="Hidden"></userControllers:WorkersUC>
+            <userControllers:HolidayUC x:Name="HolidayGrid" Visibility="Hidden"></userControllers:HolidayUC>
+            <userControllers:ListsUC x:Name="ListsGrid" Visibility="Hidden"></userControllers:ListsUC>
+        </Grid>
+    </StackPanel>
 </Window>
