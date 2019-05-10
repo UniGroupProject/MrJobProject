@@ -1,5 +1,5 @@
 ﻿D:\MJMP\MrJobProject\obj\Release\GeneratedInternalTypeHelper.g.cs
-
+FD:\MJMP\MrJobProject\App.xaml;;
 FD:\MJMP\MrJobProject\Dialogs\EditAddShift.xaml;;
 FD:\MJMP\MrJobProject\Dialogs\EditWorker.xaml;;
 FD:\MJMP\MrJobProject\Dialogs\InfoOK.xaml;;
@@ -10,4 +10,5 @@ FD:\MJMP\MrJobProject\UserControllers\HolidayUC.xaml;;
 FD:\MJMP\MrJobProject\UserControllers\ListsUC.xaml;;
 FD:\MJMP\MrJobProject\UserControllers\ScheduleUC.xaml;;
 FD:\MJMP\MrJobProject\UserControllers\WorkersUC.xaml;;
+FD:\MJMP\MrJobProject\UserControllers\workerUC.xaml;;
 
