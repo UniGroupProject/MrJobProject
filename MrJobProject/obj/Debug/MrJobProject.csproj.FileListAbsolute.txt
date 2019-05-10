@@ -96,3 +96,7 @@ D:\MJMP\MrJobProject\obj\Debug\MrJobProject.csprojAssemblyReference.cache
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControllers\workerUC.g.cs
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\App.baml
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControllers\workerUC.baml
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\bin\Debug\MaterialDesignColors.dll
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\bin\Debug\MaterialDesignThemes.Wpf.xml
