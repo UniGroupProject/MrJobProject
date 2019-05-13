@@ -21,7 +21,6 @@
                      HorizontalAlignment="Stretch"
                      HorizontalContentAlignment="Stretch"
                      ScrollViewer.CanContentScroll="False"
-                     MouseDoubleClick="DateMode"
                      SelectionChanged="WorkersList_SelectionChanged">
 
                 <ListBox.ItemTemplate>

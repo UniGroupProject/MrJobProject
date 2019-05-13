@@ -318,17 +318,38 @@ namespace MrJobProject.UserControllers
                                 connection.Insert(schedule);
                             }
                         }
-
-                        //if (holidays.Where(c => (c.WorkerId == workers.ElementAt(i).Id) && (c.Date.Day == j + 1)).Count() > 0) // if any holiday then
-                        //    data[i, j] = "U"; // remember to do: if holiday and added shift in the same day, remove shift
-                        //else if (schedules.Where(c => (c.WorkerId == workers.ElementAt(i).Id) && (c.Date.Day == j + 1)).Count() > 0) // if schedule then
-                        //    data[i, j] = schedules.Where(c => (c.WorkerId == workers.ElementAt(i).Id) && (c.Date.Day == j + 1)).First().ShiftName;
-                        //else // if nothing added
-                        //    data[i, j] = "";
                     }
                 }
             }
             UpdateLists();
+        }
+
+      
+
+        private void ScheduleList_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete)
+            {
+                var cells = ScheduleList.SelectedCells.ToList();
+                if (cells.Count() != 0)
+                {
+                    var shift = (Shift)ShiftList.SelectedItem; // selected shift from list
+                    foreach (DataGridCellInfo item in cells)
+                    {
+                        int col = item.Column.DisplayIndex;
+                        var row = ScheduleList.Items.IndexOf(item.Item); // Gogus uratowal kod
+                        if (data2d[row, col] != "U") // if there is no holiday in this day
+                            data2d[row, col] = "";
+                    }
+                    var firstCellCol = cells.Last().Column.DisplayIndex;
+                    var firstCellRow = ScheduleList.Items.IndexOf(cells.Last().Item);
+
+                    Data2D = (string[,])data2d.Clone();
+
+                    Keyboard.Focus(ScheduleList);
+                    ScheduleList.CurrentCell = new DataGridCellInfo(ScheduleList.Items[firstCellRow], ScheduleList.Columns[firstCellCol]);
+                }
+            }
         }
     }
 }

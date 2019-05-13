@@ -48,7 +48,7 @@ namespace MrJobProject.UserControllers
 
         private List<string> GetListOfHolidayTypes()
         {
-            List<string> HolidayTypes = new List<string>();//language item
+            List<string> HolidayTypes = new List<string>();//language item //change to eng version
             HolidayTypes.Add("choroba pracownika (płaci pracodawca)");
             HolidayTypes.Add("choroba pracownika (płaci ZUS)");
             HolidayTypes.Add("choroba niepłatne");
@@ -66,8 +66,7 @@ namespace MrJobProject.UserControllers
 
         private void Back(object sender, RoutedEventArgs e) //back button
         {
-            var mainWindow = Application.Current.Windows[0] as MainWindow;
-            mainWindow.BackToHolidayUC(worker);
+            
         }
 
         private void SaveChangesBtn(object sender, RoutedEventArgs e)
