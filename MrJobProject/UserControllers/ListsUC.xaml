@@ -55,12 +55,12 @@
         </ComboBox>
         <TextBox x:Name="searchTextBox"
                  Grid.Row="1" Grid.ColumnSpan="2"
-                 Background="Beige"
+                 
                  TextChanged=
                  "SearchTextBox_TextChanged">
         </TextBox>
         <ListView x:Name="workersListView"
-                  Background="LightGray"
+                 
                   Grid.Row="2"
                   Grid.RowSpan="5"
                   Grid.ColumnSpan="4"
@@ -81,7 +81,7 @@
                 x:Name="allButton"
                 Grid.RowSpan="1"
                 Grid.ColumnSpan="1"
-                Background="LightBlue"
+                
                 Click="AllButton_Click" />
 
         <Button Content="None"
@@ -92,7 +92,7 @@
                 x:Name="noneButton"
                 Grid.RowSpan="1"
                 Grid.ColumnSpan="1"
-                Background="LightBlue"
+                
                 Click="NoneButton_Click" />
 
         <Button Content="Drukuj PDF"

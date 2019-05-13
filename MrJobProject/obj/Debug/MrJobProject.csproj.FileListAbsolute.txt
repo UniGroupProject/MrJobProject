@@ -100,3 +100,7 @@ C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\bin\Debug\MaterialDesig
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\bin\Debug\MaterialDesignThemes.Wpf.dll
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\bin\Debug\MaterialDesignThemes.Wpf.pdb
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\MJMP\MrJobProject\bin\Debug\MaterialDesignColors.dll
+D:\MJMP\MrJobProject\bin\Debug\MaterialDesignThemes.Wpf.dll
+D:\MJMP\MrJobProject\bin\Debug\MaterialDesignThemes.Wpf.pdb
+D:\MJMP\MrJobProject\bin\Debug\MaterialDesignThemes.Wpf.xml
