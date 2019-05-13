@@ -32,6 +32,7 @@ namespace MrJobProject
 
         private void MenuClick(object sender, RoutedEventArgs e)
         {
+            MainView.Children.Remove(holiday); // remove later
             int index = int.Parse(((Button)e.Source).Uid);
             GridCursor.SetValue(Grid.ColumnProperty, index);
             ScheduleGrid.Visibility = Visibility.Hidden;
