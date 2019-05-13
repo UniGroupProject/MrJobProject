@@ -71,7 +71,7 @@
                   dataGrid2D:Selected.Index="{Binding Index}"
                   SelectionUnit="Cell"
                   IsReadOnly="True"
-                  Width="Auto"
+                  Width="Auto" PreviewKeyDown="ScheduleList_PreviewKeyDown" 
                    />
         <ListBox x:Name="ShiftList"
                     Margin="0 8 0 8"

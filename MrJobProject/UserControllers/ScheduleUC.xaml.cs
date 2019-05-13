@@ -330,5 +330,33 @@ namespace MrJobProject.UserControllers
             }
             UpdateLists();
         }
+
+      
+
+        private void ScheduleList_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete)
+            {
+                var cells = ScheduleList.SelectedCells.ToList();
+                if (cells.Count() != 0)
+                {
+                    var shift = (Shift)ShiftList.SelectedItem; // selected shift from list
+                    foreach (DataGridCellInfo item in cells)
+                    {
+                        int col = item.Column.DisplayIndex;
+                        var row = ScheduleList.Items.IndexOf(item.Item); // Gogus uratowal kod
+                        if (data2d[row, col] != "U") // if there is no holiday in this day
+                            data2d[row, col] = "";
+                    }
+                    var firstCellCol = cells.Last().Column.DisplayIndex;
+                    var firstCellRow = ScheduleList.Items.IndexOf(cells.Last().Item);
+
+                    Data2D = (string[,])data2d.Clone();
+
+                    Keyboard.Focus(ScheduleList);
+                    ScheduleList.CurrentCell = new DataGridCellInfo(ScheduleList.Items[firstCellRow], ScheduleList.Columns[firstCellCol]);
+                }
+            }
+        }
     }
 }
