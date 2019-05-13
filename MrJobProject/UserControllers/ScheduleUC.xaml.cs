@@ -318,13 +318,6 @@ namespace MrJobProject.UserControllers
                                 connection.Insert(schedule);
                             }
                         }
-
-                        //if (holidays.Where(c => (c.WorkerId == workers.ElementAt(i).Id) && (c.Date.Day == j + 1)).Count() > 0) // if any holiday then
-                        //    data[i, j] = "U"; // remember to do: if holiday and added shift in the same day, remove shift
-                        //else if (schedules.Where(c => (c.WorkerId == workers.ElementAt(i).Id) && (c.Date.Day == j + 1)).Count() > 0) // if schedule then
-                        //    data[i, j] = schedules.Where(c => (c.WorkerId == workers.ElementAt(i).Id) && (c.Date.Day == j + 1)).First().ShiftName;
-                        //else // if nothing added
-                        //    data[i, j] = "";
                     }
                 }
             }

@@ -10,29 +10,13 @@ namespace MrJobProject
     /// </summary>
     public partial class MainWindow : Window
     {
-        HolidayDateUC holiday;
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        public void ChangeToHolidayDateUC(Worker worker)
-        {
-            HolidayGrid.Visibility = Visibility.Hidden;
-            holiday = new HolidayDateUC(worker);
-            MainView.Children.Add(holiday);
-
-        }
-
-        public void BackToHolidayUC(Worker worker)
-        {
-            MainView.Children.Remove(holiday);
-            HolidayGrid.Visibility = Visibility.Visible;
-        }
-
         private void MenuClick(object sender, RoutedEventArgs e)
         {
-            MainView.Children.Remove(holiday); // remove later
             int index = int.Parse(((Button)e.Source).Uid);
             GridCursor.SetValue(Grid.ColumnProperty, index);
             ScheduleGrid.Visibility = Visibility.Hidden;
