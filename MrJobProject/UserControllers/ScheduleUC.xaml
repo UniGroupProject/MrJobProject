@@ -45,27 +45,20 @@
         </Grid.RowDefinitions>
         
         <!-- LISTBOXES -->
-<ListBox x:Name="WorkersList"
+        <DataGrid x:Name="WorkersList"
          Margin="0 8 0 8"
                  ScrollViewer.CanContentScroll="False"
                  Grid.ColumnSpan="2"
                  Grid.RowSpan="10" 
                  Grid.Column="0" 
-                 Grid.Row="1"    
-                     
-                 
-        >
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="{Binding Name}" />
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+                 Grid.Row="1" 
+                 IsReadOnly="True"  
+                 AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name"
+                      Binding="{Binding Name}"/>
+            </DataGrid.Columns>
+        </DataGrid>
         <DataGrid Name="ScheduleList"
                   Margin="0 8 0 8"
                   Grid.ColumnSpan="8"
@@ -78,7 +71,7 @@
                   dataGrid2D:Selected.Index="{Binding Index}"
                   SelectionUnit="Cell"
                   IsReadOnly="True"
-                  Width="Auto"
+                  Width="Auto" PreviewKeyDown="ScheduleList_PreviewKeyDown" 
                    />
         <ListBox x:Name="ShiftList"
                     Margin="0 8 0 8"

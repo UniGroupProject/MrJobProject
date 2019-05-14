@@ -55,12 +55,6 @@ namespace MrJobProject.UserControllers
             }
         }
 
-        private void DateMode(object sender, MouseButtonEventArgs e)//double click
-        {
-            var mainWindow = Application.Current.Windows[0] as MainWindow;
-            mainWindow.ChangeToHolidayDateUC(WorkersList.SelectedItem as Worker);
-        }
-
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateList();
