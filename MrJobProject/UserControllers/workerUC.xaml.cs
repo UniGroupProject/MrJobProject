@@ -23,7 +23,7 @@ namespace MrJobProject.UserControllers
         // Using a DependencyProperty as the backing store for Worker.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty WorkerProperty =
             DependencyProperty.Register("Worker", typeof(Worker), typeof(workerUC),
-                new PropertyMetadata(new Worker() { Name = "Imie i Nazwisko", Status = true }, SetPropertiesOfTextBox));
+                new PropertyMetadata(new Worker() { Name = "Imie i Nazwisko"}, SetPropertiesOfTextBox));
 
         private static void SetPropertiesOfTextBox(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -32,7 +32,6 @@ namespace MrJobProject.UserControllers
             if (worker != null)
             {
                 worker.nameTextBlock.Text = (e.NewValue as Worker).Name;
-                worker.statusTextBlock.Text = (e.NewValue as Worker).Status.ToString();
             }
         }
     }

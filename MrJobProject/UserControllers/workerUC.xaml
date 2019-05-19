@@ -6,17 +6,15 @@
              xmlns:local="clr-namespace:MrJobProject.UserControllers"
              mc:Ignorable="d"
              d:DesignHeight="75" d:DesignWidth="250">
-    <Grid Background="LightGray">
-        <StackPanel Margin="5">
+    <Grid>
+        <TextBlock x:Name="nameTextBlock"
+                   Text="test"
+                   FontWeight="Bold"
+                   FontSize="15"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Height="Auto"
 
-            <TextBlock x:Name="nameTextBlock"
-                       Text="test"
-                       FontWeight="Bold"
-                       FontSize="15" />
-            <TextBlock x:Name="statusTextBlock"
-                       Text="status"
-                       FontWeight="Bold"
-                       FontSize="15" />
-        </StackPanel>
+        />
     </Grid>
 </UserControl>

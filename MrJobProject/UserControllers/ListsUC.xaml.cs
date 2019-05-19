@@ -16,7 +16,7 @@ namespace MrJobProject.UserControllers
     public partial class ListsUC : UserControl
     {
         private ObservableCollection<Worker> workers;
-        private List<Worker> selectedWorkers;
+        
 
         public ListsUC()
         {
@@ -79,11 +79,15 @@ namespace MrJobProject.UserControllers
 
         private void AllButton_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var item in workers)
-            {
-                workersListView.SelectedItems.Add(item);
-            }
-            Keyboard.Focus(workersListView);
+            workersListView.SelectAll();
+        }
+
+        private void PdfButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            
+
+
+
         }
     }
 }
