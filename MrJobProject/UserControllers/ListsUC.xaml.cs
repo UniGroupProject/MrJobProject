@@ -3,10 +3,14 @@ using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using iText.Forms;
+using iText.Forms.Fields;
+using iText.Kernel.Pdf;
 
 namespace MrJobProject.UserControllers
 {
@@ -16,6 +20,7 @@ namespace MrJobProject.UserControllers
     public partial class ListsUC : UserControl
     {
         private ObservableCollection<Worker> workers;
+        private List<Worker> selectedWorkers;
         
 
         public ListsUC()
@@ -65,7 +70,8 @@ namespace MrJobProject.UserControllers
 
         private void WorkersListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // var sselectWorkers = workersListView.SelectedItems;
+            this.selectedWorkers = workersListView.SelectedItems.Cast<Worker>().ToList();
+
         }
 
         private void NoneButton_Click(object sender, RoutedEventArgs e)
@@ -84,7 +90,101 @@ namespace MrJobProject.UserControllers
 
         private void PdfButton_OnClick(object sender, RoutedEventArgs e)
         {
+            string fieldShift = "shift_"; // name form for accesing fields in pdf form
+            string fieldStart = "start_"; // startShift form for accesing fields in pdf form
+            string fieldStop = "stop_";   // stopShift form for accesing fields in pdf form
+
+            string strPath = System.AppDomain.CurrentDomain.BaseDirectory;
+
             
+            if (this.selectedWorkers != null)
+            {
+                foreach (var worker in selectedWorkers)
+                {
+                    int selectedMonth = (int)ListOfMonths.SelectedValue;
+                    int selectedYear = (int) ListOfYears.SelectedValue;
+                    var workerName = worker.Name;
+                    string monthName;
+                    //List<Holiday> holidays;
+                    List<Schedule> schedules;
+                    List<Shift> shifts;
+
+                    if (ListOfMonths.SelectedValue != null)
+                    {
+                        monthName = new DateTime(2000, selectedMonth, 1).ToString("MMMMMMMMMMM", CultureInfo.CurrentCulture);
+                    }
+                    else
+                    {
+                        MessageBox.Show("ERROR NO MONTH SELECTED");
+                        return;
+                    }
+
+                    using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
+                    {
+                        
+
+                        connection.CreateTable<Schedule>(); //read all schedules in selected month/year for specific worker
+                        schedules = new List<Schedule>
+                            (connection.Table<Schedule>().ToList().Where(c => (c.Date.Month == selectedMonth) && (c.Date.Year == selectedYear) && (c.WorkerId == worker.Id)));
+
+                        connection.CreateTable<Shift>();
+                        shifts = new List<Shift> //shifts list
+                            (connection.Table<Shift>().ToList().OrderBy(c => c.Id).ToList());
+
+                    }
+
+                    string src = $@"{strPath}pdfForm.pdf";
+                    string dest = $@"{strPath}pdfOutput\{workerName.Replace(" ","")}.pdf"; // outputPath + generate the workerName pdf
+
+                    PdfDocument pdf = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
+                    PdfAcroForm form = PdfAcroForm.GetAcroForm(pdf, true);
+                    IDictionary<String, PdfFormField> fields = form.GetFormFields();
+                    PdfFormField toSet;
+                    fields.TryGetValue("name", out toSet);
+                    toSet.SetValue($"{workerName}");
+
+                    fields.TryGetValue("month", out toSet);
+                    toSet.SetValue($"{monthName}");
+
+
+                    for (int day = 1; day < schedules.Count; day++)
+                    {
+                        Schedule daySchedule = schedules.Where(c => (c.Date.Day.ToString() == day.ToString())).ToList().First();
+                         
+                        if (daySchedule.ShiftName == "U")
+                        {
+                            fields.TryGetValue(fieldShift + day.ToString(), out toSet);
+                            toSet.SetValue("U");
+                            continue;
+                        }
+                        else
+                        {
+                            
+                            Shift selectedShift = shifts.Where(c => (c.ShiftName == daySchedule.ShiftName)).ToList().First();
+
+                            fields.TryGetValue(fieldShift + day.ToString(), out toSet);
+                            toSet.SetValue($"{daySchedule.ShiftName}");
+
+                            fields.TryGetValue(fieldStart + day.ToString(), out toSet);
+                            toSet.SetValue($"{selectedShift.TimeFrom.TimeOfDay.ToString()}");
+
+                            fields.TryGetValue(fieldStop + day.ToString(), out toSet);
+                            toSet.SetValue($"{selectedShift.TimeTo.TimeOfDay.ToString()}");
+
+
+
+                        }
+
+                    }
+                    pdf.Close();
+
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("No workers selected!");
+            }
 
 
 

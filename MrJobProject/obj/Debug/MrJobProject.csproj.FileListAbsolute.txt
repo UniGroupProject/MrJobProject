@@ -92,7 +92,6 @@ D:\MJMP\MrJobProject\obj\Debug\MrJobProject.pdb
 D:\MJMP\MrJobProject\obj\Debug\App.baml
 D:\MJMP\MrJobProject\obj\Debug\UserControllers\workerUC.g.cs
 D:\MJMP\MrJobProject\obj\Debug\UserControllers\workerUC.baml
-D:\MJMP\MrJobProject\obj\Debug\MrJobProject.csprojAssemblyReference.cache
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControllers\workerUC.g.cs
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\App.baml
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControllers\workerUC.baml
