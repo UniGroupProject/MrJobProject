@@ -168,10 +168,10 @@ namespace MrJobProject.UserControllers
                             toSet.SetValue($"{daySchedule.ShiftName}");
 
                             fields.TryGetValue(fieldStart + day.ToString(), out toSet);
-                            toSet.SetValue($"{selectedShift.TimeFrom.TimeOfDay.ToString()}");
+                            toSet.SetValue($"{selectedShift.TimeFrom.ToString("H:mm")}");
 
                             fields.TryGetValue(fieldStop + day.ToString(), out toSet);
-                            toSet.SetValue($"{selectedShift.TimeTo.TimeOfDay.ToString()}");
+                            toSet.SetValue($"{selectedShift.TimeTo.ToString("H:mm")}");
 
                         }
                     }
