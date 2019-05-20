@@ -130,3 +130,4 @@ D:\MJMP\MrJobProject\bin\Debug\itext.sign.xml
 D:\MJMP\MrJobProject\bin\Debug\itext.styledxmlparser.xml
 D:\MJMP\MrJobProject\bin\Debug\itext.svg.xml
 D:\MJMP\MrJobProject\bin\Debug\MaterialDesignColors.pdb
+D:\MJMP\MrJobProject\obj\Debug\MrJobProject.csprojAssemblyReference.cache

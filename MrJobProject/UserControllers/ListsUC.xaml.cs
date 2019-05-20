@@ -3,6 +3,7 @@ using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics.Eventing.Reader;
 using System.Globalization;
 using System.Linq;
 using System.Windows;
@@ -105,7 +106,7 @@ namespace MrJobProject.UserControllers
                     int selectedYear = (int) ListOfYears.SelectedValue;
                     var workerName = worker.Name;
                     string monthName;
-                    //List<Holiday> holidays;
+                    
                     List<Schedule> schedules;
                     List<Shift> shifts;
 
@@ -138,6 +139,7 @@ namespace MrJobProject.UserControllers
 
                     PdfDocument pdf = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
                     PdfAcroForm form = PdfAcroForm.GetAcroForm(pdf, true);
+
                     IDictionary<String, PdfFormField> fields = form.GetFormFields();
                     PdfFormField toSet;
                     fields.TryGetValue("name", out toSet);
@@ -149,31 +151,38 @@ namespace MrJobProject.UserControllers
 
                     for (int day = 1; day < schedules.Count; day++)
                     {
-                        Schedule daySchedule = schedules.Where(c => (c.Date.Day.ToString() == day.ToString())).ToList().First();
-                         
-                        if (daySchedule.ShiftName == "U")
+                        Schedule daySchedule = schedules.Where(c => (c.Date.Day.ToString() == day.ToString())).ToList().First(); // jesli nie ma grafika na caly miesiac to scrashuje, rozwiazac problem niepelnego grafika
+                        if (daySchedule != null)
                         {
-                            fields.TryGetValue(fieldShift + day.ToString(), out toSet);
-                            toSet.SetValue("U");
-                            continue;
+                            if (daySchedule.ShiftName == "U")
+                            {
+                                 
+                                continue;
+                            }
+                            else
+                            {
+
+                                Shift selectedShift = shifts.Where(c => (c.ShiftName == daySchedule.ShiftName)).ToList().First();
+
+                                fields.TryGetValue(fieldShift + day.ToString(), out toSet);
+                                toSet.SetValue($"{daySchedule.ShiftName}");
+
+                                fields.TryGetValue(fieldStart + day.ToString(), out toSet);
+                                toSet.SetValue($"{selectedShift.TimeFrom.TimeOfDay.ToString()}");
+
+                                fields.TryGetValue(fieldStop + day.ToString(), out toSet);
+                                toSet.SetValue($"{selectedShift.TimeTo.TimeOfDay.ToString()}");
+
+
+
+                            }
+                            
                         }
                         else
                         {
-                            
-                            Shift selectedShift = shifts.Where(c => (c.ShiftName == daySchedule.ShiftName)).ToList().First();
-
-                            fields.TryGetValue(fieldShift + day.ToString(), out toSet);
-                            toSet.SetValue($"{daySchedule.ShiftName}");
-
-                            fields.TryGetValue(fieldStart + day.ToString(), out toSet);
-                            toSet.SetValue($"{selectedShift.TimeFrom.TimeOfDay.ToString()}");
-
-                            fields.TryGetValue(fieldStop + day.ToString(), out toSet);
-                            toSet.SetValue($"{selectedShift.TimeTo.TimeOfDay.ToString()}");
-
-
-
+                            continue;
                         }
+                       
 
                     }
                     pdf.Close();
