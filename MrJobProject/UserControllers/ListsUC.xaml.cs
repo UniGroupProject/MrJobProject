@@ -22,7 +22,7 @@ namespace MrJobProject.UserControllers
     {
         private ObservableCollection<Worker> workers;
         private List<Worker> selectedWorkers;
-        
+
 
         public ListsUC()
         {
@@ -97,16 +97,16 @@ namespace MrJobProject.UserControllers
 
             string strPath = System.AppDomain.CurrentDomain.BaseDirectory;
 
-            
+
             if (this.selectedWorkers != null)
             {
                 foreach (var worker in selectedWorkers)
                 {
                     int selectedMonth = (int)ListOfMonths.SelectedValue;
-                    int selectedYear = (int) ListOfYears.SelectedValue;
+                    int selectedYear = (int)ListOfYears.SelectedValue;
                     var workerName = worker.Name;
                     string monthName;
-                    
+
                     List<Schedule> schedules;
                     List<Shift> shifts;
 
@@ -122,7 +122,7 @@ namespace MrJobProject.UserControllers
 
                     using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
                     {
-                        
+
 
                         connection.CreateTable<Schedule>(); //read all schedules in selected month/year for specific worker
                         schedules = new List<Schedule>
@@ -135,7 +135,7 @@ namespace MrJobProject.UserControllers
                     }
 
                     string src = $@"{strPath}pdfForm.pdf";
-                    string dest = $@"{strPath}pdfOutput\{workerName.Replace(" ","")}.pdf"; // outputPath + generate the workerName pdf
+                    string dest = $@"{strPath}pdfOutput\{workerName.Replace(" ", "")}.pdf"; // outputPath + generate the workerName pdf
 
                     PdfDocument pdf = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
                     PdfAcroForm form = PdfAcroForm.GetAcroForm(pdf, true);
@@ -149,45 +149,34 @@ namespace MrJobProject.UserControllers
                     toSet.SetValue($"{monthName}");
 
 
-                    for (int day = 1; day < schedules.Count; day++)
+                    for (int day = 1; day < DateTime.DaysInMonth(selectedYear, selectedMonth); day++)
                     {
-                        Schedule daySchedule = schedules.Where(c => (c.Date.Day.ToString() == day.ToString())).ToList().First(); // jesli nie ma grafika na caly miesiac to scrashuje, rozwiazac problem niepelnego grafika
-                        if (daySchedule != null)
-                        {
-                            if (daySchedule.ShiftName == "U")
-                            {
-                                 
-                                continue;
-                            }
-                            else
-                            {
+                        Schedule daySchedule;
 
-                                Shift selectedShift = shifts.Where(c => (c.ShiftName == daySchedule.ShiftName)).ToList().First();
-
-                                fields.TryGetValue(fieldShift + day.ToString(), out toSet);
-                                toSet.SetValue($"{daySchedule.ShiftName}");
-
-                                fields.TryGetValue(fieldStart + day.ToString(), out toSet);
-                                toSet.SetValue($"{selectedShift.TimeFrom.TimeOfDay.ToString()}");
-
-                                fields.TryGetValue(fieldStop + day.ToString(), out toSet);
-                                toSet.SetValue($"{selectedShift.TimeTo.TimeOfDay.ToString()}");
-
-
-
-                            }
-                            
-                        }
-                        else
+                        if (schedules.Where(c => c.Date.Day == day).Count() == 0)
                         {
                             continue;
                         }
-                       
 
+                        daySchedule = schedules.Where(c => c.Date.Day == day).First();
+
+                        if (daySchedule != null)
+                        {
+                            Shift selectedShift = shifts.Where(c => (c.ShiftName == daySchedule.ShiftName)).ToList().First();
+
+                            fields.TryGetValue(fieldShift + day.ToString(), out toSet);
+                            toSet.SetValue($"{daySchedule.ShiftName}");
+
+                            fields.TryGetValue(fieldStart + day.ToString(), out toSet);
+                            toSet.SetValue($"{selectedShift.TimeFrom.ToString("H:mm")}");
+
+                            fields.TryGetValue(fieldStop + day.ToString(), out toSet);
+                            toSet.SetValue($"{selectedShift.TimeTo.ToString("H:mm")}");
+
+                        }
                     }
+
                     pdf.Close();
-
-
                 }
             }
             else

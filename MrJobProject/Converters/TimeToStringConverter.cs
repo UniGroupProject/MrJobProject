@@ -10,15 +10,9 @@ namespace MrJobProject.Converters
             if (value is DateTime)
             {
                 DateTime time = (DateTime)value;
-                return ValueToString(time.Hour) + ":" + ValueToString(time.Minute);
+                return time.ToString("HH:mm");
             }
             return "";
-        }
-
-        private string ValueToString(int time)
-        {
-            if (time == 0) return "00";
-            return time.ToString();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
