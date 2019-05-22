@@ -14,7 +14,7 @@
      FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
         xmlns:userControllers="clr-namespace:MrJobProject.UserControllers"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MrJob" Height="450" Width="800" WindowState="Maximized">
 
     <Window.DataContext>
         <userControllers:ScheduleUC />
