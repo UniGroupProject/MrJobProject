@@ -55,7 +55,7 @@
                  IsReadOnly="True"  
                  AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name"
+                <DataGridTextColumn Header="Nazwa"
                       Binding="{Binding Name}"/>
             </DataGrid.Columns>
         </DataGrid>
@@ -84,11 +84,11 @@
                      PreviewMouseLeftButtonUp="ShiftList_PreviewMouseLeftButtonUp">
             <ListBox.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Delete"
+                    <MenuItem Header="Usuń"
                                   Click="DeleteShift" />
-                    <MenuItem Header="Add shift"
+                    <MenuItem Header="Dodaj zmianę"
                                   Click="AddShiftDialog" />
-                    <MenuItem Header="Edit shift"
+                    <MenuItem Header="Edytuj zmianę"
                                   Click="EditShiftDialog" />
                 </ContextMenu>
             </ListBox.ContextMenu>
@@ -139,7 +139,7 @@
         >
         </Button>
         <Button Name="SaveBtn"
-                Content="Save"
+                Content="Zapisz"
                 Margin="6"
                 Grid.ColumnSpan="12"
                 Grid.RowSpan="1" 

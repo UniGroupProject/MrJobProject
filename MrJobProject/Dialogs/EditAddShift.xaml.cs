@@ -1,5 +1,7 @@
 ﻿using MrJobProject.Data;
+using SQLite;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 
 namespace MrJobProject.Dialogs
@@ -36,14 +38,43 @@ namespace MrJobProject.Dialogs
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            int fromH = Int32.Parse(timeFromHour.Text);
-            int fromM = Int32.Parse(timeFromMin.Text);
-            int toH = Int32.Parse(timeToHour.Text);
-            int toM = Int32.Parse(timeToMin.Text);
+            bool noExept = true;
+            
+            try
+            {
+                int fromH = Int32.Parse(timeFromHour.Text);
+                int fromM = Int32.Parse(timeFromMin.Text);
+                int toH = Int32.Parse(timeToHour.Text);
+                int toM = Int32.Parse(timeToMin.Text);
 
-            newShift.ShiftName = nameValue.Text;
-            newShift.TimeFrom = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, fromH, fromM, 0);
-            newShift.TimeTo = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, toH, toM, 0);
+                newShift.ShiftName = nameValue.Text;
+
+                newShift.TimeFrom = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, fromH, fromM, 0);
+                newShift.TimeTo = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, toH, toM, 0);
+            }
+            
+            catch(Exception)
+            {
+                InfoOK error = new InfoOK("Nieprawidłowe dane. Spróbuj ponownie");
+                error.ShowDialog();
+                noExept = false;
+            }
+
+            List<Shift> shifts;
+            using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
+            {
+                connection.CreateTable<Shift>();
+                shifts = new List<Shift> //shifts list
+                    (connection.Table<Shift>().Where(c => c.ShiftName == newShift.ShiftName).ToList());
+            }
+            if(shifts.Count > 0)
+            {
+                InfoOK error = new InfoOK("Zamiana o danej nazwie już istnieje");
+                error.ShowDialog();
+                noExept = false;
+            }
+
+            if (noExept && newShift.ShiftName != "")
             this.DialogResult = true;
         }
     }
