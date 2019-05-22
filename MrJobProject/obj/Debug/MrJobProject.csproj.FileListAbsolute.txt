@@ -36,8 +36,6 @@ C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\EditW
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\EditWorker.baml
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\YesNo.g.cs
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\YesNo.baml
-C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControllers\HolidayDateUC.g.cs
-C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControllers\HolidayDateUC.baml
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\InfoOK.g.cs
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\InfoOK.baml
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\Dialogs\EditAddShift.g.cs
@@ -160,3 +158,5 @@ C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\bin\Debug\itext.svg.xml
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\bin\Debug\MaterialDesignColors.pdb
 D:\MJMP\MrJobProject\obj\Debug\UserControllers\DayUC.g.cs
 D:\MJMP\MrJobProject\obj\Debug\UserControllers\DayUC.baml
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControllers\DayUC.g.cs
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\UserControllers\DayUC.baml

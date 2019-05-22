@@ -207,5 +207,14 @@ namespace MrJobProject.UserControllers
         {
             HolidaysList.SelectAll();
         }
+
+        private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            UserControl uc = sender as UserControl;
+            if (uc.IsVisible)
+            {
+                UpdateList();
+            }
+        }
     }
 }
