@@ -73,7 +73,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button Content="ALL"
+        <Button Content="Zaznacz wszystkich"
                 FontSize="15"
                 FontWeight="Bold"
                 Grid.Row="1"
@@ -84,7 +84,7 @@
                 
                 Click="AllButton_Click" />
 
-        <Button Content="None"
+        <Button Content="Odznacz wszystkich"
                 FontSize="15"
                 FontWeight="Bold"
                 Grid.Row="1"

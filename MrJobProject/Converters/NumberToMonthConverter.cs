@@ -11,7 +11,7 @@ namespace MrJobProject.Converters
             if (value is int)
             {
                 int num = (int)value;
-                string monthName = new DateTime(2000, num, 1).ToString("MMMMMMMMMMM", CultureInfo.InvariantCulture);//language item
+                string monthName = new DateTime(2000, num, 1).ToString("MMMMMMMMMMM", CultureInfo.CurrentCulture);//language item
                 return monthName;
             }
             return "";

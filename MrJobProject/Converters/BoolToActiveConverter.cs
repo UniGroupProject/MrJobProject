@@ -9,7 +9,7 @@ namespace MrJobProject.Converters
         {
             if (value is bool)
             {
-                if ((bool)value == true) return "Active"; //language item
+                if ((bool)value == true) return "Aktywny"; //language item
             }
             return "";
         }

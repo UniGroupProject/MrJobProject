@@ -145,7 +145,7 @@ namespace MrJobProject.UserControllers
             Shift shift = ShiftList.SelectedItem as Shift;
             if (shift != null)
             {
-                string question = "Are you sure you want to delete " + shift.ShiftName + "?"; //language item
+                string question = "Czy jesteś pewien, że chcesz usunąć " + shift.ShiftName + "?"; //language item
                 YesNo Result = new YesNo(question);
 
                 if (Result.ShowDialog() == true)

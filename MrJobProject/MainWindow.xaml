@@ -34,10 +34,10 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Uid ="0" Content="SCHEDULE" Margin="0 8 0 8" Grid.Column="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="MenuClick"/>
-                <Button Uid ="1" Content="WORKERS"   Grid.Column="1"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="MenuClick"></Button>
-                <Button Uid ="2" Content="HOLIDAYS"  Grid.Column="2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="MenuClick"></Button>
-                <Button Uid ="3" Content="LISTS"     Grid.Column="3" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="MenuClick"></Button>
+                <Button Uid ="0" Content="GRAFIK" Margin="0 8 0 8" Grid.Column="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="MenuClick"/>
+                <Button Uid ="1" Content="PRACOWNICY"   Grid.Column="1"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="MenuClick"></Button>
+                <Button Uid ="2" Content="URLOPY"  Grid.Column="2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="MenuClick"></Button>
+                <Button Uid ="3" Content="LISTY"     Grid.Column="3" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="MenuClick"></Button>
                 <Grid x:Name="GridCursor" Grid.Column="0" Height="5"  Background="#FF2196F3" VerticalAlignment="Bottom" />
             </Grid>
         </StackPanel>

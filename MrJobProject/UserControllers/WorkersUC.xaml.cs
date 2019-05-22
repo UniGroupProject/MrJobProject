@@ -58,7 +58,7 @@ namespace MrJobProject.UserControllers
         private void DatacontextItem_Delete(object sender, RoutedEventArgs e) //right click -> delete
         {
             Worker worker = WorkersList.SelectedItem as Worker;
-            string question = "Are you sure you want to delete " + worker.Name + "?"; //language item
+            string question = "Czy jesteś pewien, że chcesz usunąć " + worker.Name + "?"; //language item
             YesNo Result = new YesNo(question);
 
             if (Result.ShowDialog() == true)

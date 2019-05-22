@@ -130,7 +130,7 @@
 
         <Button 
                 x:Name="AddHolidayButton"
-                Content="ADD HOLIDAY"
+                Content="Dodaj urlop"
                 Grid.Row="11"
                 Grid.Column="0"
                 Click="AddHolidayButton_OnClick"
@@ -140,7 +140,7 @@
             </Button>
         <Button 
             x:Name="DeleteHolidayButton"
-            Content="DELETE HOLIDAY"
+            Content="Usuń urlop"
             Grid.Row="11"
             Grid.Column="1"
             Click="DeleteHolidayButton_OnClick"
@@ -151,7 +151,7 @@
 
         <Button 
             x:Name="AllButton"
-            Content="ALL"
+            Content="Zaznacz wszystko"
             Grid.Row="10"
             Grid.Column="0"
             Click="AllButton_OnClick"
@@ -161,7 +161,7 @@
         </Button>
         <Button 
             x:Name="NoneButton"
-            Content="NONE"
+            Content="Odznacz wszystko"
             Grid.Row="10"
             Grid.Column="1"
             Click="NoneButton_OnClick"
