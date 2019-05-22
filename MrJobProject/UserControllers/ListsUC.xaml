@@ -29,8 +29,7 @@
         </Grid.Resources>
         <ComboBox Name="ListOfMonths"
                    Grid.Column="0"
-                   Grid.ColumnSpan="2"
-                   SelectionChanged="ListOfMonths_SelectionChanged">
+                   Grid.ColumnSpan="2">
 
             <ComboBox.ItemTemplate>
                 <DataTemplate>
@@ -43,8 +42,7 @@
 
         <ComboBox Name="ListOfYears"
                   Grid.Column="2"
-                  Grid.ColumnSpan="2"
-                  SelectionChanged="ListOfYears_SelectionChanged">
+                  Grid.ColumnSpan="2">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>

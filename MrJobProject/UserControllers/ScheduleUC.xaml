@@ -7,7 +7,7 @@
              xmlns:converters="clr-namespace:MrJobProject.Converters"
              xmlns:dataGrid2D="http://gu.se/DataGrid2D"
              mc:Ignorable="d"
-             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded" IsVisibleChanged="UserControl_IsVisibleChanged">
+             d:DesignHeight="450" d:DesignWidth="800" IsVisibleChanged="UserControl_IsVisibleChanged">
     <Grid>
         <Grid.Resources>
             <converters:NumberToMonthConverter x:Key="NumberToMonthConverter" />
