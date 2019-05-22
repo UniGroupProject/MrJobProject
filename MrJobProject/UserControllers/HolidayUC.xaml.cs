@@ -31,7 +31,6 @@ namespace MrJobProject.UserControllers
             ListOfMonths.SelectedValue = DateTime.Today.Month;
             ListOfReasons.SelectedValue = GetListOfHolidayTypes().First();
 
-
             workers = new ObservableCollection<Worker>();
 
             UpdateList();
@@ -192,7 +191,6 @@ namespace MrJobProject.UserControllers
                         connection.Delete(holiday);
                     }
             }
-
 
             SetCalendar();
         }

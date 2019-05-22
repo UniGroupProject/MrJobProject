@@ -20,12 +20,10 @@
         <userControllers:ScheduleUC />
     </Window.DataContext>
     <Grid>
-        
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="12*"/>
         </Grid.RowDefinitions>
-        
         <StackPanel Grid.Row="0">
             <Grid    Grid.Row="0">
                 <Grid.ColumnDefinitions>
@@ -34,11 +32,11 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Uid ="0" Content="GRAFIK" Margin="0 8 0 8" Grid.Column="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="MenuClick"/>
-                <Button Uid ="1" Content="PRACOWNICY"   Grid.Column="1"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="MenuClick"></Button>
-                <Button Uid ="2" Content="URLOPY"  Grid.Column="2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="MenuClick"></Button>
-                <Button Uid ="3" Content="LISTY"     Grid.Column="3" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="MenuClick"></Button>
-                <Grid x:Name="GridCursor" Grid.Column="0" Height="5"  Background="#FF2196F3" VerticalAlignment="Bottom" />
+                <Button Uid ="0" Content="GRAFIK" Margin="0 8 0 8"  Grid.Column="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="MenuClick"/>
+                <Button Uid ="1" Content="PRACOWNICY"   Grid.Column="1" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="MenuClick"></Button>
+                <Button Uid ="2" Content="URLOPY"   Grid.Column="2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="MenuClick"></Button>
+                <Button Uid ="3" Content="LISTY"    Grid.Column="3" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="MenuClick"></Button>
+                <Grid x:Name="GridCursor" Grid.Column="0" Height="5"    Background="#FF2196F3" VerticalAlignment="Bottom" />
             </Grid>
         </StackPanel>
         <Grid Name="MainView"
@@ -49,4 +47,4 @@
             <userControllers:ListsUC x:Name="ListsGrid" Visibility="Hidden"></userControllers:ListsUC>
         </Grid>
     </Grid>
-        </Window>
+</Window>

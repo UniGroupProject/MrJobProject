@@ -14,7 +14,6 @@
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    Height="Auto"
-
         />
     </Grid>
 </UserControl>

@@ -195,12 +195,6 @@ namespace MrJobProject.UserControllers
             }
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e) // when UC loaded - updates data
-        {
-            UpdateLists();
-            ReadScheduleList();
-        }
-
         private void BackDateBtn_Click(object sender, RoutedEventArgs e) // button to select earlier month
         {
             int selectedYear = (int)ListOfYears.SelectedValue;
@@ -275,7 +269,7 @@ namespace MrJobProject.UserControllers
             ReadScheduleList();
         }
 
-        private void SaveBtn_Click(object sender, RoutedEventArgs e)
+        private void SaveBtn_Click(object sender, RoutedEventArgs e) // save button cklicked
         {
             using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
             {
@@ -326,7 +320,7 @@ namespace MrJobProject.UserControllers
 
       
 
-        private void ScheduleList_PreviewKeyDown(object sender, KeyEventArgs e)
+        private void ScheduleList_PreviewKeyDown(object sender, KeyEventArgs e) // schedule clicked
         {
             if (e.Key == Key.Delete)
             {
@@ -352,7 +346,7 @@ namespace MrJobProject.UserControllers
             }
         }
 
-        private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e) //when UserConrol loaded -> update
         {
             UserControl uc = sender as UserControl;
             if (uc.IsVisible)

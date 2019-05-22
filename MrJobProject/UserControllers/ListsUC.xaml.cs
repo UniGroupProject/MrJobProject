@@ -51,16 +51,6 @@ namespace MrJobProject.UserControllers
             }
         }
 
-        private void ListOfYears_SelectionChanged(object sender, SelectionChangedEventArgs e) // when year changed
-        {
-            //TODO:
-        }
-
-        private void ListOfMonths_SelectionChanged(object sender, SelectionChangedEventArgs e) // when month changed
-        {
-            //TODO:
-        }
-
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox searchTextBox = sender as TextBox;
@@ -72,7 +62,6 @@ namespace MrJobProject.UserControllers
         private void WorkersListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             this.selectedWorkers = workersListView.SelectedItems.Cast<Worker>().ToList();
-
         }
 
         private void NoneButton_Click(object sender, RoutedEventArgs e)
@@ -96,7 +85,6 @@ namespace MrJobProject.UserControllers
             string fieldStop = "stop_";   // stopShift form for accesing fields in pdf form
 
             string strPath = System.AppDomain.CurrentDomain.BaseDirectory;
-
 
             if (this.selectedWorkers != null)
             {
@@ -122,8 +110,6 @@ namespace MrJobProject.UserControllers
 
                     using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
                     {
-
-
                         connection.CreateTable<Schedule>(); //read all schedules in selected month/year for specific worker
                         schedules = new List<Schedule>
                             (connection.Table<Schedule>().ToList().Where(c => (c.Date.Month == selectedMonth) && (c.Date.Year == selectedYear) && (c.WorkerId == worker.Id)));
@@ -131,7 +117,6 @@ namespace MrJobProject.UserControllers
                         connection.CreateTable<Shift>();
                         shifts = new List<Shift> //shifts list
                             (connection.Table<Shift>().ToList().OrderBy(c => c.Id).ToList());
-
                     }
 
                     string src = $@"{strPath}pdfForm.pdf";
@@ -147,7 +132,6 @@ namespace MrJobProject.UserControllers
 
                     fields.TryGetValue("month", out toSet);
                     toSet.SetValue($"{monthName}");
-
 
                     for (int day = 1; day <= DateTime.DaysInMonth(selectedYear, selectedMonth); day++)
                     {
@@ -172,7 +156,6 @@ namespace MrJobProject.UserControllers
 
                             fields.TryGetValue(fieldStop + day.ToString(), out toSet);
                             toSet.SetValue($"{selectedShift.TimeTo.ToString("H:mm")}");
-
                         }
                     }
 
@@ -183,9 +166,6 @@ namespace MrJobProject.UserControllers
             {
                 MessageBox.Show("No workers selected!");
             }
-
-
-
         }
 
         private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)

@@ -81,7 +81,7 @@ namespace MrJobProject.UserControllers
             WorkersList.ItemsSource = workers;
         }
 
-        private void TextBox_KeyDown(object sender, KeyEventArgs e) //enter -> add new worker
+        private void TextBox_KeyDown(object sender, KeyEventArgs e) //enter -c> add new worker
         {
             if (e.Key == Key.Return)
             {
