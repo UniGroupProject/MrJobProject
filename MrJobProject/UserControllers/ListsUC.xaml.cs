@@ -12,6 +12,7 @@ using System.Windows.Input;
 using iText.Forms;
 using iText.Forms.Fields;
 using iText.Kernel.Pdf;
+using MrJobProject.Dialogs;
 
 namespace MrJobProject.UserControllers
 {
@@ -104,7 +105,8 @@ namespace MrJobProject.UserControllers
                     }
                     else
                     {
-                        MessageBox.Show("ERROR NO MONTH SELECTED");
+                        InfoOK info = new InfoOK("Nie wybrano pracowników!");
+                        info.ShowDialog();
                         return;
                     }
 
@@ -161,10 +163,13 @@ namespace MrJobProject.UserControllers
 
                     pdf.Close();
                 }
+                InfoOK success = new InfoOK("Utworzono pliki PDF");
+                success.ShowDialog();
             }
             else
             {
-                MessageBox.Show("No workers selected!");
+                InfoOK info = new InfoOK("Nie wybrano pracowników!");
+                info.ShowDialog();
             }
         }
 

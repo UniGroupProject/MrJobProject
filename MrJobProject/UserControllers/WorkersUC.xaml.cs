@@ -37,7 +37,7 @@ namespace MrJobProject.UserControllers
 
         private void AddNewWorker(object sender, RoutedEventArgs e)
         {
-            if (nameValue.Text != null)
+            if (nameValue.Text != "")
             {
                 Worker worker = new Worker()
                 {

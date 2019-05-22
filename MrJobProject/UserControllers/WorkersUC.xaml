@@ -32,7 +32,7 @@
                       VerticalAlignment="Center">
             </CheckBox>
             <Button Grid.Column="2"
-                    Content="Add worker"
+                    Content="Dodaj pracownika"
                     Click="AddNewWorker" />
         </Grid>
         <Grid Grid.Row="1">

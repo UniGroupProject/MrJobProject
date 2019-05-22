@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using MrJobProject.Classes;
 using MrJobProject.Data;
+using MrJobProject.Dialogs;
 using SQLite;
 
 namespace MrJobProject.UserControllers
@@ -170,29 +171,38 @@ namespace MrJobProject.UserControllers
             }
 
             SetCalendar();
+
+            InfoOK info = new InfoOK("Dodano urlop");
+            info.ShowDialog();
         }
 
         private void DeleteHolidayButton_OnClick(object sender, RoutedEventArgs e)
         {
-            var selectedWorker = (Worker) WorkersList.SelectedItem;
-            var selectedMonth = (int) ListOfMonths.SelectedValue;
-            var selectedYear = (int) ListOfYears.SelectedValue;
+            string question = "Czy jesteś pewien, że chcesz usunąć?"; //language item
+            YesNo Result = new YesNo(question);
 
-            var selectedDays = HolidaysList.SelectedItems.Cast<Day>().ToList();
-
-            using (var connection = new SQLiteConnection(App.databasePath))
+            if (Result.ShowDialog() == true)
             {
-                foreach (var selectedDay in selectedDays)
-                    if (selectedDay.IsHoliday)
-                    {
-                        var holiday = holidays.Where(c => c.Date.Day.ToString() == selectedDay.DayNumber.ToString())
-                            .ToList().First();
+                var selectedWorker = (Worker)WorkersList.SelectedItem;
+                var selectedMonth = (int)ListOfMonths.SelectedValue;
+                var selectedYear = (int)ListOfYears.SelectedValue;
 
-                        connection.Delete(holiday);
-                    }
+                var selectedDays = HolidaysList.SelectedItems.Cast<Day>().ToList();
+
+                using (var connection = new SQLiteConnection(App.databasePath))
+                {
+                    foreach (var selectedDay in selectedDays)
+                        if (selectedDay.IsHoliday)
+                        {
+                            var holiday = holidays.Where(c => c.Date.Day.ToString() == selectedDay.DayNumber.ToString())
+                                .ToList().First();
+
+                            connection.Delete(holiday);
+                        }
+                }
+
+                SetCalendar();
             }
-
-            SetCalendar();
         }
 
 
