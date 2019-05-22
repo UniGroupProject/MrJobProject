@@ -158,3 +158,5 @@ C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\bin\Debug\itext.sign.xm
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\bin\Debug\itext.styledxmlparser.xml
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\bin\Debug\itext.svg.xml
 C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\bin\Debug\MaterialDesignColors.pdb
+D:\MJMP\MrJobProject\obj\Debug\UserControllers\DayUC.g.cs
+D:\MJMP\MrJobProject\obj\Debug\UserControllers\DayUC.baml

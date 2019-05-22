@@ -117,6 +117,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\Day.cs" />
     <Compile Include="Converters\BoolToActiveConverter.cs" />
     <Compile Include="Converters\NumberToMonthConverter.cs" />
     <Compile Include="Converters\TimeToStringConverter.cs" />
@@ -132,8 +133,8 @@
     <Compile Include="Dialogs\YesNo.xaml.cs">
       <DependentUpon>YesNo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControllers\HolidayDateUC.xaml.cs">
-      <DependentUpon>HolidayDateUC.xaml</DependentUpon>
+    <Compile Include="UserControllers\DayUC.xaml.cs">
+      <DependentUpon>DayUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControllers\HolidayUC.xaml.cs">
       <DependentUpon>HolidayUC.xaml</DependentUpon>
@@ -182,7 +183,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UserControllers\HolidayDateUC.xaml">
+    <Page Include="UserControllers\DayUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -233,9 +234,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Tjek.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.13\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.13\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets')" />

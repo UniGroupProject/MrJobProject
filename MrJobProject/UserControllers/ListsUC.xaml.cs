@@ -149,7 +149,7 @@ namespace MrJobProject.UserControllers
                     toSet.SetValue($"{monthName}");
 
 
-                    for (int day = 1; day < DateTime.DaysInMonth(selectedYear, selectedMonth); day++)
+                    for (int day = 1; day <= DateTime.DaysInMonth(selectedYear, selectedMonth); day++)
                     {
                         Schedule daySchedule;
 

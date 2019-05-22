@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace MrJobProject.Data
 {
-    internal class Holiday : INotifyPropertyChanged
+    public  class Holiday : INotifyPropertyChanged
     {
         private int id;
         private int workerId;
