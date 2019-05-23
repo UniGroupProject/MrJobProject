@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\MJMP\MrJobProject\App.xaml
-12-1450414445
+11-1965377582
 21716421753
-24-161587642
+23-66065573
 86-1655700029
-Dialogs\EditAddShift.xaml;Dialogs\EditWorker.xaml;Dialogs\InfoOK.xaml;Dialogs\YesNo.xaml;MainWindow.xaml;UserControllers\DayUC.xaml;UserControllers\HolidayDateUC.xaml;UserControllers\HolidayUC.xaml;UserControllers\ListsUC.xaml;UserControllers\ScheduleUC.xaml;UserControllers\WorkersUC.xaml;UserControllers\workerUC.xaml;
+Dialogs\EditAddShift.xaml;Dialogs\EditWorker.xaml;Dialogs\InfoOK.xaml;Dialogs\YesNo.xaml;MainWindow.xaml;UserControllers\DayUC.xaml;UserControllers\HolidayUC.xaml;UserControllers\ListsUC.xaml;UserControllers\ScheduleUC.xaml;UserControllers\WorkersUC.xaml;UserControllers\workerUC.xaml;
 
 False
 

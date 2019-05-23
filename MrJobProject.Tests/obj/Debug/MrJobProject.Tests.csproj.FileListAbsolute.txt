@@ -1,0 +1,2 @@
+D:\MJMP\MrJobProject.Tests\obj\Debug\MrJobProject.Tests.csprojAssemblyReference.cache
+D:\MJMP\MrJobProject.Tests\obj\Debug\MrJobProject.Tests.csproj.CoreCompileInputs.cache

@@ -9,7 +9,16 @@ namespace MrJobProject.Classes
 {
     public class Day
     {
-        public int DayNumber { get; set; }
+        private int dayNumber;
+
+        public int DayNumber
+        {
+            get { return dayNumber;}
+            set
+            {
+                if (value >= 1 && value <= 31) dayNumber = value;
+            }
+        }
 
         public bool IsHoliday { get; set; }
 
