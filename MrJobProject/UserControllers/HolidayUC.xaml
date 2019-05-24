@@ -8,7 +8,7 @@
              xmlns:converters="clr-namespace:MrJobProject.Converters"
 
              d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded" IsVisibleChanged="UserControl_IsVisibleChanged">
-    <Grid Background="White">
+    <Grid Margin="10">
         <Grid.Resources>
             <converters:BoolToActiveConverter x:Key="ActiveConverter" />
             <converters:NumberToMonthConverter x:Key="NumberToMonthConverter" />
@@ -89,7 +89,8 @@
                       Grid.Column="2"
                       Grid.ColumnSpan="1"
                       SelectionChanged="ListOfMonths_OnSelectionChanged"
-                      Margin="4">
+                      Margin="4"
+                      HorizontalContentAlignment="Center">
 
             <ComboBox.ItemTemplate>
                 <DataTemplate>
@@ -104,7 +105,8 @@
                       Grid.Column="3"
                       Grid.ColumnSpan="1"
                       SelectionChanged="ListOfYears_OnSelectionChanged"
-                      Margin="4">
+                      Margin="4"
+                      HorizontalContentAlignment="Center">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
