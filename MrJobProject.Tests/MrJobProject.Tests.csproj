@@ -7,7 +7,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{FE686865-2F58-498E-BA33-2C7D14B95BFA}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>MrJobProject.Tests</RootNamespace>
     <AssemblyName>MrJobProject.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -36,6 +36,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
@@ -52,7 +55,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BoolToActiveConventerTests.cs" />
     <Compile Include="DayTests.cs" />
+    <Compile Include="HolidayTests.cs" />
+    <Compile Include="NumberToMonthConverterTests.cs" />
+    <Compile Include="ScheduleTests.cs" />
+    <Compile Include="ShiftTests.cs" />
+    <Compile Include="TimeToStringConverterTests.cs" />
+    <Compile Include="WorkerTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

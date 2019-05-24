@@ -17,8 +17,8 @@ namespace MrJobProject.UserControllers
     {
         private ObservableCollection<Worker> workers;
         private ObservableCollection<Holiday> holidays;
-
-
+        
+       
         public HolidayUC()
         {
             InitializeComponent();
@@ -31,8 +31,9 @@ namespace MrJobProject.UserControllers
             ListOfMonths.SelectedValue = DateTime.Today.Month;
             ListOfReasons.SelectedValue = GetListOfHolidayTypes().First();
 
+            
 
-            workers = new ObservableCollection<Worker>();
+        workers = new ObservableCollection<Worker>();
 
             UpdateList();
         }
