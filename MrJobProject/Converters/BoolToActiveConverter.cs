@@ -3,7 +3,7 @@ using System.Windows.Data;
 
 namespace MrJobProject.Converters
 {
-    internal class BoolToActiveConverter : IValueConverter
+    public class BoolToActiveConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {

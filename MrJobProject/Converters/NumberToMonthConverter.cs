@@ -4,7 +4,7 @@ using System.Windows.Data;
 
 namespace MrJobProject.Converters
 {
-    internal class NumberToMonthConverter : IValueConverter
+    public class NumberToMonthConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
