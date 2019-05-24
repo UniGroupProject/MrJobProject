@@ -1,8 +1,0 @@
-D:\MJMP\.vs\MrJobProject\lut\0\b\MrJobProject.Tests\bin\Debug\x86\e_sqlite3.dll
-D:\MJMP\.vs\MrJobProject\lut\0\b\MrJobProject.Tests\bin\Debug\x64\e_sqlite3.dll
-D:\MJMP\.vs\MrJobProject\lut\0\b\MrJobProject.Tests\bin\Debug\MrJobProject.Tests.dll.config
-D:\MJMP\.vs\MrJobProject\lut\0\b\MrJobProject.Tests\bin\Debug\MrJobProject.Tests.dll
-D:\MJMP\.vs\MrJobProject\lut\0\i\MrJobProject.Tests\Debug\MrJobProject.Tests.csprojAssemblyReference.cache
-D:\MJMP\.vs\MrJobProject\lut\0\i\MrJobProject.Tests\Debug\MrJobProject.Tests.csproj.CoreCompileInputs.cache
-D:\MJMP\.vs\MrJobProject\lut\0\i\MrJobProject.Tests\Debug\MrJobProject.Tests.csproj.CopyComplete
-D:\MJMP\.vs\MrJobProject\lut\0\i\MrJobProject.Tests\Debug\MrJobProject.Tests.dll

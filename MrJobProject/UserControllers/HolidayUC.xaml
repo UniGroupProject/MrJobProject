@@ -14,29 +14,29 @@
             <converters:NumberToMonthConverter x:Key="NumberToMonthConverter" />
         </Grid.Resources>
 
-        
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
 
-            <ListBox x:Name="WorkersList"
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <ListBox x:Name="WorkersList"
                      HorizontalAlignment="Stretch"
                      HorizontalContentAlignment="Stretch"
                      ScrollViewer.CanContentScroll="False"
@@ -48,25 +48,25 @@
                      Margin="4">
 
             <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="8*" />
-                                <ColumnDefinition Width="2*" />
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0"
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="8*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
                                        Text="{Binding Name}" />
-                            <TextBlock Grid.Column="1"
+                        <TextBlock Grid.Column="1"
                                        Text="{Binding Status,
                                        Converter={StaticResource ActiveConverter}}"
                                        Margin="2,0">
-                            </TextBlock>
-                        </Grid>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-                </ListBox>
+                        </TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
-            <ListBox x:Name="HolidaysList"
+        <ListBox x:Name="HolidaysList"
                      HorizontalAlignment="Stretch"
                      HorizontalContentAlignment="Stretch"
                      ScrollViewer.CanContentScroll="False"
@@ -78,41 +78,41 @@
                      Margin="4"
                      SelectionMode="Multiple">
 
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <local:DayUC Day="{Binding}"/>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <local:DayUC Day="{Binding}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
-            <ComboBox Name="ListOfMonths"
+        <ComboBox Name="ListOfMonths"
                       Grid.Column="2"
                       Grid.ColumnSpan="1"
                       SelectionChanged="ListOfMonths_OnSelectionChanged"
                       Margin="4">
 
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <WrapPanel>
-                            <TextBlock Text="{Binding Converter={StaticResource NumberToMonthConverter}}"></TextBlock>
-                        </WrapPanel>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="{Binding Converter={StaticResource NumberToMonthConverter}}"></TextBlock>
+                    </WrapPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
 
-            <ComboBox Name="ListOfYears"
+        <ComboBox Name="ListOfYears"
                       Grid.Column="3"
                       Grid.ColumnSpan="1"
                       SelectionChanged="ListOfYears_OnSelectionChanged"
                       Margin="4">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <WrapPanel>
-                            <TextBlock Text="{Binding}"></TextBlock>
-                        </WrapPanel>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="{Binding}"></TextBlock>
+                    </WrapPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <ComboBox Name="ListOfReasons"
                   Grid.Column="0"
                   Grid.ColumnSpan="2"
@@ -136,8 +136,8 @@
                 Click="AddHolidayButton_OnClick"
                 Margin="4">
 
-                    
-            </Button>
+
+        </Button>
         <Button 
             x:Name="DeleteHolidayButton"
             Content="Usuń urlop"
