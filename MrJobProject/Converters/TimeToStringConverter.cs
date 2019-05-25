@@ -10,7 +10,7 @@ namespace MrJobProject.Converters
             if (value is DateTime)
             {
                 DateTime time = (DateTime)value;
-                return time.ToString("HH:mm");
+                return time.ToString("H:mm");
             }
             return "";
         }

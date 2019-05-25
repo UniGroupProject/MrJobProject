@@ -83,8 +83,8 @@
                      Grid.RowSpan="5" 
                      Grid.Column="10" 
                      Grid.Row="2"
-                     
-                     PreviewMouseLeftButtonUp="ShiftList_PreviewMouseLeftButtonUp" HorizontalAlignment="Left">
+                     PreviewMouseLeftButtonUp="ShiftList_PreviewMouseLeftButtonUp"
+                     HorizontalAlignment="Left">
             <ListBox.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Usuń"

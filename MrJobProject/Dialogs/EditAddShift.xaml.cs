@@ -22,6 +22,8 @@ namespace MrJobProject.Dialogs
             timeFromMin.Text = "00";
             timeToHour.Text = "00";
             timeToMin.Text = "00";
+
+            nameValue.Focus();
         }
 
         public EditAddShift(Shift shift)
@@ -30,10 +32,12 @@ namespace MrJobProject.Dialogs
 
             newShift = shift;
             nameValue.Text = shift.ShiftName;
-            timeFromHour.Text = shift.TimeFrom.Hour.ToString();
-            timeFromMin.Text = shift.TimeFrom.Minute.ToString();
-            timeToHour.Text = shift.TimeTo.Hour.ToString();
-            timeToMin.Text = shift.TimeTo.Minute.ToString();
+            timeFromHour.Text = shift.TimeFrom.ToString("HH");
+            timeFromMin.Text = shift.TimeFrom.ToString("mm");
+            timeToHour.Text = shift.TimeTo.ToString("HH");
+            timeToMin.Text = shift.TimeTo.ToString("mm");
+
+            nameValue.Focus();
         }
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
@@ -76,6 +80,26 @@ namespace MrJobProject.Dialogs
 
             if (noExept && newShift.ShiftName != "")
             this.DialogResult = true;
+        }
+
+        private void TimeFromHour_GotFocus(object sender, RoutedEventArgs e)
+        {
+            timeFromHour.SelectAll();
+        }
+
+        private void TimeFromMin_GotFocus(object sender, RoutedEventArgs e)
+        {
+            timeFromMin.SelectAll();
+        }
+
+        private void TimeToHour_GotFocus(object sender, RoutedEventArgs e)
+        {
+            timeToHour.SelectAll();
+        }
+
+        private void TimeToMin_GotFocus(object sender, RoutedEventArgs e)
+        {
+            timeToMin.SelectAll();
         }
     }
 }
