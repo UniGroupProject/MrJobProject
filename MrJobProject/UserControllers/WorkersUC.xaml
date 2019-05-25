@@ -33,28 +33,30 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <TextBox Grid.Column="0"
+        <TextBox Grid.Column="2"
                  Name="nameValue"
                  MaxLines="1"
                  KeyDown="TextBox_KeyDown" 
-                 Grid.ColumnSpan="4"
-                 Margin="10"/>
-        <CheckBox Grid.Column="4"
+                 Grid.ColumnSpan="3"
+                 Margin="10" FontSize="16" HorizontalContentAlignment="Center"/>
+        <CheckBox Grid.Column="5"
                   Name="statusValue"
                   IsChecked="True"
                   HorizontalAlignment="Center"
                   VerticalAlignment="Center"
-        >
+                  Content="Aktywny"
+                  >
         </CheckBox>
-        <Button Grid.Column="5"
+        <Button Grid.Column="6"
                 Grid.ColumnSpan="2"
                 Content="Dodaj pracownika"
                 Click="AddNewWorker"
                 Margin="10"/>
         <Grid Grid.Row="1"
+              Grid.Column="3"
               Grid.RowSpan="8"
               Grid.ColumnSpan="9"
-              Margin="15">
+              Margin="15" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -69,7 +71,7 @@
                      >
                 <ListBox.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="Delete"
+                        <MenuItem Header="Usuń"
                                   Click="DatacontextItem_Delete" />
                     </ContextMenu>
                 </ListBox.ContextMenu>
