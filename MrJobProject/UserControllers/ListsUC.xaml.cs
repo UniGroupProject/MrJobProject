@@ -17,11 +17,19 @@ using MrJobProject.Dialogs;
 namespace MrJobProject.UserControllers
 {
     /// <summary>
-    /// Interaction logic for ListsUC.xaml
+    /// Logika kontrolki ListsUC
     /// </summary>
+    /// <remarks>
+    /// Zawiera konstruktor, pola oraz zdarzenia
+    /// </remarks>
     public partial class ListsUC : UserControl
-    {
+    {   /// <summary>
+        /// ObservableCollection  zawierajaca typ Worker o nazwie workers zawiera liste pracownikow
+        /// </summary>
         private ObservableCollection<Worker> workers;
+        /// <summary>
+        /// List zawierajaca typ Worker o nazwie selectedWorkers zawiera liste wybranych pracownikow
+        /// </summary>
         private List<Worker> selectedWorkers;
 
 
@@ -36,7 +44,9 @@ namespace MrJobProject.UserControllers
             workers = new ObservableCollection<Worker>();
             ReadDatabase();
         }
-
+        /// <summary>
+        /// Metoda ReadDatabase() pobiera z baz ydanych liste pracownikow
+        /// </summary>
         private void ReadDatabase()
         {
             //TODO:
@@ -51,7 +61,9 @@ namespace MrJobProject.UserControllers
                 }
             }
         }
-
+        /// <summary>
+        /// Zdarzenie SearchTextBox_TextChanged(object sender, TextChangedEventArgs e) podczas wywolania filtruje liste pracownikow
+        /// </summary>
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox searchTextBox = sender as TextBox;
@@ -59,12 +71,16 @@ namespace MrJobProject.UserControllers
 
             workersListView.ItemsSource = filteredList;
         }
-
+        /// <summary>
+        /// Zdarzenie WorkersListView_SelectionChanged(object sender, SelectionChangedEventArgs e) podczas wywolania przypisuje do pola selectedWorkers zaznaczonych pracownikow z WorkersListView
+        /// </summary>
         private void WorkersListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             this.selectedWorkers = workersListView.SelectedItems.Cast<Worker>().ToList();
         }
-
+        /// <summary>
+        /// Zdarzenie NoneButton_Click(object sender, RoutedEventArgs e) podczas wywolania odznacza wszystkich pracownikow z workersListView
+        /// </summary>
         private void NoneButton_Click(object sender, RoutedEventArgs e)
         {
             foreach (var item in workers)
@@ -74,11 +90,16 @@ namespace MrJobProject.UserControllers
             Keyboard.Focus(workersListView);
         }
 
+        /// <summary>
+        /// Zdarzenie AllButton_Click(object sender, RoutedEventArgs e) podczas wywolania zaznacza wszystkich pracownikow z workersListView
+        /// </summary>
         private void AllButton_Click(object sender, RoutedEventArgs e)
         {
             workersListView.SelectAll();
         }
-
+        /// <summary>
+        /// Zdarzenie PdfButton_OnClick(object sender, RoutedEventArgs e) podczas wywolania generuje liste obecnosci dla wybranych pracownikow w postaci plikow PDF
+        /// </summary>
         private void PdfButton_OnClick(object sender, RoutedEventArgs e)
         {
             string fieldShift = "shift_"; // name form for accesing fields in pdf form
@@ -172,7 +193,9 @@ namespace MrJobProject.UserControllers
                 info.ShowDialog();
             }
         }
-
+        /// <summary>
+        /// Zdarzenie UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e) powoduje wywolanie metody ReadDatabase()
+        /// </summary>
         private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             UserControl uc = sender as UserControl;

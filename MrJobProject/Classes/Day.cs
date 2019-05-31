@@ -10,7 +10,7 @@ namespace MrJobProject.Classes
     /// <summary>
     ///  Klasa Day, wykorzystana w kontrolce DayUC do przedstawienia poszczegolnych dni i tego, czy sa urlopami
     /// </summary>
-    /// /// <remarks>
+    /// <remarks>
     /// Klasa Day zawiera jedynie wlasciwosci i konstruktory
     /// </remarks>
     public class Day

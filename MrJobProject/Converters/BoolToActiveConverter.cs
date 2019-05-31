@@ -6,7 +6,7 @@ namespace MrJobProject.Converters
     /// <summary>
     ///  Klasa BoolToActiveConverter, wykorzystana przez interfejs graficzny do przetworzenia stanu True/False na brak napisu lub napis "Aktywny"
     /// </summary>
-    /// /// <remarks>
+    /// <remarks>
     /// Klasa BoolToActiveConverter zawiera 2 metody
     /// </remarks>
     public class BoolToActiveConverter : IValueConverter

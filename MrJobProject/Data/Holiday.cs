@@ -7,7 +7,7 @@ namespace MrJobProject.Data
     /// <summary>
     ///  Klasa Holiday, wykorzystana przez baze danych SQLite oraz aplikacje do przechowywania danych zwiazanych z urlopami
     /// </summary>
-    /// /// <remarks>
+    /// <remarks>
     /// Zawiera wlasciwosci oraz zdarzenie
     /// </remarks>
     public class Holiday : INotifyPropertyChanged

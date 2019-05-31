@@ -5,26 +5,29 @@ using System.Windows.Controls;
 namespace MrJobProject.UserControllers
 {
     /// <summary>
-    /// Interaction logic for workerUC.xaml
+    /// Logika kontrolki workerUC
     /// </summary>
+    /// <remarks>
+    /// Zawiera konstruktor, wlasciwosc oraz rejestruje dependency property
+    /// </remarks>
     public partial class workerUC : UserControl
     {
         public workerUC()
         {
             InitializeComponent();
         }
-
+        /// <value>Zwraca lub ustawia wlasciwosc typu Worker</value>
         public Worker Worker
         {
             get { return (Worker)GetValue(WorkerProperty); }
             set { SetValue(WorkerProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Worker.  This enables animation, styling, binding, etc...
+        /// <value>Rejestruje dependency property</value>
         public static readonly DependencyProperty WorkerProperty =
             DependencyProperty.Register("Worker", typeof(Worker), typeof(workerUC),
                 new PropertyMetadata(new Worker() { Name = "Imięs i Nazwisko"}, SetPropertiesOfTextBox));
-
+        /// <value>Ustawia wyswietlana nazwe pracownika w kontrolce</value>
         private static void SetPropertiesOfTextBox(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             workerUC worker = d as workerUC;

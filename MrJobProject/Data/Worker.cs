@@ -6,7 +6,7 @@ namespace MrJobProject.Data
     /// <summary>
     ///  Klasa Worker, wykorzystana przez baze danych SQLite oraz aplikacje do przechowywania danych zwiazanych z pracownikami
     /// </summary>
-    /// /// <remarks>
+    /// <remarks>
     /// Zawiera wlasciwosci oraz zdarzenie
     /// </remarks>
     public class Worker : INotifyPropertyChanged

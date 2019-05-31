@@ -18,9 +18,11 @@ using MrJobProject.Classes;
 namespace MrJobProject.UserControllers
 {
     /// <summary>
-    /// Interaction logic for DayUC.xaml
-    /// 
+    /// Logika kontrolki DayUC
     /// </summary>
+    /// <remarks>
+    /// Zawiera konstruktor, wlasciwosc oraz rejestruje dependency property
+    /// </remarks>
     public partial class DayUC : UserControl
     {
 
@@ -28,10 +30,11 @@ namespace MrJobProject.UserControllers
         {
             InitializeComponent();
         }
-
+        /// <value>Rejestruje dependency property</value>
         public static readonly DependencyProperty DayProperty = DependencyProperty.Register(
             "Day", typeof(Day), typeof(DayUC), new PropertyMetadata(new Day(1,false),SetDayTextAndBackground));
 
+        /// <value>Ustawia text kontrolki oraz kolor tla, zaleznie od tego, czy dany dzien jest urlopem</value>
         private static void SetDayTextAndBackground(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             DayUC day = d as DayUC;
@@ -50,6 +53,7 @@ namespace MrJobProject.UserControllers
             }
         }
 
+        /// <value>Zwraca lub ustawia wlasciwosc typu Day</value>
         public Day Day
         {
             get { return (Day) GetValue(DayProperty); }

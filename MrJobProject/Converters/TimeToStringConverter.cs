@@ -6,7 +6,7 @@ namespace MrJobProject.Converters
     /// <summary>
     ///  Klasa TimeToStringConverter, wykorzystana przez interfejs graficzny do przetworzenia zmiennej typu DateTime na string
     /// </summary>
-    /// /// <remarks>
+    /// <remarks>
     /// Klasa TimeToStringConverter zawiera 2 metody
     /// </remarks>
     public class TimeToStringConverter : IValueConverter

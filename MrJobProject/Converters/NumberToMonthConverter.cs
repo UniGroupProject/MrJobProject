@@ -7,7 +7,7 @@ namespace MrJobProject.Converters
     /// <summary>
     ///  Klasa NumberToMonthConverter, wykorzystana przez interfejs graficzny do przetworzenia numeru miesiaca na jego nazwe w jezyku polskim
     /// </summary>
-    /// /// <remarks>
+    /// <remarks>
     /// Klasa NumberToMonthConverter zawiera 2 metody
     /// </remarks>
     public class NumberToMonthConverter : IValueConverter

@@ -12,11 +12,21 @@ using SQLite;
 namespace MrJobProject.UserControllers
 {
     /// <summary>
-    ///     Interaction logic for HolidayUC.xaml
+    /// Logika kontrolki HolidayUC
     /// </summary>
+    /// <remarks>
+    /// Zawiera konstruktor, pola, metody oraz zdarzenia
+    /// </remarks>
     public partial class HolidayUC : UserControl
     {
+        /// <summary>
+        /// ObservableCollection zawierajaca typ Worker o nazwie workers zawiera liste pracownikow
+        /// </summary>
         private ObservableCollection<Worker> workers;
+
+        /// <summary>
+        /// ObservableCollection zawierajaca typ Holiday o nazwie holidays zawiera liste urlopow
+        /// </summary>
         private ObservableCollection<Holiday> holidays;
 
 
@@ -37,6 +47,12 @@ namespace MrJobProject.UserControllers
             UpdateList();
         }
 
+        /// <summary>
+        /// Metoda GetListOfHolidayTypes(), ktora zwraca typy urlopow
+        /// </summary>
+        /// <returns>
+        ///  Zwraca liste string-ow, ktora zawiera typy urlopow
+        /// </returns>
         private List<string> GetListOfHolidayTypes()
         {
             var HolidayTypes = new List<string>(); //language item //change to eng version
@@ -54,13 +70,17 @@ namespace MrJobProject.UserControllers
             HolidayTypes.Add("Inne obecności nieusprawiediwione");
             return HolidayTypes;
         }
-
+        /// <summary>
+        /// Metoda UpdateList() aktualizuje liste pracownikow
+        /// </summary>
         private void UpdateList()
         {
             ReadDatabase();
             WorkersList.ItemsSource = workers;
         }
-
+        /// <summary>
+        /// Metoda ReadDatabase() pobiera liste pracownikow z bazy danych
+        /// </summary>
         private void ReadDatabase()
         {
             using (var connection = new SQLiteConnection(App.databasePath))
@@ -71,17 +91,23 @@ namespace MrJobProject.UserControllers
                     .OrderByDescending(c => c.Status));
             }
         }
-
+        /// <summary>
+        /// Zdarzenie UserControl_Loaded(object sender, RoutedEventArgs e) powoduje wywolanie metody UpdateList()
+        /// </summary>
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateList();
         }
-
+        /// <summary>
+        /// Zdarzenie WorkersList_SelectionChanged(object sender, SelectionChangedEventArgs e) powoduje wywolanie metody SetCalendar()
+        /// </summary>
         private void WorkersList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SetCalendar();
         }
-
+        /// <summary>
+        /// Metoda SetCalendar() powoduje wczytanie kalendarza do ustawiania urlopow wybranego pracownika
+        /// </summary>
         private void SetCalendar()
         {
             var selectedWorker = (Worker) WorkersList.SelectedItem;
@@ -111,7 +137,12 @@ namespace MrJobProject.UserControllers
                 }
             }
         }
-
+        /// <summary>
+        /// Metoda ReadHolidaysDatabase(Worker selectedWorker, int selectedYear, int selectedMonth) powoduje pobranie z bazy danych dni z urlopami dla danego pracownika, w okreslonym roku i miesiacu
+        /// </summary>
+        /// <param name="selectedWorker"></param>
+        /// <param name="selectedYear"></param>
+        /// <param name="selectedMonth"></param>
         private void ReadHolidaysDatabase(Worker selectedWorker, int selectedYear, int selectedMonth)
         {
             using (var connection = new SQLiteConnection(App.databasePath))
@@ -123,17 +154,23 @@ namespace MrJobProject.UserControllers
                     .ToList());
             }
         }
-
+        /// <summary>
+        /// Zdarzenie ListOfYears_OnSelectionChanged(object sender, SelectionChangedEventArgs e) powoduje wywolanie metody SetCalendar()
+        /// </summary>
         private void ListOfYears_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SetCalendar();
         }
-
+        /// <summary>
+        /// Zdarzenie ListOfMonths_OnSelectionChanged(object sender, SelectionChangedEventArgs e) powoduje wywolanie metody SetCalendar()
+        /// </summary>
         private void ListOfMonths_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SetCalendar();
         }
-
+        /// <summary>
+        /// Zdarzenie AddHolidayButton_OnClick(object sender, SelectionChangedEventArgs e) powoduje dodanie urlopu dla wybranego pracownika
+        /// </summary>
         private void AddHolidayButton_OnClick(object sender, RoutedEventArgs e)
         {
             var selectedWorker = (Worker) WorkersList.SelectedItem;
@@ -175,7 +212,9 @@ namespace MrJobProject.UserControllers
             InfoOK info = new InfoOK("Dodano urlop");
             info.ShowDialog();
         }
-
+        /// <summary>
+        /// Zdarzenie DeleteHolidayButton_OnClick(object sender, RoutedEventArgs e) powoduje usuniecie urlopu danego pracownika
+        /// </summary>
         private void DeleteHolidayButton_OnClick(object sender, RoutedEventArgs e)
         {
             string question = "Czy jesteś pewien, że chcesz usunąć?"; //language item
@@ -205,17 +244,24 @@ namespace MrJobProject.UserControllers
             }
         }
 
-
+        /// <summary>
+        /// Zdarzenie NoneButton_OnClick(object sender, RoutedEventArgs e) powoduje odznaczenie wszystkich dni na liscie
+        /// </summary>
         private void NoneButton_OnClick(object sender, RoutedEventArgs e)
         {
             HolidaysList.SelectedItems.Clear();
         }
 
+        /// <summary>
+        /// Zdarzenie AllButton_OnClick(object sender, RoutedEventArgs e) powoduje zaznaczenie wszystkich dni na liscie
+        /// </summary>
         private void AllButton_OnClick(object sender, RoutedEventArgs e)
         {
             HolidaysList.SelectAll();
         }
-
+        /// <summary>
+        /// Zdarzenie UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e) powoduje wywolanie metody UpdateList()
+        /// </summary>
         private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             UserControl uc = sender as UserControl;
