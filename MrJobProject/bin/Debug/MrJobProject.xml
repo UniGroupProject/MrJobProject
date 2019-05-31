@@ -327,10 +327,124 @@
         </member>
         <member name="T:MrJobProject.UserControllers.ScheduleUC">
             <summary>
-            Interaction logic for ScheduleUC.xaml
+            Logika kontrolki ScheduleUC
             </summary>
+            <remarks>
+            Zawiera konstruktor, pola oraz zdarzenia
+            </remarks>
             <summary>
             ScheduleUC
+            </summary>
+        </member>
+        <member name="F:MrJobProject.UserControllers.ScheduleUC.shifts">
+            <summary>
+            ObservableCollection  zawierajaca typ Shift o nazwie shifts zawiera liste zmian
+            </summary>
+        </member>
+        <member name="F:MrJobProject.UserControllers.ScheduleUC.workers">
+            <summary>
+            ObservableCollection  zawierajaca typ Worker o nazwie workers zawiera liste pracownikow
+            </summary>
+        </member>
+        <member name="F:MrJobProject.UserControllers.ScheduleUC.holidays">
+            <summary>
+            List  zawierajaca typ Holiday o nazwie holidays zawiera liste urlopów
+            </summary>
+        </member>
+        <member name="F:MrJobProject.UserControllers.ScheduleUC.schedules">
+            <summary>
+            List  zawierajaca typ Schedule o nazwie schedules zawiera liste odpowiadajaca grafikowi
+            </summary>
+        </member>
+        <member name="F:MrJobProject.UserControllers.ScheduleUC.data2d">
+            <summary>
+            tablica 2-wymiarowa zawierajaca typ string o nazwie data2d zawiera tabele odpowiadajaca grafikowi w interfejsie
+            </summary>
+        </member>
+        <member name="F:MrJobProject.UserControllers.ScheduleUC.columnHeaders">
+            <summary>
+            tablica zawierajaca typ int o nazwie data2d zawiera liste nagłowkow do tabeli z grafikiem
+            </summary>
+        </member>
+        <member name="E:MrJobProject.UserControllers.ScheduleUC.PropertyChanged">
+            <summary>
+            Zdarzenie obsugujace zmiane wlasciwosci
+            </summary>
+        </member>
+        <member name="P:MrJobProject.UserControllers.ScheduleUC.Data2D">
+            <value>Zwraca lub ustawia pole data2d</value>
+        </member>
+        <member name="P:MrJobProject.UserControllers.ScheduleUC.ColumnHeaders">
+            <value>Zwraca lub ustawia tablice columnHeaders</value>
+        </member>
+        <member name="M:MrJobProject.UserControllers.ScheduleUC.ReadDatabase">
+            <summary>
+            Metoda ReadDatabase() pobiera z bazy danych liste pracownikow i liste zmian
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.ScheduleUC.ReadScheduleList">
+            <summary>
+            Metoda ReadScheduleList() pobiera z bazy danych liste z grafikami
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.ScheduleUC.UpdateLists">
+            <summary>
+            Metoda UpdateLists() uaktualnia dane w UI
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.ScheduleUC.DeleteShift(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Zdarzenie DeleteShift(object sender, TextChangedEventArgs e) podczas wywolania usuwa wybrana zmiane z listy i bazy danych
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.ScheduleUC.AddShiftDialog(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Zdarzenie AddShiftDialog(object sender, TextChangedEventArgs e) podczas wywolania dodaje zmiane do listy i bazy danych
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.ScheduleUC.EditShiftDialog(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Zdarzenie EditShiftDialog(object sender, TextChangedEventArgs e) podczas wywolania edytuje wybrana zmiane z listy i bazy danych
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.ScheduleUC.BackDateBtn_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Zdarzenie BackDateBtn_Click(object sender, TextChangedEventArgs e) podczas wywolania cofa wybrana date o miasiac
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.ScheduleUC.ForwardDateBtn_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Zdarzenie ForwardDateBtn_Click(object sender, TextChangedEventArgs e) podczas wywolania zmienia wybrana date o miasiac wprzod
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.ScheduleUC.ShiftList_PreviewMouseLeftButtonUp(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Zdarzenie ShiftList_PreviewMouseLeftButtonUp(object sender, TextChangedEventArgs e) podczas wywolania zmienia zawartosc wybranej komorki w tabeli z grafikiem na nazwe wybranego elementu z listy zmian
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.ScheduleUC.OnPropertyChanged(System.String)">
+            <summary>
+            Metoda OnPropertyChanged() wzbudza zdarzanie, gdy pewna wlasciwosc jest zmieniona
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.ScheduleUC.ListOfYears_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Zdarzenie ListOfYears_SelectionChanged(object sender, TextChangedEventArgs e) podczas wywolania uaktulania tabele z grafikiem
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.ScheduleUC.ListOfMonths_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Zdarzenie ListOfMonths_SelectionChanged(object sender, TextChangedEventArgs e) podczas wywolania uaktulania tabele z grafikiem
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.ScheduleUC.SaveBtn_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Zdarzenie SaveBtn_Click(object sender, TextChangedEventArgs e) podczas wywolania zapisuje dane z tabeli z grafikiem do bazy danych
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.ScheduleUC.UserControl_IsVisibleChanged(System.Object,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Zdarzenie UserControl_IsVisibleChanged(object sender, TextChangedEventArgs e) podczas wywolania uaktualnia dane po powrocie z innych zakladek
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.ScheduleUC.InitializeComponent">
@@ -340,10 +454,48 @@
         </member>
         <member name="T:MrJobProject.UserControllers.WorkersUC">
             <summary>
-            Interaction logic for WorkersUC.xaml
+            Logika kontrolki WorkersUC
             </summary>
+            <remarks>
+            Zawiera konstruktor, pola oraz zdarzenia
+            </remarks>
             <summary>
             WorkersUC
+            </summary>
+        </member>
+        <member name="F:MrJobProject.UserControllers.WorkersUC.workers">
+            <summary>
+            ObservableCollection  zawierajaca typ Worker o nazwie workers zawiera liste pracownikow
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.WorkersUC.ReadDatabase">
+            <summary>
+            Metoda ReadDatabase() pobiera z bazy danych liste pracownikow
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.WorkersUC.AddNewWorker(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Zdarzenie UserControl_IsVisibleChanged(object sender, TextChangedEventArgs e) podczas wywolania dodaje nowego pracownika do listy i bazy danych
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.WorkersUC.DatacontextItem_Delete(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Zdarzenie UserControl_IsVisibleChanged(object sender, TextChangedEventArgs e) podczas wywolania usuwa wybranego pracownika do listy i bazy danych
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.WorkersUC.UpdateList">
+            <summary>
+            Metoda UpdateLists() uaktualnia dane w UI
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.WorkersUC.TextBox_KeyDown(System.Object,System.Windows.Input.KeyEventArgs)">
+            <summary>
+            Zdarzenie UserControl_IsVisibleChanged(object sender, TextChangedEventArgs e) podczas wywolania (wcisniecie enter) dodaje nowego pracownika do listy i bazy danych
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.WorkersUC.EditWorker(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Zdarzenie UserControl_IsVisibleChanged(object sender, TextChangedEventArgs e) podczas wywolania edytuje wybranego pracownika do listy i bazy danych
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.WorkersUC.InitializeComponent">
@@ -455,7 +607,9 @@
         <member name="P:MrJobProject.Data.Shift.Id">
             <value>Zwraca lub ustawia Id zmiany, jest primary key-em</value>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:MrJobProject.Data.Shift.ShiftName" -->
+        <member name="P:MrJobProject.Data.Shift.ShiftName">
+            <value>Zwraca lub ustawia nazwe zmiany</value>
+        </member>
         <member name="P:MrJobProject.Data.Shift.TimeFrom">
             <value>Zwraca lub ustawia godzine startowa zmiany</value>
         </member>
@@ -478,11 +632,13 @@
             Zawiera wlasciwosci oraz zdarzenie
             </remarks>
         </member>
-        <member name="P:MrJobProject.Data.Worker.Id">
-            <value>Zwraca lub ustawia Id pracownika, jest primary key-em</value>
+        <!-- Badly formed XML comment ignored for member "P:MrJobProject.Data.Worker.Id" -->
+        <member name="P:MrJobProject.Data.Worker.Name">
+            <value>Zwraca lub ustawia nazwe pracownika</value>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:MrJobProject.Data.Worker.Name" -->
-        <!-- Badly formed XML comment ignored for member "P:MrJobProject.Data.Worker.Status" -->
+        <member name="P:MrJobProject.Data.Worker.Status">
+            <value>Zwraca lub ustawia status pracownika</value>
+        </member>
         <member name="M:MrJobProject.Data.Worker.NotifyPropertyChanged(System.String)">
             <summary>
              Metoda NotifyPropertyChanged, informuje o zmianie w danej wlasciwosci

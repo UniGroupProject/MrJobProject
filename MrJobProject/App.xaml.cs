@@ -5,8 +5,11 @@ using System.Windows;
 namespace MrJobProject
 {
     /// <summary>
-    /// Interaction logic for App.xaml
+    /// Logika okna dialogowego InfoOK
     /// </summary>
+    /// <remarks>
+    /// Laczy z baza danych
+    /// </remarks>
     public partial class App : Application
     {
         private static string databaseName = "AppDataBase.db";

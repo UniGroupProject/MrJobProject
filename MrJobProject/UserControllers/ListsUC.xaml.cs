@@ -62,7 +62,7 @@ namespace MrJobProject.UserControllers
             }
         }
         /// <summary>
-        /// Zdarzenie SearchTextBox_TextChanged(object sender, TextChangedEventArgs e) podczas wywolania filtruje liste pracownikow
+        /// Metoda SearchTextBox_TextChanged(object sender, TextChangedEventArgs e) podczas wywolania filtruje liste pracownikow
         /// </summary>
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -72,14 +72,14 @@ namespace MrJobProject.UserControllers
             workersListView.ItemsSource = filteredList;
         }
         /// <summary>
-        /// Zdarzenie WorkersListView_SelectionChanged(object sender, SelectionChangedEventArgs e) podczas wywolania przypisuje do pola selectedWorkers zaznaczonych pracownikow z WorkersListView
+        /// Metoda WorkersListView_SelectionChanged(object sender, SelectionChangedEventArgs e) podczas wywolania przypisuje do pola selectedWorkers zaznaczonych pracownikow z WorkersListView
         /// </summary>
         private void WorkersListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             this.selectedWorkers = workersListView.SelectedItems.Cast<Worker>().ToList();
         }
         /// <summary>
-        /// Zdarzenie NoneButton_Click(object sender, RoutedEventArgs e) podczas wywolania odznacza wszystkich pracownikow z workersListView
+        /// Metoda NoneButton_Click(object sender, RoutedEventArgs e) podczas wywolania odznacza wszystkich pracownikow z workersListView
         /// </summary>
         private void NoneButton_Click(object sender, RoutedEventArgs e)
         {
@@ -91,14 +91,14 @@ namespace MrJobProject.UserControllers
         }
 
         /// <summary>
-        /// Zdarzenie AllButton_Click(object sender, RoutedEventArgs e) podczas wywolania zaznacza wszystkich pracownikow z workersListView
+        /// Metoda AllButton_Click(object sender, RoutedEventArgs e) podczas wywolania zaznacza wszystkich pracownikow z workersListView
         /// </summary>
         private void AllButton_Click(object sender, RoutedEventArgs e)
         {
             workersListView.SelectAll();
         }
         /// <summary>
-        /// Zdarzenie PdfButton_OnClick(object sender, RoutedEventArgs e) podczas wywolania generuje liste obecnosci dla wybranych pracownikow w postaci plikow PDF
+        /// Metoda PdfButton_OnClick(object sender, RoutedEventArgs e) podczas wywolania generuje liste obecnosci dla wybranych pracownikow w postaci plikow PDF
         /// </summary>
         private void PdfButton_OnClick(object sender, RoutedEventArgs e)
         {
@@ -194,7 +194,7 @@ namespace MrJobProject.UserControllers
             }
         }
         /// <summary>
-        /// Zdarzenie UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e) powoduje wywolanie metody ReadDatabase()
+        /// Metoda UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e) powoduje wywolanie metody ReadDatabase()
         /// </summary>
         private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {

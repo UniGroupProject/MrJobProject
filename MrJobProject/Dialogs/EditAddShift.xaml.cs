@@ -7,10 +7,16 @@ using System.Windows;
 namespace MrJobProject.Dialogs
 {
     /// <summary>
-    /// Interaction logic for EditAddShift.xaml
+    /// Logika okna dialogowego EditAddShift
     /// </summary>
+    /// <remarks>
+    /// Zawiera konstruktor oraz pole
+    /// </remarks>
     public partial class EditAddShift : Window
     {
+        /// <summary>
+        /// zmienna typu Shift o nazwie newShift informacje o nowej zmianie
+        /// </summary>
         public Shift newShift;
 
         public EditAddShift()
@@ -39,7 +45,9 @@ namespace MrJobProject.Dialogs
 
             nameValue.Focus();
         }
-
+        /// <summary>
+        /// Metoda SaveBtn_Click(object sender, TextChangedEventArgs e) podczas wywolania edytuje wybrana zmiane i zapisuje w bazie danych 
+        /// </summary>
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
             bool noExept = true;
@@ -81,22 +89,30 @@ namespace MrJobProject.Dialogs
             if (noExept && newShift.ShiftName != "")
             this.DialogResult = true;
         }
-
+        /// <summary>
+        /// Metoda TimeFromHour_GotFocus(object sender, TextChangedEventArgs e) podczas wywolania zaznacza tekst w wybranych polu teksowym
+        /// </summary>
         private void TimeFromHour_GotFocus(object sender, RoutedEventArgs e)
         {
             timeFromHour.SelectAll();
         }
-
+        /// <summary>
+        /// Metoda TimeFromMin_GotFocus(object sender, TextChangedEventArgs e) podczas wywolania zaznacza tekst w wybranych polu teksowym
+        /// </summary>
         private void TimeFromMin_GotFocus(object sender, RoutedEventArgs e)
         {
             timeFromMin.SelectAll();
         }
-
+        /// <summary>
+        /// Metoda TimeToHour_GotFocus(object sender, TextChangedEventArgs e) podczas wywolania zaznacza tekst w wybranych polu teksowym
+        /// </summary>
         private void TimeToHour_GotFocus(object sender, RoutedEventArgs e)
         {
             timeToHour.SelectAll();
         }
-
+        /// <summary>
+        /// Metoda TimeToMin_GotFocus(object sender, TextChangedEventArgs e) podczas wywolania zaznacza tekst w wybranych polu teksowym
+        /// </summary>
         private void TimeToMin_GotFocus(object sender, RoutedEventArgs e)
         {
             timeToMin.SelectAll();

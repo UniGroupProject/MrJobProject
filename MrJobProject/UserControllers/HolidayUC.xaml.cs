@@ -92,14 +92,14 @@ namespace MrJobProject.UserControllers
             }
         }
         /// <summary>
-        /// Zdarzenie UserControl_Loaded(object sender, RoutedEventArgs e) powoduje wywolanie metody UpdateList()
+        /// Metoda UserControl_Loaded(object sender, RoutedEventArgs e) powoduje wywolanie metody UpdateList()
         /// </summary>
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateList();
         }
         /// <summary>
-        /// Zdarzenie WorkersList_SelectionChanged(object sender, SelectionChangedEventArgs e) powoduje wywolanie metody SetCalendar()
+        /// Metoda WorkersList_SelectionChanged(object sender, SelectionChangedEventArgs e) powoduje wywolanie metody SetCalendar()
         /// </summary>
         private void WorkersList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -155,21 +155,21 @@ namespace MrJobProject.UserControllers
             }
         }
         /// <summary>
-        /// Zdarzenie ListOfYears_OnSelectionChanged(object sender, SelectionChangedEventArgs e) powoduje wywolanie metody SetCalendar()
+        /// Metoda ListOfYears_OnSelectionChanged(object sender, SelectionChangedEventArgs e) powoduje wywolanie metody SetCalendar()
         /// </summary>
         private void ListOfYears_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SetCalendar();
         }
         /// <summary>
-        /// Zdarzenie ListOfMonths_OnSelectionChanged(object sender, SelectionChangedEventArgs e) powoduje wywolanie metody SetCalendar()
+        /// Metoda ListOfMonths_OnSelectionChanged(object sender, SelectionChangedEventArgs e) powoduje wywolanie metody SetCalendar()
         /// </summary>
         private void ListOfMonths_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SetCalendar();
         }
         /// <summary>
-        /// Zdarzenie AddHolidayButton_OnClick(object sender, SelectionChangedEventArgs e) powoduje dodanie urlopu dla wybranego pracownika
+        /// Metoda AddHolidayButton_OnClick(object sender, SelectionChangedEventArgs e) powoduje dodanie urlopu dla wybranego pracownika
         /// </summary>
         private void AddHolidayButton_OnClick(object sender, RoutedEventArgs e)
         {
@@ -213,7 +213,7 @@ namespace MrJobProject.UserControllers
             info.ShowDialog();
         }
         /// <summary>
-        /// Zdarzenie DeleteHolidayButton_OnClick(object sender, RoutedEventArgs e) powoduje usuniecie urlopu danego pracownika
+        /// Metoda DeleteHolidayButton_OnClick(object sender, RoutedEventArgs e) powoduje usuniecie urlopu danego pracownika
         /// </summary>
         private void DeleteHolidayButton_OnClick(object sender, RoutedEventArgs e)
         {
@@ -245,7 +245,7 @@ namespace MrJobProject.UserControllers
         }
 
         /// <summary>
-        /// Zdarzenie NoneButton_OnClick(object sender, RoutedEventArgs e) powoduje odznaczenie wszystkich dni na liscie
+        /// Metoda NoneButton_OnClick(object sender, RoutedEventArgs e) powoduje odznaczenie wszystkich dni na liscie
         /// </summary>
         private void NoneButton_OnClick(object sender, RoutedEventArgs e)
         {
@@ -253,14 +253,14 @@ namespace MrJobProject.UserControllers
         }
 
         /// <summary>
-        /// Zdarzenie AllButton_OnClick(object sender, RoutedEventArgs e) powoduje zaznaczenie wszystkich dni na liscie
+        /// Metoda AllButton_OnClick(object sender, RoutedEventArgs e) powoduje zaznaczenie wszystkich dni na liscie
         /// </summary>
         private void AllButton_OnClick(object sender, RoutedEventArgs e)
         {
             HolidaysList.SelectAll();
         }
         /// <summary>
-        /// Zdarzenie UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e) powoduje wywolanie metody UpdateList()
+        /// Metoda UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e) powoduje wywolanie metody UpdateList()
         /// </summary>
         private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {

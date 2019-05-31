@@ -3,8 +3,11 @@
 namespace MrJobProject.Dialogs
 {
     /// <summary>
-    /// Interaction logic for YesNo.xaml
+    /// Logika okna dialogowego YesNo
     /// </summary>
+    /// <remarks>
+    /// Zawiera konstruktor 
+    /// </remarks>
     public partial class YesNo : Window
     {
         public YesNo(string text)
@@ -12,7 +15,9 @@ namespace MrJobProject.Dialogs
             InitializeComponent();
             question.Text = text;
         }
-
+        /// <summary>
+        /// Metoda YesBtn_Click(object sender, TextChangedEventArgs e) podczas wywolania zwraca prawde 
+        /// </summary>
         private void YesBtn_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;

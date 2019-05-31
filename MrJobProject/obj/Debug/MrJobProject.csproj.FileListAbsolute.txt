@@ -319,3 +319,4 @@ C:\Users\yasni\source\repos\MrJobProject\MrJobProject\obj\Debug\MrJobProject.csp
 C:\Users\yasni\source\repos\MrJobProject\MrJobProject\obj\Debug\MrJobProject.exe
 C:\Users\yasni\source\repos\MrJobProject\MrJobProject\obj\Debug\MrJobProject.pdb
 C:\Users\yasni\source\repos\MrJobProject\MrJobProject\bin\Debug\MrJobProject.xml
+C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\bin\Debug\MrJobProject.xml

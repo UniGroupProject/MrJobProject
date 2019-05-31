@@ -6,15 +6,20 @@ using System.Windows.Controls;
 namespace MrJobProject
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Logika glownego okna MainWindow
     /// </summary>
+    /// <remarks>
+    /// Zawiera konstruktor 
+    /// </remarks>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Metoda MenuClick(object sender, TextChangedEventArgs e) podczas wywolania uaktualnie wybrana zakladke
+        /// </summary>
         private void MenuClick(object sender, RoutedEventArgs e)
         {
             int index = int.Parse(((Button)e.Source).Uid);

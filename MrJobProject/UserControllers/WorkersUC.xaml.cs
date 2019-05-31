@@ -10,10 +10,16 @@ using System.Windows.Input;
 namespace MrJobProject.UserControllers
 {
     /// <summary>
-    /// Interaction logic for WorkersUC.xaml
+    /// Logika kontrolki WorkersUC
     /// </summary>
+    /// <remarks>
+    /// Zawiera konstruktor, pola oraz zdarzenia
+    /// </remarks>
     public partial class WorkersUC : UserControl
     {
+        /// <summary>
+        /// ObservableCollection  zawierajaca typ Worker o nazwie workers zawiera liste pracownikow
+        /// </summary>
         private ObservableCollection<Worker> workers;
 
         public WorkersUC()
@@ -24,7 +30,9 @@ namespace MrJobProject.UserControllers
 
             UpdateList();
         }
-
+        /// <summary>
+        /// Metoda ReadDatabase() pobiera z bazy danych liste pracownikow
+        /// </summary>
         private void ReadDatabase()
         {
             using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
@@ -34,7 +42,9 @@ namespace MrJobProject.UserControllers
                     (connection.Table<Worker>().ToList().OrderBy(c => c.Name).ToList().OrderByDescending(c => c.Status));
             }
         }
-
+        /// <summary>
+        /// Metoda UserControl_IsVisibleChanged(object sender, TextChangedEventArgs e) podczas wywolania dodaje nowego pracownika do listy i bazy danych
+        /// </summary>
         private void AddNewWorker(object sender, RoutedEventArgs e)
         {
             if (nameValue.Text != "")
@@ -54,7 +64,9 @@ namespace MrJobProject.UserControllers
                 statusValue.IsChecked = true;
             }
         }
-
+        /// <summary>
+        /// Metoda UserControl_IsVisibleChanged(object sender, TextChangedEventArgs e) podczas wywolania usuwa wybranego pracownika do listy i bazy danych
+        /// </summary>
         private void DatacontextItem_Delete(object sender, RoutedEventArgs e) //right click -> delete
         {
             Worker worker = WorkersList.SelectedItem as Worker;
@@ -74,13 +86,17 @@ namespace MrJobProject.UserControllers
                 }
             }
         }
-
+        /// <summary>
+        /// Metoda UpdateLists() uaktualnia dane w UI
+        /// </summary>
         private void UpdateList()
         {
             ReadDatabase();
             WorkersList.ItemsSource = workers;
         }
-
+        /// <summary>
+        /// Metoda UserControl_IsVisibleChanged(object sender, TextChangedEventArgs e) podczas wywolania (wcisniecie enter) dodaje nowego pracownika do listy i bazy danych
+        /// </summary>
         private void TextBox_KeyDown(object sender, KeyEventArgs e) //enter -c> add new worker
         {
             if (e.Key == Key.Return)
@@ -88,7 +104,9 @@ namespace MrJobProject.UserControllers
                 AddNewWorker(sender, null);
             }
         }
-
+        /// <summary>
+        /// Metoda UserControl_IsVisibleChanged(object sender, TextChangedEventArgs e) podczas wywolania edytuje wybranego pracownika do listy i bazy danych
+        /// </summary>
         private void EditWorker(object sender, MouseButtonEventArgs e) //double click -> edit worker
         {
             Worker selectedWorker = WorkersList.SelectedItem as Worker;
