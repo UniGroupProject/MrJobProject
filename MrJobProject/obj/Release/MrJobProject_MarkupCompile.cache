@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\FinalProjekt\MrJobProject\obj\Release\
+C:\Users\yasni\source\repos\MrJobProject\MrJobProject\obj\Release\
 MrJobProject
 none
 false
 TRACE
-D:\FinalProjekt\MrJobProject\App.xaml
+C:\Users\yasni\source\repos\MrJobProject\MrJobProject\App.xaml
 11-1965377582
-2-574583725
+21240227467
 23-66065573
-861821204713
+86-2097799653
 Dialogs\EditAddShift.xaml;Dialogs\EditWorker.xaml;Dialogs\InfoOK.xaml;Dialogs\YesNo.xaml;MainWindow.xaml;UserControllers\DayUC.xaml;UserControllers\HolidayUC.xaml;UserControllers\ListsUC.xaml;UserControllers\ScheduleUC.xaml;UserControllers\WorkersUC.xaml;UserControllers\workerUC.xaml;
 
-True
+False
 

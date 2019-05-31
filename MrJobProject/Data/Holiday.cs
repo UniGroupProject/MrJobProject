@@ -4,20 +4,26 @@ using System.ComponentModel;
 
 namespace MrJobProject.Data
 {
-    public  class Holiday : INotifyPropertyChanged
+    /// <summary>
+    ///  Klasa Holiday, wykorzystana przez baze danych SQLite oraz aplikacje do przechowywania danych zwiazanych z urlopami
+    /// </summary>
+    /// /// <remarks>
+    /// Zawiera wlasciwosci oraz zdarzenie
+    /// </remarks>
+    public class Holiday : INotifyPropertyChanged
     {
         private int id;
         private int workerId;
         private DateTime date;
         private string type;
-
+        /// <value>Zwraca lub ustawia id urlopu, jest to primary key</value>
         [PrimaryKey, AutoIncrement]
         public int Id
         {
             get { return id; }
             set { id = value; }
         }
-
+        /// <value>Zwraca lub ustawia id pracownika, ktorego dotyczy urlop</value>
         public int WorkerId
         {
             get { return workerId; }
@@ -30,7 +36,7 @@ namespace MrJobProject.Data
                 }
             }
         }
-
+        /// <value>Zwraca lub ustawia date urlopu</value>
         public DateTime Date
         {
             get { return date; }
@@ -43,7 +49,7 @@ namespace MrJobProject.Data
                 }
             }
         }
-
+        /// <value>Zwraca lub ustawia powod urlopu(string)</value>
         public string Type
         {
             get { return type; }
@@ -56,9 +62,11 @@ namespace MrJobProject.Data
                 }
             }
         }
-
+        
         public event PropertyChangedEventHandler PropertyChanged;
-
+        /// <summary>
+        ///  Metoda NotifyPropertyChanged, informuje o zmianie w danej wlasciwosci
+        /// </summary>
         public void NotifyPropertyChanged(string propName)
         {
             if (this.PropertyChanged != null)

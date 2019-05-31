@@ -1,0 +1,8 @@
+C:\Users\yasni\source\repos\MrJobProject\.vs\MrJobProject\lut\0\b\MrJobProject.Tests\bin\Release\x86\e_sqlite3.dll
+C:\Users\yasni\source\repos\MrJobProject\.vs\MrJobProject\lut\0\b\MrJobProject.Tests\bin\Release\x64\e_sqlite3.dll
+C:\Users\yasni\source\repos\MrJobProject\.vs\MrJobProject\lut\0\b\MrJobProject.Tests\bin\Release\MrJobProject.Tests.dll.config
+C:\Users\yasni\source\repos\MrJobProject\.vs\MrJobProject\lut\0\b\MrJobProject.Tests\bin\Release\MrJobProject.Tests.dll
+C:\Users\yasni\source\repos\MrJobProject\.vs\MrJobProject\lut\0\i\MrJobProject.Tests\Release\MrJobProject.Tests.csprojAssemblyReference.cache
+C:\Users\yasni\source\repos\MrJobProject\.vs\MrJobProject\lut\0\i\MrJobProject.Tests\Release\MrJobProject.Tests.csproj.CoreCompileInputs.cache
+C:\Users\yasni\source\repos\MrJobProject\.vs\MrJobProject\lut\0\i\MrJobProject.Tests\Release\MrJobProject.Tests.csproj.CopyComplete
+C:\Users\yasni\source\repos\MrJobProject\.vs\MrJobProject\lut\0\i\MrJobProject.Tests\Release\MrJobProject.Tests.dll

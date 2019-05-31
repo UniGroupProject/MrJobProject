@@ -19,6 +19,7 @@ namespace MrJobProject.UserControllers
 {
     /// <summary>
     /// Interaction logic for DayUC.xaml
+    /// 
     /// </summary>
     public partial class DayUC : UserControl
     {

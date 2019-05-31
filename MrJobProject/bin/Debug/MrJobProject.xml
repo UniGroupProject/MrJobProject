@@ -1,0 +1,257 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MrJobProject</name>
+    </assembly>
+    <members>
+        <member name="T:MrJobProject.Classes.Day">
+            <summary>
+             Klasa Day, wykorzystana w kontrolce DayUC do przedstawienia poszczegolnych dni i tego, czy sa urlopami
+            </summary>
+            /// <remarks>
+            Klasa Day zawiera jedynie wlasciwosci i konstruktory
+            </remarks>
+        </member>
+        <member name="P:MrJobProject.Classes.Day.DayNumber">
+            <value>Zwraca lub ustawia numer dnia</value>
+        </member>
+        <member name="P:MrJobProject.Classes.Day.IsHoliday">
+            <value>Zwraca lub ustawia stan, czy dany dzien jest dniem urlopu</value>
+        </member>
+        <member name="P:MrJobProject.Classes.Day.Reason">
+            <value>Zwraca lub ustawia powod urlopu</value>
+        </member>
+        <member name="T:MrJobProject.Converters.BoolToActiveConverter">
+            <summary>
+             Klasa BoolToActiveConverter, wykorzystana przez interfejs graficzny do przetworzenia stanu True/False na brak napisu lub napis "Aktywny"
+            </summary>
+            /// <remarks>
+            Klasa BoolToActiveConverter zawiera 2 metody
+            </remarks>
+        </member>
+        <member name="M:MrJobProject.Converters.BoolToActiveConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+             Metoda Convert, przetwarza stan True/False na brak napisu lub napis "Aktywny"
+            </summary>
+            <returns>
+            Zwraca pustego stringa dla "False" lub stringa "Aktywny" dla "True"
+            </returns>
+        </member>
+        <member name="M:MrJobProject.Converters.BoolToActiveConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+             Metoda ConvertBack, przetwarza string pusty na "False" lub string "Aktywny" na "True" 
+            </summary>
+            <returns>
+            Zwraca pustego bool "False" dla pustego stringa lub "True" dla stringa "Aktywny"
+            </returns>
+        </member>
+        <member name="T:MrJobProject.Dialogs.EditAddShift">
+            <summary>
+            Interaction logic for EditAddShift.xaml
+            </summary>
+            <summary>
+            EditAddShift
+            </summary>
+        </member>
+        <member name="M:MrJobProject.Dialogs.EditAddShift.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:MrJobProject.Dialogs.EditWorker">
+            <summary>
+            Interaction logic for EditWorker.xaml
+            </summary>
+            <summary>
+            EditWorker
+            </summary>
+        </member>
+        <member name="M:MrJobProject.Dialogs.EditWorker.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:MrJobProject.Dialogs.InfoOK">
+            <summary>
+            Interaction logic for InfoOK.xaml
+            </summary>
+            <summary>
+            InfoOK
+            </summary>
+        </member>
+        <member name="M:MrJobProject.Dialogs.InfoOK.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:MrJobProject.Dialogs.YesNo">
+            <summary>
+            Interaction logic for YesNo.xaml
+            </summary>
+            <summary>
+            YesNo
+            </summary>
+        </member>
+        <member name="M:MrJobProject.Dialogs.YesNo.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:MrJobProject.UserControllers.DayUC">
+            <summary>
+            Interaction logic for DayUC.xaml
+            
+            </summary>
+            <summary>
+            DayUC
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.DayUC.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:MrJobProject.UserControllers.HolidayUC">
+            <summary>
+                Interaction logic for HolidayUC.xaml
+            </summary>
+            <summary>
+            HolidayUC
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.HolidayUC.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:MrJobProject.UserControllers.ListsUC">
+            <summary>
+            Interaction logic for ListsUC.xaml
+            </summary>
+            <summary>
+            ListsUC
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.ListsUC.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:MrJobProject.UserControllers.ScheduleUC">
+            <summary>
+            Interaction logic for ScheduleUC.xaml
+            </summary>
+            <summary>
+            ScheduleUC
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.ScheduleUC.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:MrJobProject.UserControllers.WorkersUC">
+            <summary>
+            Interaction logic for WorkersUC.xaml
+            </summary>
+            <summary>
+            WorkersUC
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.WorkersUC.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:MrJobProject.UserControllers.workerUC">
+            <summary>
+            Interaction logic for workerUC.xaml
+            </summary>
+            <summary>
+            workerUC
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.workerUC.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:MrJobProject.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:MrJobProject.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:MrJobProject.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:MrJobProject.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:MrJobProject.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:MrJobProject.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:MrJobProject.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:MrJobProject.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+    </members>
+</doc>
