@@ -24,7 +24,7 @@ namespace MrJobProject.Data
             get { return id; }
             set { id = value; }
         }
-        /// <value>Zwraca lub ustawia nazwe zmiany/value>
+        /// <value>Zwraca lub ustawia nazwe zmiany</value>
         public string ShiftName
         {
             get { return shiftName; }

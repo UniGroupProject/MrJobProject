@@ -14,14 +14,14 @@ namespace MrJobProject.Data
         private int id;
         private string name;
         private bool status;
-        /// <value>Zwraca lub ustawia Id pracownika, jest primary key-em</value>
+        /// <value>Zwraca lub ustawia Id pracownika, jest primary key-em<</value>
         [PrimaryKey, AutoIncrement]
         public int Id
         {
             get { return id; }
             set { id = value; }
         }
-        /// <value>Zwraca lub ustawia nazwe pracownika/value>
+        /// <value>Zwraca lub ustawia nazwe pracownika</value>
         public string Name
         {
             get { return name; }
@@ -34,7 +34,7 @@ namespace MrJobProject.Data
                 }
             }
         }
-        /// <value>Zwraca lub ustawia status pracownika/value>
+        /// <value>Zwraca lub ustawia status pracownika</value>
         public bool Status
         {
             get { return status; }

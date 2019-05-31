@@ -8,7 +8,7 @@
             <summary>
              Klasa Day, wykorzystana w kontrolce DayUC do przedstawienia poszczegolnych dni i tego, czy sa urlopami
             </summary>
-            /// <remarks>
+            <remarks>
             Klasa Day zawiera jedynie wlasciwosci i konstruktory
             </remarks>
         </member>
@@ -25,7 +25,7 @@
             <summary>
              Klasa BoolToActiveConverter, wykorzystana przez interfejs graficzny do przetworzenia stanu True/False na brak napisu lub napis "Aktywny"
             </summary>
-            /// <remarks>
+            <remarks>
             Klasa BoolToActiveConverter zawiera 2 metody
             </remarks>
         </member>
@@ -43,6 +43,46 @@
             </summary>
             <returns>
             Zwraca pustego bool "False" dla pustego stringa lub "True" dla stringa "Aktywny"
+            </returns>
+        </member>
+        <member name="T:MrJobProject.Converters.NumberToMonthConverter">
+            <summary>
+             Klasa NumberToMonthConverter, wykorzystana przez interfejs graficzny do przetworzenia numeru miesiaca na jego nazwe w jezyku polskim
+            </summary>
+            <remarks>
+            Klasa NumberToMonthConverter zawiera 2 metody
+            </remarks>
+        </member>
+        <member name="M:MrJobProject.Converters.NumberToMonthConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+             Metoda Convert, przetwarza liczbe z zakresu 1 do 12 na nazwe miesiaca
+            </summary>
+            /// <returns>
+            Zwraca string z nazwa miesiaca
+            </returns>
+        </member>
+        <member name="M:MrJobProject.Converters.NumberToMonthConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+             Metoda ConvertBack, przetwarza nazwe miesiaca na odpowiadajaca nazwe miesiaca
+            </summary>
+            <returns>
+            Zwraca int odpowiadajacy podanej nazwie miesiaca
+            </returns>
+        </member>
+        <member name="T:MrJobProject.Converters.TimeToStringConverter">
+            <summary>
+             Klasa TimeToStringConverter, wykorzystana przez interfejs graficzny do przetworzenia zmiennej typu DateTime na string
+            </summary>
+            <remarks>
+            Klasa TimeToStringConverter zawiera 2 metody
+            </remarks>
+        </member>
+        <member name="M:MrJobProject.Converters.TimeToStringConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+             Metoda Convert, przetwarza zmienna typu DateTime i jej zawartosc na string z godzina
+            </summary>
+            /// <returns>
+            Zwraca string z godzina
             </returns>
         </member>
         <member name="T:MrJobProject.Dialogs.EditAddShift">
@@ -99,12 +139,23 @@
         </member>
         <member name="T:MrJobProject.UserControllers.DayUC">
             <summary>
-            Interaction logic for DayUC.xaml
-            
+            Logika kontrolki DayUC
             </summary>
+            <remarks>
+            Zawiera konstruktor, wlasciwosc oraz rejestruje dependency property
+            </remarks>
             <summary>
             DayUC
             </summary>
+        </member>
+        <member name="F:MrJobProject.UserControllers.DayUC.DayProperty">
+            <value>Rejestruje dependency property</value>
+        </member>
+        <member name="M:MrJobProject.UserControllers.DayUC.SetDayTextAndBackground(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <value>Ustawia text kontrolki oraz kolor tla, zaleznie od tego, czy dany dzien jest urlopem</value>
+        </member>
+        <member name="P:MrJobProject.UserControllers.DayUC.Day">
+            <value>Zwraca lub ustawia wlasciwosc typu Day</value>
         </member>
         <member name="M:MrJobProject.UserControllers.DayUC.InitializeComponent">
             <summary>
@@ -113,10 +164,99 @@
         </member>
         <member name="T:MrJobProject.UserControllers.HolidayUC">
             <summary>
-                Interaction logic for HolidayUC.xaml
+            Logika kontrolki HolidayUC
             </summary>
+            <remarks>
+            Zawiera konstruktor, pola, metody oraz zdarzenia
+            </remarks>
             <summary>
             HolidayUC
+            </summary>
+        </member>
+        <member name="F:MrJobProject.UserControllers.HolidayUC.workers">
+            <summary>
+            ObservableCollection zawierajaca typ Worker o nazwie workers zawiera liste pracownikow
+            </summary>
+        </member>
+        <member name="F:MrJobProject.UserControllers.HolidayUC.holidays">
+            <summary>
+            ObservableCollection zawierajaca typ Holiday o nazwie holidays zawiera liste urlopow
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.HolidayUC.GetListOfHolidayTypes">
+            <summary>
+            Metoda GetListOfHolidayTypes(), ktora zwraca typy urlopow
+            </summary>
+            <returns>
+             Zwraca liste string-ow, ktora zawiera typy urlopow
+            </returns>
+        </member>
+        <member name="M:MrJobProject.UserControllers.HolidayUC.UpdateList">
+            <summary>
+            Metoda UpdateList() aktualizuje liste pracownikow
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.HolidayUC.ReadDatabase">
+            <summary>
+            Metoda ReadDatabase() pobiera liste pracownikow z bazy danych
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.HolidayUC.UserControl_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Zdarzenie UserControl_Loaded(object sender, RoutedEventArgs e) powoduje wywolanie metody UpdateList()
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.HolidayUC.WorkersList_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Zdarzenie WorkersList_SelectionChanged(object sender, SelectionChangedEventArgs e) powoduje wywolanie metody SetCalendar()
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.HolidayUC.SetCalendar">
+            <summary>
+            Metoda SetCalendar() powoduje wczytanie kalendarza do ustawiania urlopow wybranego pracownika
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.HolidayUC.ReadHolidaysDatabase(MrJobProject.Data.Worker,System.Int32,System.Int32)">
+            <summary>
+            Metoda ReadHolidaysDatabase(Worker selectedWorker, int selectedYear, int selectedMonth) powoduje pobranie z bazy danych dni z urlopami dla danego pracownika, w okreslonym roku i miesiacu
+            </summary>
+            <param name="selectedWorker"></param>
+            <param name="selectedYear"></param>
+            <param name="selectedMonth"></param>
+        </member>
+        <member name="M:MrJobProject.UserControllers.HolidayUC.ListOfYears_OnSelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Zdarzenie ListOfYears_OnSelectionChanged(object sender, SelectionChangedEventArgs e) powoduje wywolanie metody SetCalendar()
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.HolidayUC.ListOfMonths_OnSelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Zdarzenie ListOfMonths_OnSelectionChanged(object sender, SelectionChangedEventArgs e) powoduje wywolanie metody SetCalendar()
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.HolidayUC.AddHolidayButton_OnClick(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Zdarzenie AddHolidayButton_OnClick(object sender, SelectionChangedEventArgs e) powoduje dodanie urlopu dla wybranego pracownika
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.HolidayUC.DeleteHolidayButton_OnClick(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Zdarzenie DeleteHolidayButton_OnClick(object sender, RoutedEventArgs e) powoduje usuniecie urlopu danego pracownika
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.HolidayUC.NoneButton_OnClick(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Zdarzenie NoneButton_OnClick(object sender, RoutedEventArgs e) powoduje odznaczenie wszystkich dni na liscie
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.HolidayUC.AllButton_OnClick(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Zdarzenie AllButton_OnClick(object sender, RoutedEventArgs e) powoduje zaznaczenie wszystkich dni na liscie
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.HolidayUC.UserControl_IsVisibleChanged(System.Object,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Zdarzenie UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e) powoduje wywolanie metody UpdateList()
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.HolidayUC.InitializeComponent">
@@ -126,10 +266,58 @@
         </member>
         <member name="T:MrJobProject.UserControllers.ListsUC">
             <summary>
-            Interaction logic for ListsUC.xaml
+            Logika kontrolki ListsUC
             </summary>
+            <remarks>
+            Zawiera konstruktor, pola oraz zdarzenia
+            </remarks>
             <summary>
             ListsUC
+            </summary>
+        </member>
+        <member name="F:MrJobProject.UserControllers.ListsUC.workers">
+            <summary>
+            ObservableCollection  zawierajaca typ Worker o nazwie workers zawiera liste pracownikow
+            </summary>
+        </member>
+        <member name="F:MrJobProject.UserControllers.ListsUC.selectedWorkers">
+            <summary>
+            List zawierajaca typ Worker o nazwie selectedWorkers zawiera liste wybranych pracownikow
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.ListsUC.ReadDatabase">
+            <summary>
+            Metoda ReadDatabase() pobiera z baz ydanych liste pracownikow
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.ListsUC.SearchTextBox_TextChanged(System.Object,System.Windows.Controls.TextChangedEventArgs)">
+            <summary>
+            Zdarzenie SearchTextBox_TextChanged(object sender, TextChangedEventArgs e) podczas wywolania filtruje liste pracownikow
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.ListsUC.WorkersListView_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Zdarzenie WorkersListView_SelectionChanged(object sender, SelectionChangedEventArgs e) podczas wywolania przypisuje do pola selectedWorkers zaznaczonych pracownikow z WorkersListView
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.ListsUC.NoneButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Zdarzenie NoneButton_Click(object sender, RoutedEventArgs e) podczas wywolania odznacza wszystkich pracownikow z workersListView
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.ListsUC.AllButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Zdarzenie AllButton_Click(object sender, RoutedEventArgs e) podczas wywolania zaznacza wszystkich pracownikow z workersListView
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.ListsUC.PdfButton_OnClick(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Zdarzenie PdfButton_OnClick(object sender, RoutedEventArgs e) podczas wywolania generuje liste obecnosci dla wybranych pracownikow w postaci plikow PDF
+            </summary>
+        </member>
+        <member name="M:MrJobProject.UserControllers.ListsUC.UserControl_IsVisibleChanged(System.Object,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Zdarzenie UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e) powoduje wywolanie metody ReadDatabase()
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.ListsUC.InitializeComponent">
@@ -165,11 +353,23 @@
         </member>
         <member name="T:MrJobProject.UserControllers.workerUC">
             <summary>
-            Interaction logic for workerUC.xaml
+            Logika kontrolki workerUC
             </summary>
+            <remarks>
+            Zawiera konstruktor, wlasciwosc oraz rejestruje dependency property
+            </remarks>
             <summary>
             workerUC
             </summary>
+        </member>
+        <member name="P:MrJobProject.UserControllers.workerUC.Worker">
+            <value>Zwraca lub ustawia wlasciwosc typu Worker</value>
+        </member>
+        <member name="F:MrJobProject.UserControllers.workerUC.WorkerProperty">
+            <value>Rejestruje dependency property</value>
+        </member>
+        <member name="M:MrJobProject.UserControllers.workerUC.SetPropertiesOfTextBox(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <value>Ustawia wyswietlana nazwe pracownika w kontrolce</value>
         </member>
         <member name="M:MrJobProject.UserControllers.workerUC.InitializeComponent">
             <summary>
@@ -192,6 +392,100 @@
         <member name="M:MrJobProject.App.Main">
             <summary>
             Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:MrJobProject.Data.Holiday">
+            <summary>
+             Klasa Holiday, wykorzystana przez baze danych SQLite oraz aplikacje do przechowywania danych zwiazanych z urlopami
+            </summary>
+            <remarks>
+            Zawiera wlasciwosci oraz zdarzenie
+            </remarks>
+        </member>
+        <member name="P:MrJobProject.Data.Holiday.Id">
+            <value>Zwraca lub ustawia id urlopu, jest to primary key</value>
+        </member>
+        <member name="P:MrJobProject.Data.Holiday.WorkerId">
+            <value>Zwraca lub ustawia id pracownika, ktorego dotyczy urlop</value>
+        </member>
+        <member name="P:MrJobProject.Data.Holiday.Date">
+            <value>Zwraca lub ustawia date urlopu</value>
+        </member>
+        <member name="P:MrJobProject.Data.Holiday.Type">
+            <value>Zwraca lub ustawia powod urlopu(string)</value>
+        </member>
+        <member name="M:MrJobProject.Data.Holiday.NotifyPropertyChanged(System.String)">
+            <summary>
+             Metoda NotifyPropertyChanged, informuje o zmianie w danej wlasciwosci
+            </summary>
+        </member>
+        <member name="T:MrJobProject.Data.Schedule">
+            <summary>
+             Klasa Schedule, wykorzystana przez baze danych SQLite oraz aplikacje do przechowywania danych zwiazanych z grafikiem pracy
+            </summary>
+            <remarks>
+            Zawiera wlasciwosci oraz zdarzenie
+            </remarks>
+        </member>
+        <member name="P:MrJobProject.Data.Schedule.Id">
+            <value>Zwraca lub ustawia Id grafika, jest primary key-em</value>
+        </member>
+        <member name="P:MrJobProject.Data.Schedule.Date">
+            <value>Zwraca lub ustawia date dotyczaca danego dnia z grafika</value>
+        </member>
+        <member name="P:MrJobProject.Data.Schedule.WorkerId">
+            <value>Zwraca lub ustawia id pracownika, ktorego dotyczy grafik</value>
+        </member>
+        <member name="P:MrJobProject.Data.Schedule.ShiftName">
+            <value>Zwraca lub ustawia nazwe zmiany, ktora dotyczy grafika</value>
+        </member>
+        <member name="M:MrJobProject.Data.Schedule.NotifyPropertyChanged(System.String)">
+            <summary>
+             Metoda NotifyPropertyChanged, informuje o zmianie w danej wlasciwosci
+            </summary>
+        </member>
+        <member name="T:MrJobProject.Data.Shift">
+            <summary>
+             Klasa Shift, wykorzystana przez baze danych SQLite oraz aplikacje do przechowywania danych zwiazanych z zmianami
+            </summary>
+            <remarks>
+            Zawiera wlasciwosci oraz zdarzenie
+            </remarks>
+        </member>
+        <member name="P:MrJobProject.Data.Shift.Id">
+            <value>Zwraca lub ustawia Id zmiany, jest primary key-em</value>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:MrJobProject.Data.Shift.ShiftName" -->
+        <member name="P:MrJobProject.Data.Shift.TimeFrom">
+            <value>Zwraca lub ustawia godzine startowa zmiany</value>
+        </member>
+        <member name="P:MrJobProject.Data.Shift.TimeTo">
+            <value>Zwraca lub ustawia godzine koncowa zmiany</value>
+        </member>
+        <member name="P:MrJobProject.Data.Shift.MinNumberOfWorkers">
+            <value>Zwraca lub ustawia minimalna ilosc pracownikow na zmiane</value>
+        </member>
+        <member name="M:MrJobProject.Data.Shift.NotifyPropertyChanged(System.String)">
+            <summary>
+             Metoda NotifyPropertyChanged, informuje o zmianie w danej wlasciwosci
+            </summary>
+        </member>
+        <member name="T:MrJobProject.Data.Worker">
+            <summary>
+             Klasa Worker, wykorzystana przez baze danych SQLite oraz aplikacje do przechowywania danych zwiazanych z pracownikami
+            </summary>
+            <remarks>
+            Zawiera wlasciwosci oraz zdarzenie
+            </remarks>
+        </member>
+        <member name="P:MrJobProject.Data.Worker.Id">
+            <value>Zwraca lub ustawia Id pracownika, jest primary key-em</value>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:MrJobProject.Data.Worker.Name" -->
+        <!-- Badly formed XML comment ignored for member "P:MrJobProject.Data.Worker.Status" -->
+        <member name="M:MrJobProject.Data.Worker.NotifyPropertyChanged(System.String)">
+            <summary>
+             Metoda NotifyPropertyChanged, informuje o zmianie w danej wlasciwosci
             </summary>
         </member>
         <member name="T:MrJobProject.MainWindow">
