@@ -87,10 +87,43 @@
         </member>
         <member name="T:MrJobProject.Dialogs.EditAddShift">
             <summary>
-            Interaction logic for EditAddShift.xaml
+            Logika okna dialogowego EditAddShift
             </summary>
+            <remarks>
+            Zawiera konstruktor oraz pole
+            </remarks>
             <summary>
             EditAddShift
+            </summary>
+        </member>
+        <member name="F:MrJobProject.Dialogs.EditAddShift.newShift">
+            <summary>
+            zmienna typu Shift o nazwie newShift informacje o nowej zmianie
+            </summary>
+        </member>
+        <member name="M:MrJobProject.Dialogs.EditAddShift.SaveBtn_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Metoda SaveBtn_Click(object sender, TextChangedEventArgs e) podczas wywolania edytuje wybrana zmiane i zapisuje w bazie danych 
+            </summary>
+        </member>
+        <member name="M:MrJobProject.Dialogs.EditAddShift.TimeFromHour_GotFocus(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Metoda TimeFromHour_GotFocus(object sender, TextChangedEventArgs e) podczas wywolania zaznacza tekst w wybranych polu teksowym
+            </summary>
+        </member>
+        <member name="M:MrJobProject.Dialogs.EditAddShift.TimeFromMin_GotFocus(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Metoda TimeFromMin_GotFocus(object sender, TextChangedEventArgs e) podczas wywolania zaznacza tekst w wybranych polu teksowym
+            </summary>
+        </member>
+        <member name="M:MrJobProject.Dialogs.EditAddShift.TimeToHour_GotFocus(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Metoda TimeToHour_GotFocus(object sender, TextChangedEventArgs e) podczas wywolania zaznacza tekst w wybranych polu teksowym
+            </summary>
+        </member>
+        <member name="M:MrJobProject.Dialogs.EditAddShift.TimeToMin_GotFocus(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Metoda TimeToMin_GotFocus(object sender, TextChangedEventArgs e) podczas wywolania zaznacza tekst w wybranych polu teksowym
             </summary>
         </member>
         <member name="M:MrJobProject.Dialogs.EditAddShift.InitializeComponent">
@@ -100,10 +133,23 @@
         </member>
         <member name="T:MrJobProject.Dialogs.EditWorker">
             <summary>
-            Interaction logic for EditWorker.xaml
+            Logika okna dialogowego EditWorker
             </summary>
+            <remarks>
+            Zawiera konstruktor oraz pole
+            </remarks>
             <summary>
             EditWorker
+            </summary>
+        </member>
+        <member name="F:MrJobProject.Dialogs.EditWorker.newWorker">
+            <summary>
+            zmienna typu Worker o nazwie newWorker informacje o nowym pracowniku
+            </summary>
+        </member>
+        <member name="M:MrJobProject.Dialogs.EditWorker.SaveBtn_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Metoda SaveBtn_Click(object sender, TextChangedEventArgs e) podczas wywolania edytuje wybranego pracownika i zapisuje w bazie danych 
             </summary>
         </member>
         <member name="M:MrJobProject.Dialogs.EditWorker.InitializeComponent">
@@ -113,10 +159,18 @@
         </member>
         <member name="T:MrJobProject.Dialogs.InfoOK">
             <summary>
-            Interaction logic for InfoOK.xaml
+            Logika okna dialogowego InfoOK
             </summary>
+            <remarks>
+            Zawiera konstruktor 
+            </remarks>
             <summary>
             InfoOK
+            </summary>
+        </member>
+        <member name="M:MrJobProject.Dialogs.InfoOK.OKBtn_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Metoda OKBtn_Click(object sender, TextChangedEventArgs e) podczas wywolania zwraca prawde 
             </summary>
         </member>
         <member name="M:MrJobProject.Dialogs.InfoOK.InitializeComponent">
@@ -126,10 +180,18 @@
         </member>
         <member name="T:MrJobProject.Dialogs.YesNo">
             <summary>
-            Interaction logic for YesNo.xaml
+            Logika okna dialogowego YesNo
             </summary>
+            <remarks>
+            Zawiera konstruktor 
+            </remarks>
             <summary>
             YesNo
+            </summary>
+        </member>
+        <member name="M:MrJobProject.Dialogs.YesNo.YesBtn_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Metoda YesBtn_Click(object sender, TextChangedEventArgs e) podczas wywolania zwraca prawde 
             </summary>
         </member>
         <member name="M:MrJobProject.Dialogs.YesNo.InitializeComponent">
@@ -203,12 +265,12 @@
         </member>
         <member name="M:MrJobProject.UserControllers.HolidayUC.UserControl_Loaded(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
-            Zdarzenie UserControl_Loaded(object sender, RoutedEventArgs e) powoduje wywolanie metody UpdateList()
+            Metoda UserControl_Loaded(object sender, RoutedEventArgs e) powoduje wywolanie metody UpdateList()
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.HolidayUC.WorkersList_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
             <summary>
-            Zdarzenie WorkersList_SelectionChanged(object sender, SelectionChangedEventArgs e) powoduje wywolanie metody SetCalendar()
+            Metoda WorkersList_SelectionChanged(object sender, SelectionChangedEventArgs e) powoduje wywolanie metody SetCalendar()
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.HolidayUC.SetCalendar">
@@ -226,37 +288,37 @@
         </member>
         <member name="M:MrJobProject.UserControllers.HolidayUC.ListOfYears_OnSelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
             <summary>
-            Zdarzenie ListOfYears_OnSelectionChanged(object sender, SelectionChangedEventArgs e) powoduje wywolanie metody SetCalendar()
+            Metoda ListOfYears_OnSelectionChanged(object sender, SelectionChangedEventArgs e) powoduje wywolanie metody SetCalendar()
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.HolidayUC.ListOfMonths_OnSelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
             <summary>
-            Zdarzenie ListOfMonths_OnSelectionChanged(object sender, SelectionChangedEventArgs e) powoduje wywolanie metody SetCalendar()
+            Metoda ListOfMonths_OnSelectionChanged(object sender, SelectionChangedEventArgs e) powoduje wywolanie metody SetCalendar()
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.HolidayUC.AddHolidayButton_OnClick(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
-            Zdarzenie AddHolidayButton_OnClick(object sender, SelectionChangedEventArgs e) powoduje dodanie urlopu dla wybranego pracownika
+            Metoda AddHolidayButton_OnClick(object sender, SelectionChangedEventArgs e) powoduje dodanie urlopu dla wybranego pracownika
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.HolidayUC.DeleteHolidayButton_OnClick(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
-            Zdarzenie DeleteHolidayButton_OnClick(object sender, RoutedEventArgs e) powoduje usuniecie urlopu danego pracownika
+            Metoda DeleteHolidayButton_OnClick(object sender, RoutedEventArgs e) powoduje usuniecie urlopu danego pracownika
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.HolidayUC.NoneButton_OnClick(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
-            Zdarzenie NoneButton_OnClick(object sender, RoutedEventArgs e) powoduje odznaczenie wszystkich dni na liscie
+            Metoda NoneButton_OnClick(object sender, RoutedEventArgs e) powoduje odznaczenie wszystkich dni na liscie
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.HolidayUC.AllButton_OnClick(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
-            Zdarzenie AllButton_OnClick(object sender, RoutedEventArgs e) powoduje zaznaczenie wszystkich dni na liscie
+            Metoda AllButton_OnClick(object sender, RoutedEventArgs e) powoduje zaznaczenie wszystkich dni na liscie
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.HolidayUC.UserControl_IsVisibleChanged(System.Object,System.Windows.DependencyPropertyChangedEventArgs)">
             <summary>
-            Zdarzenie UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e) powoduje wywolanie metody UpdateList()
+            Metoda UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e) powoduje wywolanie metody UpdateList()
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.HolidayUC.InitializeComponent">
@@ -292,32 +354,32 @@
         </member>
         <member name="M:MrJobProject.UserControllers.ListsUC.SearchTextBox_TextChanged(System.Object,System.Windows.Controls.TextChangedEventArgs)">
             <summary>
-            Zdarzenie SearchTextBox_TextChanged(object sender, TextChangedEventArgs e) podczas wywolania filtruje liste pracownikow
+            Metoda SearchTextBox_TextChanged(object sender, TextChangedEventArgs e) podczas wywolania filtruje liste pracownikow
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.ListsUC.WorkersListView_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
             <summary>
-            Zdarzenie WorkersListView_SelectionChanged(object sender, SelectionChangedEventArgs e) podczas wywolania przypisuje do pola selectedWorkers zaznaczonych pracownikow z WorkersListView
+            Metoda WorkersListView_SelectionChanged(object sender, SelectionChangedEventArgs e) podczas wywolania przypisuje do pola selectedWorkers zaznaczonych pracownikow z WorkersListView
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.ListsUC.NoneButton_Click(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
-            Zdarzenie NoneButton_Click(object sender, RoutedEventArgs e) podczas wywolania odznacza wszystkich pracownikow z workersListView
+            Metoda NoneButton_Click(object sender, RoutedEventArgs e) podczas wywolania odznacza wszystkich pracownikow z workersListView
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.ListsUC.AllButton_Click(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
-            Zdarzenie AllButton_Click(object sender, RoutedEventArgs e) podczas wywolania zaznacza wszystkich pracownikow z workersListView
+            Metoda AllButton_Click(object sender, RoutedEventArgs e) podczas wywolania zaznacza wszystkich pracownikow z workersListView
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.ListsUC.PdfButton_OnClick(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
-            Zdarzenie PdfButton_OnClick(object sender, RoutedEventArgs e) podczas wywolania generuje liste obecnosci dla wybranych pracownikow w postaci plikow PDF
+            Metoda PdfButton_OnClick(object sender, RoutedEventArgs e) podczas wywolania generuje liste obecnosci dla wybranych pracownikow w postaci plikow PDF
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.ListsUC.UserControl_IsVisibleChanged(System.Object,System.Windows.DependencyPropertyChangedEventArgs)">
             <summary>
-            Zdarzenie UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e) powoduje wywolanie metody ReadDatabase()
+            Metoda UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e) powoduje wywolanie metody ReadDatabase()
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.ListsUC.InitializeComponent">
@@ -368,7 +430,7 @@
         </member>
         <member name="E:MrJobProject.UserControllers.ScheduleUC.PropertyChanged">
             <summary>
-            Zdarzenie obsugujace zmiane wlasciwosci
+            Metoda obsugujace zmiane wlasciwosci
             </summary>
         </member>
         <member name="P:MrJobProject.UserControllers.ScheduleUC.Data2D">
@@ -394,32 +456,32 @@
         </member>
         <member name="M:MrJobProject.UserControllers.ScheduleUC.DeleteShift(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
-            Zdarzenie DeleteShift(object sender, TextChangedEventArgs e) podczas wywolania usuwa wybrana zmiane z listy i bazy danych
+            Metoda DeleteShift(object sender, TextChangedEventArgs e) podczas wywolania usuwa wybrana zmiane z listy i bazy danych
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.ScheduleUC.AddShiftDialog(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
-            Zdarzenie AddShiftDialog(object sender, TextChangedEventArgs e) podczas wywolania dodaje zmiane do listy i bazy danych
+            Metoda AddShiftDialog(object sender, TextChangedEventArgs e) podczas wywolania dodaje zmiane do listy i bazy danych
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.ScheduleUC.EditShiftDialog(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
-            Zdarzenie EditShiftDialog(object sender, TextChangedEventArgs e) podczas wywolania edytuje wybrana zmiane z listy i bazy danych
+            Metoda EditShiftDialog(object sender, TextChangedEventArgs e) podczas wywolania edytuje wybrana zmiane z listy i bazy danych
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.ScheduleUC.BackDateBtn_Click(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
-            Zdarzenie BackDateBtn_Click(object sender, TextChangedEventArgs e) podczas wywolania cofa wybrana date o miasiac
+            Metoda BackDateBtn_Click(object sender, TextChangedEventArgs e) podczas wywolania cofa wybrana date o miasiac
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.ScheduleUC.ForwardDateBtn_Click(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
-            Zdarzenie ForwardDateBtn_Click(object sender, TextChangedEventArgs e) podczas wywolania zmienia wybrana date o miasiac wprzod
+            Metoda ForwardDateBtn_Click(object sender, TextChangedEventArgs e) podczas wywolania zmienia wybrana date o miasiac wprzod
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.ScheduleUC.ShiftList_PreviewMouseLeftButtonUp(System.Object,System.Windows.Input.MouseButtonEventArgs)">
             <summary>
-            Zdarzenie ShiftList_PreviewMouseLeftButtonUp(object sender, TextChangedEventArgs e) podczas wywolania zmienia zawartosc wybranej komorki w tabeli z grafikiem na nazwe wybranego elementu z listy zmian
+            Metoda ShiftList_PreviewMouseLeftButtonUp(object sender, TextChangedEventArgs e) podczas wywolania zmienia zawartosc wybranej komorki w tabeli z grafikiem na nazwe wybranego elementu z listy zmian
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.ScheduleUC.OnPropertyChanged(System.String)">
@@ -429,22 +491,22 @@
         </member>
         <member name="M:MrJobProject.UserControllers.ScheduleUC.ListOfYears_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
             <summary>
-            Zdarzenie ListOfYears_SelectionChanged(object sender, TextChangedEventArgs e) podczas wywolania uaktulania tabele z grafikiem
+            Metoda ListOfYears_SelectionChanged(object sender, TextChangedEventArgs e) podczas wywolania uaktulania tabele z grafikiem
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.ScheduleUC.ListOfMonths_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
             <summary>
-            Zdarzenie ListOfMonths_SelectionChanged(object sender, TextChangedEventArgs e) podczas wywolania uaktulania tabele z grafikiem
+            Metoda ListOfMonths_SelectionChanged(object sender, TextChangedEventArgs e) podczas wywolania uaktulania tabele z grafikiem
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.ScheduleUC.SaveBtn_Click(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
-            Zdarzenie SaveBtn_Click(object sender, TextChangedEventArgs e) podczas wywolania zapisuje dane z tabeli z grafikiem do bazy danych
+            Metoda SaveBtn_Click(object sender, TextChangedEventArgs e) podczas wywolania zapisuje dane z tabeli z grafikiem do bazy danych
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.ScheduleUC.UserControl_IsVisibleChanged(System.Object,System.Windows.DependencyPropertyChangedEventArgs)">
             <summary>
-            Zdarzenie UserControl_IsVisibleChanged(object sender, TextChangedEventArgs e) podczas wywolania uaktualnia dane po powrocie z innych zakladek
+            Metoda UserControl_IsVisibleChanged(object sender, TextChangedEventArgs e) podczas wywolania uaktualnia dane po powrocie z innych zakladek
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.ScheduleUC.InitializeComponent">
@@ -475,12 +537,12 @@
         </member>
         <member name="M:MrJobProject.UserControllers.WorkersUC.AddNewWorker(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
-            Zdarzenie UserControl_IsVisibleChanged(object sender, TextChangedEventArgs e) podczas wywolania dodaje nowego pracownika do listy i bazy danych
+            Metoda UserControl_IsVisibleChanged(object sender, TextChangedEventArgs e) podczas wywolania dodaje nowego pracownika do listy i bazy danych
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.WorkersUC.DatacontextItem_Delete(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
-            Zdarzenie UserControl_IsVisibleChanged(object sender, TextChangedEventArgs e) podczas wywolania usuwa wybranego pracownika do listy i bazy danych
+            Metoda UserControl_IsVisibleChanged(object sender, TextChangedEventArgs e) podczas wywolania usuwa wybranego pracownika do listy i bazy danych
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.WorkersUC.UpdateList">
@@ -490,12 +552,12 @@
         </member>
         <member name="M:MrJobProject.UserControllers.WorkersUC.TextBox_KeyDown(System.Object,System.Windows.Input.KeyEventArgs)">
             <summary>
-            Zdarzenie UserControl_IsVisibleChanged(object sender, TextChangedEventArgs e) podczas wywolania (wcisniecie enter) dodaje nowego pracownika do listy i bazy danych
+            Metoda UserControl_IsVisibleChanged(object sender, TextChangedEventArgs e) podczas wywolania (wcisniecie enter) dodaje nowego pracownika do listy i bazy danych
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.WorkersUC.EditWorker(System.Object,System.Windows.Input.MouseButtonEventArgs)">
             <summary>
-            Zdarzenie UserControl_IsVisibleChanged(object sender, TextChangedEventArgs e) podczas wywolania edytuje wybranego pracownika do listy i bazy danych
+            Metoda UserControl_IsVisibleChanged(object sender, TextChangedEventArgs e) podczas wywolania edytuje wybranego pracownika do listy i bazy danych
             </summary>
         </member>
         <member name="M:MrJobProject.UserControllers.WorkersUC.InitializeComponent">
@@ -530,8 +592,11 @@
         </member>
         <member name="T:MrJobProject.App">
             <summary>
-            Interaction logic for App.xaml
+            Logika okna dialogowego InfoOK
             </summary>
+            <remarks>
+            Laczy z baza danych
+            </remarks>
             <summary>
             App
             </summary>
@@ -646,10 +711,18 @@
         </member>
         <member name="T:MrJobProject.MainWindow">
             <summary>
-            Interaction logic for MainWindow.xaml
+            Logika glownego okna MainWindow
             </summary>
+            <remarks>
+            Zawiera konstruktor 
+            </remarks>
             <summary>
             MainWindow
+            </summary>
+        </member>
+        <member name="M:MrJobProject.MainWindow.MenuClick(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Metoda MenuClick(object sender, TextChangedEventArgs e) podczas wywolania uaktualnie wybrana zakladke
             </summary>
         </member>
         <member name="M:MrJobProject.MainWindow.InitializeComponent">

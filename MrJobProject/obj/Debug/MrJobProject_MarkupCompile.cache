@@ -12,9 +12,9 @@ DEBUG;TRACE
 C:\Repozytoria\MrJobProject\App.xaml
 11-1965377582
 21524734465
-24-749257377
+23-66065573
 86-67847093
 Dialogs\EditAddShift.xaml;Dialogs\EditWorker.xaml;Dialogs\InfoOK.xaml;Dialogs\YesNo.xaml;MainWindow.xaml;UserControllers\DayUC.xaml;UserControllers\HolidayUC.xaml;UserControllers\ListsUC.xaml;UserControllers\ScheduleUC.xaml;UserControllers\WorkersUC.xaml;UserControllers\workerUC.xaml;
 
-True
+False
 
