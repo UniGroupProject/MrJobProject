@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\obj\Debug\
+C:\Repozytoria\MrJobProject\obj\Debug\
 MrJobProject
 none
 false
 DEBUG;TRACE
-C:\Users\User\Documents\GitHub\MrJobProject\MrJobProject\App.xaml
+C:\Repozytoria\MrJobProject\App.xaml
 11-1965377582
-21735779215
-23-66065573
-86-1169041169
+21524734465
+24-749257377
+86-67847093
 Dialogs\EditAddShift.xaml;Dialogs\EditWorker.xaml;Dialogs\InfoOK.xaml;Dialogs\YesNo.xaml;MainWindow.xaml;UserControllers\DayUC.xaml;UserControllers\HolidayUC.xaml;UserControllers\ListsUC.xaml;UserControllers\ScheduleUC.xaml;UserControllers\WorkersUC.xaml;UserControllers\workerUC.xaml;
 
-False
+True
 
