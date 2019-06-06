@@ -14,6 +14,8 @@ using iText.Forms.Fields;
 using iText.Kernel.Pdf;
 using iText.Kernel.Utils;
 using MrJobProject.Dialogs;
+using System.IO;
+
 
 namespace MrJobProject.UserControllers
 {
@@ -108,8 +110,11 @@ namespace MrJobProject.UserControllers
             string fieldStop = "stop_";   // stopShift form for accesing fields in pdf form
 
             string strPath = System.AppDomain.CurrentDomain.BaseDirectory;
+            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string src = $@"{strPath}pdfForm.pdf";
-            string destMerg = $@"{strPath}pdfOutput\ListaScalona_{new DateTime(2000, DateTime.Today.Month, 1).ToString("MMMMMMMMMMM", CultureInfo.CurrentCulture)}.pdf"; 
+            string destMerg = $@"{docPath}\pdfOutput\ListaScalona_{new DateTime(2000, DateTime.Today.Month, 1).ToString("MMMMMMMMMMM", CultureInfo.CurrentCulture)}.pdf";
+
+            DirectoryInfo di = Directory.CreateDirectory($@"{docPath}\pdfOutput\");
 
             if (this.selectedWorkers != null)
             {
@@ -148,9 +153,9 @@ namespace MrJobProject.UserControllers
                             (connection.Table<Shift>().ToList().OrderBy(c => c.Id).ToList());
                     }
 
-                    string dest = $@"{strPath}pdfOutput\{workerName.Replace(" ", "")}.pdf"; // outputPath + generate the workerName pdf
+                    string dest = $@"{docPath}\pdfOutput\{workerName.Replace(" ", "")}.pdf"; // outputPath + generate the workerName pdf
 
-                    PdfDocument pdf = new PdfDocument(new PdfReader(src),new PdfWriter(dest));
+                    PdfDocument pdf = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
                     PdfAcroForm form = PdfAcroForm.GetAcroForm(pdf, true);
 
                     IDictionary<String, PdfFormField> fields = form.GetFormFields();
@@ -186,8 +191,8 @@ namespace MrJobProject.UserControllers
                             toSet.SetValue($"{selectedShift.TimeTo.ToString("H:mm")}");
                         }
                     }
-                    
-                    
+
+
                     pdf.Close();
                     PdfDocument pdfForMerge = new PdfDocument(new PdfReader(dest));
                     merger.Merge(pdfForMerge, 1, pdfForMerge.GetNumberOfPages());
