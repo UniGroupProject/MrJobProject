@@ -1,0 +1,12 @@
+MrJobProject/obj/Debug
+MrJobProject/obj/Release
+MrJobProject/bin/Debug
+!MrJobProject/bin/Debug/*.db
+!MrJobProject/bin/Debug/*.pdf
+MrJobProject/bin/Release
+!MrJobProject/bin/Release/*.db
+!MrJobProject/bin/Release/*.pdf
+MrJobProject.Tests/bin/Debug
+MrJobProject.Tests/bin/Release
+MrJobProject.Tests/obj/Debug
+MrJobProject.Tests/obj/Release
