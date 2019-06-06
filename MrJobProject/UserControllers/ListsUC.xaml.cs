@@ -109,10 +109,13 @@ namespace MrJobProject.UserControllers
             string fieldStart = "start_"; // startShift form for accesing fields in pdf form
             string fieldStop = "stop_";   // stopShift form for accesing fields in pdf form
 
+            int selectedMonth = (int)ListOfMonths.SelectedValue;
+            int selectedYear = (int)ListOfYears.SelectedValue;
+
             string strPath = System.AppDomain.CurrentDomain.BaseDirectory;
             string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string src = $@"{strPath}pdfForm.pdf";
-            string destMerg = $@"{docPath}\pdfOutput\ListaScalona_{new DateTime(2000, DateTime.Today.Month, 1).ToString("MMMMMMMMMMM", CultureInfo.CurrentCulture)}.pdf";
+            string destMerg = $@"{docPath}\pdfOutput\ListaScalona_{new DateTime(2000, selectedMonth, 1).ToString("MMMMMMMMMMM", CultureInfo.CurrentCulture)}.pdf";
 
             DirectoryInfo di = Directory.CreateDirectory($@"{docPath}\pdfOutput\");
 
@@ -123,8 +126,6 @@ namespace MrJobProject.UserControllers
 
                 foreach (var worker in selectedWorkers)
                 {
-                    int selectedMonth = (int)ListOfMonths.SelectedValue;
-                    int selectedYear = (int)ListOfYears.SelectedValue;
                     var workerName = worker.Name;
                     string monthName;
 
@@ -196,6 +197,7 @@ namespace MrJobProject.UserControllers
                     pdf.Close();
                     PdfDocument pdfForMerge = new PdfDocument(new PdfReader(dest));
                     merger.Merge(pdfForMerge, 1, pdfForMerge.GetNumberOfPages());
+                    pdfForMerge.Close();
                 }
                 mergedPdf.Close();
                 InfoOK success = new InfoOK("Utworzono pliki PDF");
