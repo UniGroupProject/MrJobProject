@@ -117,6 +117,8 @@ namespace MrJobProject.UserControllers
             string src = $@"{strPath}pdfForm.pdf";
             string destMerg = $@"{docPath}\pdfOutput\ListaScalona_{new DateTime(2000, selectedMonth, 1).ToString("MMMMMMMMMMM", CultureInfo.CurrentCulture)}.pdf";
 
+            string deletePath = $@"{docPath}\pdfOutput\temp";
+
             DirectoryInfo di = Directory.CreateDirectory($@"{docPath}\pdfOutput\");
 
             if (this.selectedWorkers != null)
@@ -153,8 +155,8 @@ namespace MrJobProject.UserControllers
                         shifts = new List<Shift> //shifts list
                             (connection.Table<Shift>().ToList().OrderBy(c => c.Id).ToList());
                     }
-
-                    string dest = $@"{docPath}\pdfOutput\{workerName.Replace(" ", "")}.pdf"; // outputPath + generate the workerName pdf
+                    Directory.CreateDirectory($@"{ docPath}\pdfOutput\temp");
+                    string dest = $@"{docPath}\pdfOutput\temp\{workerName.Replace(" ", "")}.pdf"; // outputPath + generate the workerName pdf
 
                     PdfDocument pdf = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
                     PdfAcroForm form = PdfAcroForm.GetAcroForm(pdf, true);
@@ -195,11 +197,14 @@ namespace MrJobProject.UserControllers
 
 
                     pdf.Close();
+                   
                     PdfDocument pdfForMerge = new PdfDocument(new PdfReader(dest));
                     merger.Merge(pdfForMerge, 1, pdfForMerge.GetNumberOfPages());
                     pdfForMerge.Close();
+                    
                 }
                 mergedPdf.Close();
+                Directory.Delete(deletePath, true);
                 InfoOK success = new InfoOK("Utworzono pliki PDF");
                 success.ShowDialog();
             }
