@@ -377,5 +377,21 @@ namespace MrJobProject.UserControllers
                 ReadScheduleList();
             }
         }
+
+        private void ScheduleList_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete)
+            {
+                var cells = ScheduleList.SelectedCells.ToList();
+                foreach (DataGridCellInfo item in cells)
+                {
+                    int col = item.Column.DisplayIndex;
+                    var row = ScheduleList.Items.IndexOf(item.Item);
+
+                    data2d[row, col] = "";
+                }
+                Data2D = (string[,])data2d.Clone();
+            }
+        }
     }
 }

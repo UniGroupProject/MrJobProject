@@ -72,7 +72,7 @@
                   dataGrid2D:Selected.Index="{Binding Index}"
                   SelectionUnit="Cell"
                   IsReadOnly="True"
-                  Width="Auto" VerticalAlignment="Top" 
+                  Width="Auto" VerticalAlignment="Top" PreviewKeyDown="ScheduleList_PreviewKeyDown" 
                    >
 
         </DataGrid>
