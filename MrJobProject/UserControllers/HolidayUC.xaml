@@ -55,7 +55,7 @@
                             <ColumnDefinition Width="2*" />
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0"
-                                       Text="{Binding Name}" />
+                                       Text="{Binding Name}" FontSize="16" />
                         <TextBlock Grid.Column="1"
                                        Text="{Binding Status,
                                        Converter={StaticResource ActiveConverter}}"

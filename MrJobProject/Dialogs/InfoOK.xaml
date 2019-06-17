@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MrJobProject.Dialogs"
         mc:Ignorable="d" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
-    <Grid Margin="15">
+    <Grid Margin="45,15">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <TextBlock Name="question" Grid.Column="1" ></TextBlock>
+        <TextBlock Name="question" Grid.Column="1" TextDecorations="{x:Null}" FontSize="18" ></TextBlock>
 
         <WrapPanel Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0,15,0,0">
             <Button IsDefault="True" Name="OKBtn" MinWidth="60" Content="OK" Click="OKBtn_Click"></Button>
