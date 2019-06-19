@@ -67,6 +67,7 @@ namespace MrJobProject.Data
         /// <summary>
         ///  Metoda NotifyPropertyChanged, informuje o zmianie w danej wlasciwosci
         /// </summary>
+        /// <param name="propName">Argument typu string, ktory przekazuje nazwe wlasciwosci</param>
         public void NotifyPropertyChanged(string propName)
         {
             if (this.PropertyChanged != null)

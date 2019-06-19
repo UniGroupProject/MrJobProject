@@ -94,6 +94,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda UserControl_Loaded(object sender, RoutedEventArgs e) powoduje wywolanie metody UpdateList()
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateList();
@@ -101,6 +103,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda WorkersList_SelectionChanged(object sender, SelectionChangedEventArgs e) powoduje wywolanie metody SetCalendar()
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void WorkersList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SetCalendar();
@@ -140,9 +144,9 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda ReadHolidaysDatabase(Worker selectedWorker, int selectedYear, int selectedMonth) powoduje pobranie z bazy danych dni z urlopami dla danego pracownika, w okreslonym roku i miesiacu
         /// </summary>
-        /// <param name="selectedWorker"></param>
-        /// <param name="selectedYear"></param>
-        /// <param name="selectedMonth"></param>
+        /// <param name="selectedWorker">Parametr selectedWorker przekazuje obiekt typu Worker, w tym przypadku wybranego pracownika</param>
+        /// <param name="selectedYear">Parametr selectedYear przekazuje obiekt typu int, w tym przypadku wybranego roku</param>
+        /// <param name="selectedMonth">Parametr selectedMonth przekazuje obiekt typu int, w tym przypadku wybranego miesiaca</param>
         private void ReadHolidaysDatabase(Worker selectedWorker, int selectedYear, int selectedMonth)
         {
             using (var connection = new SQLiteConnection(App.databasePath))
@@ -157,6 +161,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda ListOfYears_OnSelectionChanged(object sender, SelectionChangedEventArgs e) powoduje wywolanie metody SetCalendar()
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void ListOfYears_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SetCalendar();
@@ -164,6 +170,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda ListOfMonths_OnSelectionChanged(object sender, SelectionChangedEventArgs e) powoduje wywolanie metody SetCalendar()
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void ListOfMonths_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SetCalendar();
@@ -171,6 +179,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda AddHolidayButton_OnClick(object sender, SelectionChangedEventArgs e) powoduje dodanie urlopu dla wybranego pracownika
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void AddHolidayButton_OnClick(object sender, RoutedEventArgs e)
         {
             var selectedWorker = (Worker) WorkersList.SelectedItem;
@@ -215,6 +225,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda DeleteHolidayButton_OnClick(object sender, RoutedEventArgs e) powoduje usuniecie urlopu danego pracownika
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void DeleteHolidayButton_OnClick(object sender, RoutedEventArgs e)
         {
             string question = "Czy jesteś pewien, że chcesz usunąć?"; //language item
@@ -247,6 +259,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda NoneButton_OnClick(object sender, RoutedEventArgs e) powoduje odznaczenie wszystkich dni na liscie
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void NoneButton_OnClick(object sender, RoutedEventArgs e)
         {
             HolidaysList.SelectedItems.Clear();
@@ -255,6 +269,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda AllButton_OnClick(object sender, RoutedEventArgs e) powoduje zaznaczenie wszystkich dni na liscie
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void AllButton_OnClick(object sender, RoutedEventArgs e)
         {
             HolidaysList.SelectAll();
@@ -262,6 +278,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e) powoduje wywolanie metody UpdateList()
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu DependencyPropertyChangedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             UserControl uc = sender as UserControl;

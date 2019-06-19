@@ -35,6 +35,8 @@ namespace MrJobProject.UserControllers
             "Day", typeof(Day), typeof(DayUC), new PropertyMetadata(new Day(1,false),SetDayTextAndBackground));
 
         /// <value>Ustawia text kontrolki oraz kolor tla, zaleznie od tego, czy dany dzien jest urlopem</value>
+        /// <param name="d">Argument typu DependencyObject, ktory przekazuje obiekt, ktory uczestniczy w systemie wlasciwosci zaleznosci.</param>
+        /// <param name="e">Argument typu DependencyPropertyChangedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private static void SetDayTextAndBackground(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             DayUC day = d as DayUC;

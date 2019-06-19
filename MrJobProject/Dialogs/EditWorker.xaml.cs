@@ -27,6 +27,8 @@ namespace MrJobProject.Dialogs
         /// <summary>
         /// Metoda SaveBtn_Click(object sender, TextChangedEventArgs e) podczas wywolania edytuje wybranego pracownika i zapisuje w bazie danych 
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
             newWorker.Name = nameValue.Text;

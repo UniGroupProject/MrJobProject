@@ -67,6 +67,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda SearchTextBox_TextChanged(object sender, TextChangedEventArgs e) podczas wywolania filtruje liste pracownikow
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox searchTextBox = sender as TextBox;
@@ -77,6 +79,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda WorkersListView_SelectionChanged(object sender, SelectionChangedEventArgs e) podczas wywolania przypisuje do pola selectedWorkers zaznaczonych pracownikow z WorkersListView
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void WorkersListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             this.selectedWorkers = workersListView.SelectedItems.Cast<Worker>().ToList();
@@ -84,6 +88,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda NoneButton_Click(object sender, RoutedEventArgs e) podczas wywolania odznacza wszystkich pracownikow z workersListView
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void NoneButton_Click(object sender, RoutedEventArgs e)
         {
             foreach (var item in workers)
@@ -96,6 +102,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda AllButton_Click(object sender, RoutedEventArgs e) podczas wywolania zaznacza wszystkich pracownikow z workersListView
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void AllButton_Click(object sender, RoutedEventArgs e)
         {
             workersListView.SelectAll();
@@ -103,6 +111,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda PdfButton_OnClick(object sender, RoutedEventArgs e) podczas wywolania generuje liste obecnosci dla wybranych pracownikow w postaci plikow PDF
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void PdfButton_OnClick(object sender, RoutedEventArgs e)
         {
             string fieldShift = "shift_"; // name form for accesing fields in pdf form
@@ -217,6 +227,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e) powoduje wywolanie metody ReadDatabase()
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu DependencyPropertyChangedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             UserControl uc = sender as UserControl;

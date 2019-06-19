@@ -18,6 +18,8 @@ namespace MrJobProject.Dialogs
         /// <summary>
         /// Metoda YesBtn_Click(object sender, TextChangedEventArgs e) podczas wywolania zwraca prawde 
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void YesBtn_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;

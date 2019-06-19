@@ -48,6 +48,8 @@ namespace MrJobProject.Dialogs
         /// <summary>
         /// Metoda SaveBtn_Click(object sender, TextChangedEventArgs e) podczas wywolania edytuje wybrana zmiane i zapisuje w bazie danych 
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
             bool noExept = true;
@@ -89,30 +91,42 @@ namespace MrJobProject.Dialogs
             if (noExept && newShift.ShiftName != "")
             this.DialogResult = true;
         }
+
         /// <summary>
         /// Metoda TimeFromHour_GotFocus(object sender, TextChangedEventArgs e) podczas wywolania zaznacza tekst w wybranych polu teksowym
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void TimeFromHour_GotFocus(object sender, RoutedEventArgs e)
         {
             timeFromHour.SelectAll();
         }
+
         /// <summary>
         /// Metoda TimeFromMin_GotFocus(object sender, TextChangedEventArgs e) podczas wywolania zaznacza tekst w wybranych polu teksowym
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void TimeFromMin_GotFocus(object sender, RoutedEventArgs e)
         {
             timeFromMin.SelectAll();
         }
+
         /// <summary>
         /// Metoda TimeToHour_GotFocus(object sender, TextChangedEventArgs e) podczas wywolania zaznacza tekst w wybranych polu teksowym
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void TimeToHour_GotFocus(object sender, RoutedEventArgs e)
         {
             timeToHour.SelectAll();
         }
+
         /// <summary>
         /// Metoda TimeToMin_GotFocus(object sender, TextChangedEventArgs e) podczas wywolania zaznacza tekst w wybranych polu teksowym
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void TimeToMin_GotFocus(object sender, RoutedEventArgs e)
         {
             timeToMin.SelectAll();

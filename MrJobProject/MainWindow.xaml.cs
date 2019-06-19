@@ -20,6 +20,8 @@ namespace MrJobProject
         /// <summary>
         /// Metoda MenuClick(object sender, TextChangedEventArgs e) podczas wywolania uaktualnie wybrana zakladke
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void MenuClick(object sender, RoutedEventArgs e)
         {
             int index = int.Parse(((Button)e.Source).Uid);

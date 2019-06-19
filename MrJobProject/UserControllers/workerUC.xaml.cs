@@ -28,6 +28,8 @@ namespace MrJobProject.UserControllers
             DependencyProperty.Register("Worker", typeof(Worker), typeof(workerUC),
                 new PropertyMetadata(new Worker() { Name = "Imięs i Nazwisko"}, SetPropertiesOfTextBox));
         /// <value>Ustawia wyswietlana nazwe pracownika w kontrolce</value>
+        /// <param name="d">Argument typu DependencyObject, ktory przekazuje obiekt, ktory uczestniczy w systemie wlasciwosci zaleznosci.</param>
+        /// <param name="e">Argument typu DependencyPropertyChangedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private static void SetPropertiesOfTextBox(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             workerUC worker = d as workerUC;

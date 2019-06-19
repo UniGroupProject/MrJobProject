@@ -17,6 +17,10 @@ namespace MrJobProject.Converters
         /// /// <returns>
         /// Zwraca string z godzina
         /// </returns>
+        /// <param name="value">Argument typu object, ktory przekazuje obiekt(wartosc) do przetworzenia</param>
+        /// <param name="targetType">Argument typu Type, ktory przekazuje informacje o typie docelowym </param>
+        /// <param name="parameter">Argument typu object, ktory przekazuje parametr</param>
+        /// <param name="culture">Argument typu CultureInfo, ktory przekazuje informacje o jezyku docelowym </param>
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             if (value is DateTime)
@@ -26,7 +30,11 @@ namespace MrJobProject.Converters
             }
             return "";
         }
-        
+
+        /// <param name="value">Argument typu object, ktory przekazuje obiekt(wartosc) do przetworzenia</param>
+        /// <param name="targetType">Argument typu Type, ktory przekazuje informacje o typie docelowym </param>
+        /// <param name="parameter">Argument typu object, ktory przekazuje parametr</param>
+        /// <param name="culture">Argument typu CultureInfo, ktory przekazuje informacje o jezyku docelowym </param>
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             return false;

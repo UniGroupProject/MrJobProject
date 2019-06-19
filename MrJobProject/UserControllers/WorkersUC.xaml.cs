@@ -45,6 +45,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda UserControl_IsVisibleChanged(object sender, TextChangedEventArgs e) podczas wywolania dodaje nowego pracownika do listy i bazy danych
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void AddNewWorker(object sender, RoutedEventArgs e)
         {
             if (nameValue.Text != "")
@@ -67,6 +69,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda UserControl_IsVisibleChanged(object sender, TextChangedEventArgs e) podczas wywolania usuwa wybranego pracownika do listy i bazy danych
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void DatacontextItem_Delete(object sender, RoutedEventArgs e) //right click -> delete
         {
             Worker worker = WorkersList.SelectedItem as Worker;
@@ -97,6 +101,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda UserControl_IsVisibleChanged(object sender, TextChangedEventArgs e) podczas wywolania (wcisniecie enter) dodaje nowego pracownika do listy i bazy danych
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu KeyEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void TextBox_KeyDown(object sender, KeyEventArgs e) //enter -c> add new worker
         {
             if (e.Key == Key.Return)
@@ -107,6 +113,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda UserControl_IsVisibleChanged(object sender, TextChangedEventArgs e) podczas wywolania edytuje wybranego pracownika do listy i bazy danych
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu MouseButtonEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void EditWorker(object sender, MouseButtonEventArgs e) //double click -> edit worker
         {
             Worker selectedWorker = WorkersList.SelectedItem as Worker;

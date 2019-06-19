@@ -170,6 +170,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda DeleteShift(object sender, TextChangedEventArgs e) podczas wywolania usuwa wybrana zmiane z listy i bazy danych
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void DeleteShift(object sender, RoutedEventArgs e) // right click - delete shift
         {
             Shift shift = ShiftList.SelectedItem as Shift;
@@ -195,6 +197,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda AddShiftDialog(object sender, TextChangedEventArgs e) podczas wywolania dodaje zmiane do listy i bazy danych
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void AddShiftDialog(object sender, RoutedEventArgs e) // right click - add new shift
         {
             EditAddShift addShift = new EditAddShift();
@@ -211,6 +215,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda EditShiftDialog(object sender, TextChangedEventArgs e) podczas wywolania edytuje wybrana zmiane z listy i bazy danych
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void EditShiftDialog(object sender, RoutedEventArgs e) // right click - edit selected shift
         {
             Shift shift = ShiftList.SelectedItem as Shift;
@@ -231,6 +237,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda BackDateBtn_Click(object sender, TextChangedEventArgs e) podczas wywolania cofa wybrana date o miasiac
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void BackDateBtn_Click(object sender, RoutedEventArgs e) // button to select earlier month
         {
             int selectedYear = (int)ListOfYears.SelectedValue;
@@ -252,6 +260,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda ForwardDateBtn_Click(object sender, TextChangedEventArgs e) podczas wywolania zmienia wybrana date o miasiac wprzod
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void ForwardDateBtn_Click(object sender, RoutedEventArgs e) // button to select forward month
         {
             int selectedYear = (int)ListOfYears.SelectedValue;
@@ -271,6 +281,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda ShiftList_PreviewMouseLeftButtonUp(object sender, TextChangedEventArgs e) podczas wywolania zmienia zawartosc wybranej komorki w tabeli z grafikiem na nazwe wybranego elementu z listy zmian
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void ShiftList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             var cells = ScheduleList.SelectedCells.ToList();
@@ -296,6 +308,7 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda OnPropertyChanged() wzbudza zdarzanie, gdy pewna wlasciwosc jest zmieniona
         /// </summary>
+        /// /// <param name="propertyName">Argument typu string, ktory przekazuje nazwe wlasciwosci, jesli nie jest przekazany do metody, to bazowo ustawiony jest null</param>
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -303,6 +316,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda ListOfYears_SelectionChanged(object sender, TextChangedEventArgs e) podczas wywolania uaktulania tabele z grafikiem
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu SelectionChangedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void ListOfYears_SelectionChanged(object sender, SelectionChangedEventArgs e) // when year changed
         {
             ReadScheduleList();
@@ -310,6 +325,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda ListOfMonths_SelectionChanged(object sender, TextChangedEventArgs e) podczas wywolania uaktulania tabele z grafikiem
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu SelectionChangedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void ListOfMonths_SelectionChanged(object sender, SelectionChangedEventArgs e) // when month changed
         {
             ReadScheduleList();
@@ -317,6 +334,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda SaveBtn_Click(object sender, TextChangedEventArgs e) podczas wywolania zapisuje dane z tabeli z grafikiem do bazy danych
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void SaveBtn_Click(object sender, RoutedEventArgs e) // save button cklicked
         {
             using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
@@ -368,6 +387,8 @@ namespace MrJobProject.UserControllers
         /// <summary>
         /// Metoda UserControl_IsVisibleChanged(object sender, TextChangedEventArgs e) podczas wywolania uaktualnia dane po powrocie z innych zakladek
         /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu DependencyPropertyChangedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e) //when UserConrol loaded -> update
         {
             UserControl uc = sender as UserControl;
@@ -377,7 +398,11 @@ namespace MrJobProject.UserControllers
                 ReadScheduleList();
             }
         }
-
+        /// <summary>
+        /// Metoda ScheduleList_PreviewKeyDown(object sender, KeyEventArgs e), ktora zostaje wywolana po nacisnieciu przycisku delete, usuwa zawartosc zaznaczonych komorek
+        /// </summary>
+        /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
+        /// <param name="e">Argument typu KeyEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void ScheduleList_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Delete)
