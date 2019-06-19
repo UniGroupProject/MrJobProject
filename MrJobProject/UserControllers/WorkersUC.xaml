@@ -82,7 +82,7 @@
                                 <ColumnDefinition Width="8*" />
                                 <ColumnDefinition Width="2*" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="{Binding Name}" />
+                            <TextBlock Grid.Column="0" Text="{Binding Name}" FontSize="16" />
                             <TextBlock  Grid.Column="1" Text="{Binding Status, Converter={StaticResource ActiveConverter}}"
                                         Margin="2,0">
                             </TextBlock>
