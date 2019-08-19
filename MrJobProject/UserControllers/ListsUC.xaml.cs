@@ -190,8 +190,12 @@ namespace MrJobProject.UserControllers
 
                         if (holidays.Where(c => c.Date.Day == day).Count() >= 1)
                         {
+
                             fields.TryGetValue(fieldShift + day.ToString(), out toSet);
-                            toSet.SetValue($"Z");
+                            if (holidays.Where(c => c.Date.Day == day).First().Type == "Chorobowe")
+                                toSet.SetValue($"N1");
+                            else
+                                toSet.SetValue($"N2");
                             continue;
                         }
 
@@ -219,11 +223,11 @@ namespace MrJobProject.UserControllers
 
 
                     pdf.Close();
-                   
+
                     PdfDocument pdfForMerge = new PdfDocument(new PdfReader(dest));
                     merger.Merge(pdfForMerge, 1, pdfForMerge.GetNumberOfPages());
                     pdfForMerge.Close();
-                    
+
                 }
                 mergedPdf.Close();
                 Directory.Delete(deletePath, true);

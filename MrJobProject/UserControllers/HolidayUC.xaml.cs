@@ -56,18 +56,9 @@ namespace MrJobProject.UserControllers
         private List<string> GetListOfHolidayTypes()
         {
             var HolidayTypes = new List<string>(); //language item //change to eng version
-            HolidayTypes.Add("Choroba pracownika (płaci pracodawca)");
-            HolidayTypes.Add("Choroba pracownika (płaci ZUS)");
-            HolidayTypes.Add("Choroba niepłatne");
-            HolidayTypes.Add("Opieka");
-            HolidayTypes.Add("Wypoczynkowy");
-            HolidayTypes.Add("Na żądanie");
-            HolidayTypes.Add("Bezpłatny");
-            HolidayTypes.Add("Okolicznościowy");
-            HolidayTypes.Add("Macierzyński");
-            HolidayTypes.Add("Wychowawczy");
-            HolidayTypes.Add("Nieobecność usprawiedliwiona bezpłatna");
-            HolidayTypes.Add("Inne obecności nieusprawiediwione");
+            HolidayTypes.Add("Chorobowe");
+            HolidayTypes.Add("Urlop");
+            
             return HolidayTypes;
         }
         /// <summary>

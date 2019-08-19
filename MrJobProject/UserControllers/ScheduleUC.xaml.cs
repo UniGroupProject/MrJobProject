@@ -150,7 +150,16 @@ namespace MrJobProject.UserControllers
                     for (int j = 0; j < daysOfMonth; j++)
                     {
                         if (holidays.Where(c => (c.WorkerId == workers.ElementAt(i).Id) && (c.Date.Day == j + 1)).Count() > 0) // if any holiday then
-                            data[i, j] = "Z"; // remember to do: if holiday and added shift in the same day, remove shift
+                        {
+                            Holiday holiday = holidays.Where(c => (c.WorkerId == workers.ElementAt(i).Id) && (c.Date.Day == j + 1)).First();
+                            if (holiday.Type == "Chorobowe")
+                                data[i, j] = "N1";
+                            else
+                                data[i, j] = "N2"; 
+
+
+                        }
+
                         else if (schedules.Where(c => (c.WorkerId == workers.ElementAt(i).Id) && (c.Date.Day == j + 1)).Count() > 0) // if schedule then
                             data[i, j] = schedules.Where(c => (c.WorkerId == workers.ElementAt(i).Id) && (c.Date.Day == j + 1)).First().ShiftName;
                         else // if nothing added
@@ -299,7 +308,7 @@ namespace MrJobProject.UserControllers
                 {
                     int col = item.Column.DisplayIndex;
                     var row = ScheduleList.Items.IndexOf(item.Item); // Gogus uratowal kod
-                    if (data2d[row, col] != "Z") // if there is no holiday in this day
+                    if (data2d[row, col] != "N1" || data2d[row, col] != "N2") // if there is no holiday in this day
                         data2d[row, col] = shift.ShiftName;
                 }
                 var firstCellCol = cells.Last().Column.DisplayIndex;
@@ -369,7 +378,7 @@ namespace MrJobProject.UserControllers
                             if (savedSchedule.Count() > 0)
                                 connection.Delete(savedSchedule.First());
                         }
-                        else if (data2d[i, j] == "Z")
+                        else if (data2d[i, j] != "N1" || data2d[i, j] != "N2")
                         {
                             if (savedSchedule.Count() > 0)
                                 connection.Delete(savedSchedule.First());
