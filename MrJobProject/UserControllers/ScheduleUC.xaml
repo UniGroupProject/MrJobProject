@@ -77,14 +77,14 @@
 
         </DataGrid>
         <ListBox x:Name="ShiftList"
-                     Margin="5"
+                     Margin="35,5,5,5"
                      ScrollViewer.CanContentScroll="False"
                      Grid.ColumnSpan="2"
                      Grid.RowSpan="5" 
                      Grid.Column="10" 
-                     Grid.Row="2"
+                     Grid.Row="3"
                      PreviewMouseLeftButtonUp="ShiftList_PreviewMouseLeftButtonUp"
-                     HorizontalAlignment="Left">
+                     HorizontalAlignment="Left" MinWidth="60" MinHeight="30" Background="#FFE7D8F7" VerticalAlignment="Top">
             <ListBox.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Usuń"
@@ -183,6 +183,10 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
+        <StackPanel  Grid.Column="10" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="35,0">
+            <Button x:Name="BackUpBtn" Margin="0,5" Content="Backup" Click="BackUpBtn_Click"/>
+            <Button x:Name="RestoreBtn"  Margin="0,5" Content="Restore" Click="RestoreBtn_Click"></Button>
+        </StackPanel>
 
 
 

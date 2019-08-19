@@ -45,7 +45,7 @@
                      Grid.ColumnSpan="2"
                      Grid.Row="0"
                      Grid.RowSpan="9"
-                     Margin="4">
+                     Margin="4" IsVisibleChanged="WorkersList_IsVisibleChanged">
 
             <ListBox.ItemTemplate>
                 <DataTemplate>

@@ -129,5 +129,10 @@ namespace MrJobProject.UserControllers
                 UpdateList();
             }
         }
+
+        private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            UpdateList();
+        }
     }
 }

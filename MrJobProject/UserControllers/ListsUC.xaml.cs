@@ -143,6 +143,7 @@ namespace MrJobProject.UserControllers
 
                     List<Schedule> schedules;
                     List<Shift> shifts;
+                    List<Holiday> holidays;
 
                     if (ListOfMonths.SelectedValue != null)
                     {
@@ -160,6 +161,10 @@ namespace MrJobProject.UserControllers
                         connection.CreateTable<Schedule>(); //read all schedules in selected month/year for specific worker
                         schedules = new List<Schedule>
                             (connection.Table<Schedule>().ToList().Where(c => (c.Date.Month == selectedMonth) && (c.Date.Year == selectedYear) && (c.WorkerId == worker.Id)));
+
+                        connection.CreateTable<Holiday>(); //read all holidays in selected month/year for specific worker
+                        holidays = new List<Holiday>
+                            (connection.Table<Holiday>().ToList().Where(c => (c.Date.Month == selectedMonth) && (c.Date.Year == selectedYear) && (c.WorkerId == worker.Id)));
 
                         connection.CreateTable<Shift>();
                         shifts = new List<Shift> //shifts list
@@ -182,6 +187,13 @@ namespace MrJobProject.UserControllers
                     for (int day = 1; day <= DateTime.DaysInMonth(selectedYear, selectedMonth); day++)
                     {
                         Schedule daySchedule;
+
+                        if (holidays.Where(c => c.Date.Day == day).Count() >= 1)
+                        {
+                            fields.TryGetValue(fieldShift + day.ToString(), out toSet);
+                            toSet.SetValue($"Z");
+                            continue;
+                        }
 
                         if (schedules.Where(c => c.Date.Day == day).Count() == 0)
                         {
@@ -236,6 +248,11 @@ namespace MrJobProject.UserControllers
             {
                 ReadDatabase();
             }
+        }
+
+        private void Grid_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            ReadDatabase();
         }
     }
 }

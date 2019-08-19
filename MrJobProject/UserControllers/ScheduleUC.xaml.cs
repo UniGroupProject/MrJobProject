@@ -5,11 +5,14 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using WinForms = System.Windows.Forms;
 
 namespace MrJobProject.UserControllers
 {
@@ -49,6 +52,7 @@ namespace MrJobProject.UserControllers
         /// Metoda obsugujace zmiane wlasciwosci
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
+        private bool contentChanged = false;
         /// <value>Zwraca lub ustawia pole data2d</value>
         public string[,] Data2D
         {
@@ -146,7 +150,7 @@ namespace MrJobProject.UserControllers
                     for (int j = 0; j < daysOfMonth; j++)
                     {
                         if (holidays.Where(c => (c.WorkerId == workers.ElementAt(i).Id) && (c.Date.Day == j + 1)).Count() > 0) // if any holiday then
-                            data[i, j] = "U"; // remember to do: if holiday and added shift in the same day, remove shift
+                            data[i, j] = "Z"; // remember to do: if holiday and added shift in the same day, remove shift
                         else if (schedules.Where(c => (c.WorkerId == workers.ElementAt(i).Id) && (c.Date.Day == j + 1)).Count() > 0) // if schedule then
                             data[i, j] = schedules.Where(c => (c.WorkerId == workers.ElementAt(i).Id) && (c.Date.Day == j + 1)).First().ShiftName;
                         else // if nothing added
@@ -241,6 +245,7 @@ namespace MrJobProject.UserControllers
         /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void BackDateBtn_Click(object sender, RoutedEventArgs e) // button to select earlier month
         {
+            AskAboutSaving();
             int selectedYear = (int)ListOfYears.SelectedValue;
             int selectedMonth = (int)ListOfMonths.SelectedValue;
             if (selectedMonth == 1)
@@ -264,6 +269,7 @@ namespace MrJobProject.UserControllers
         /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void ForwardDateBtn_Click(object sender, RoutedEventArgs e) // button to select forward month
         {
+            AskAboutSaving();
             int selectedYear = (int)ListOfYears.SelectedValue;
             int selectedMonth = (int)ListOfMonths.SelectedValue;
             if (selectedMonth == 12)
@@ -293,7 +299,7 @@ namespace MrJobProject.UserControllers
                 {
                     int col = item.Column.DisplayIndex;
                     var row = ScheduleList.Items.IndexOf(item.Item); // Gogus uratowal kod
-                    if (data2d[row, col] != "U") // if there is no holiday in this day
+                    if (data2d[row, col] != "Z") // if there is no holiday in this day
                         data2d[row, col] = shift.ShiftName;
                 }
                 var firstCellCol = cells.Last().Column.DisplayIndex;
@@ -303,6 +309,7 @@ namespace MrJobProject.UserControllers
 
                 Keyboard.Focus(ScheduleList);
                 ScheduleList.CurrentCell = new DataGridCellInfo(ScheduleList.Items[firstCellRow], ScheduleList.Columns[firstCellCol]);
+                contentChanged = true;
             }
         }
         /// <summary>
@@ -320,6 +327,7 @@ namespace MrJobProject.UserControllers
         /// <param name="e">Argument typu SelectionChangedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void ListOfYears_SelectionChanged(object sender, SelectionChangedEventArgs e) // when year changed
         {
+            AskAboutSaving();
             ReadScheduleList();
         }
         /// <summary>
@@ -329,6 +337,7 @@ namespace MrJobProject.UserControllers
         /// <param name="e">Argument typu SelectionChangedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void ListOfMonths_SelectionChanged(object sender, SelectionChangedEventArgs e) // when month changed
         {
+            AskAboutSaving();
             ReadScheduleList();
         }
         /// <summary>
@@ -337,6 +346,11 @@ namespace MrJobProject.UserControllers
         /// <param name="sender">Argument typu object, ktory przekazuje obiekt</param>
         /// <param name="e">Argument typu RoutedEventArgs, ktory przekazuje wszystkie informacje o zdarzeniu </param>
         private void SaveBtn_Click(object sender, RoutedEventArgs e) // save button cklicked
+        {
+            SaveChanges();
+        }
+
+        private void SaveChanges()
         {
             using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
             {
@@ -355,7 +369,7 @@ namespace MrJobProject.UserControllers
                             if (savedSchedule.Count() > 0)
                                 connection.Delete(savedSchedule.First());
                         }
-                        else if (data2d[i, j] == "U")
+                        else if (data2d[i, j] == "Z")
                         {
                             if (savedSchedule.Count() > 0)
                                 connection.Delete(savedSchedule.First());
@@ -383,7 +397,9 @@ namespace MrJobProject.UserControllers
                 }
             }
             UpdateLists();
+            contentChanged = false;
         }
+
         /// <summary>
         /// Metoda UserControl_IsVisibleChanged(object sender, TextChangedEventArgs e) podczas wywolania uaktualnia dane po powrocie z innych zakladek
         /// </summary>
@@ -396,6 +412,10 @@ namespace MrJobProject.UserControllers
             {
                 UpdateLists();
                 ReadScheduleList();
+            }
+            else if(!uc.IsVisible)
+            {
+                AskAboutSaving();
             }
         }
         /// <summary>
@@ -416,6 +436,97 @@ namespace MrJobProject.UserControllers
                     data2d[row, col] = "";
                 }
                 Data2D = (string[,])data2d.Clone();
+                contentChanged = true;
+            }
+        }
+
+        private void RestoreDB(string filename)
+        {
+            var srcfile = Path.GetFullPath(filename);
+            var destfile = Path.GetFullPath(App.databasePath);
+
+            if (File.Exists(destfile)) File.Delete(destfile);
+
+            File.Copy(srcfile, destfile);
+            UpdateLists();
+
+            //todo:  zmiana nazwy pliku doceloego na ADB
+        }
+
+        private void BackUpBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Backup();
+        }
+
+        private void Backup()
+        {
+            WinForms.FolderBrowserDialog folderDialog = new WinForms.FolderBrowserDialog();
+            folderDialog.ShowNewFolderButton = false;
+            folderDialog.SelectedPath = System.AppDomain.CurrentDomain.BaseDirectory;
+            WinForms.DialogResult result = folderDialog.ShowDialog();
+            string folderPath = "";
+            if (result == WinForms.DialogResult.OK)
+            {
+                //----< Selected Folder >---- 
+                //< Selected Path > 
+                String sPath = folderDialog.SelectedPath;
+                folderPath = sPath;
+                //</ Selected Path >
+            }
+            else return;
+            var srcfile = Path.GetFullPath(App.databasePath);
+            var destfile = Path.Combine(folderPath + "\\Backup" + DateTime.Today.ToString("yyyy-MM-dd") +"_"+DateTime.Now.ToString("HH-mm")+ ".bak");
+
+            if (File.Exists(destfile)) File.Delete(destfile);
+
+            File.Copy(srcfile, destfile);
+
+            UpdateLists();
+        }
+
+        private void RestoreBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //ask about backup
+            string question = "Czy chcesz utworzyć kopię zapasową aktualnej wersji?"; //language item
+            YesNo Result = new YesNo(question);
+
+            if (Result.ShowDialog() == true)
+            {
+                Backup();
+            }
+
+
+            // Configure open file dialog box
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.FileName = "Document"; // Default file name
+            dlg.DefaultExt = ".bak"; // Default file extension
+            dlg.Filter = "Backup files (.bak)|*.bak"; // Filter files by extension
+
+            // Show open file dialog box
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Process open file dialog box results
+            if (result == true)
+            {
+                // Open document
+                string filename = dlg.FileName;
+                RestoreDB(filename);
+                UpdateLists();
+            }
+        }
+
+        private void AskAboutSaving()
+        {
+            string question = "Czy chcesz zapisać zmiany?"; //language item
+            YesNo Result = new YesNo(question);
+            if (contentChanged)
+            {
+                if (Result.ShowDialog() == true)
+                {
+                    SaveChanges();
+                }
+                else
+                    contentChanged = false;
             }
         }
     }
