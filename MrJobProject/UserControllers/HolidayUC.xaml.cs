@@ -198,6 +198,7 @@ namespace MrJobProject.UserControllers
                     {
                         var holiday = new Holiday
                         {
+                            Id = holidays.Where(c => c.Date.Day == selectedDay.DayNumber).First().Id,
                             WorkerId = selectedWorker.Id,
                             Date = new DateTime(selectedYear, selectedMonth, selectedDay.DayNumber),
                             Type = selectedReason
